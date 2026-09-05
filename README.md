@@ -1,6 +1,6 @@
 # grupo-15.github.io
 Trabajo practico de interfaces.
 ## Integrantes:
-**-Toledo matias.
-  -Romero Fabian.**
+* **Toledo matias.**
+* **Romero Fabian.**
 
