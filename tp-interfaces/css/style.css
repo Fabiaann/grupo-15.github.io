@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 48);
+}
+
+.container{
+    background-color: rgb(245, 246, 245);
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    align-items: center;
+    border-radius: 50px;
+    
+
+}
+
+button{
+
+    flex-flow: row;
+    background-color: rgb(5, 117, 117);
+    border-radius: 30px;
+    border-style: none;
+    height: 60px;
+    width: 200px;
+}
+
+button:hover{
+    background-color: blue;
+    color: white;
+}
+.presentacion h1{
+  text-align: center;
+font-family:Verdana, Geneva, Tahoma, sans-serif  ;
+}
+.participantes{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size:medium;
+}
+.botones{
+    flex-direction: row;
+}
