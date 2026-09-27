@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Juegos Online"><title>JuegosOnline</title><link rel="icon" type="image/png" href="assets/logo-juegos-online.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/footer.css"><link rel="stylesheet" href="css/header.css"><link rel="stylesheet" href="css/cards.css"></head>
+<body>
+  <div class="loader" id="loader" role="status" aria-live="off"><canvas id="canvas" width="500" height="350" aria-hidden="true"></canvas><strong>Preparando la partida</strong><span class="loader__progress" id="progress">0%</span></div>
+  <header class="site-header">
+    <div class="site-header__left">
+      <button class="site-header__menu-button" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu"><svg viewBox="0 0 40 32" aria-hidden="true"><path d="M2 5h31M2 15h31M2 25h31" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/><path class="site-header__arrow-right" d="M32 10 40 15 32 20Z" fill="currentColor"/><path class="site-header__arrow-left" d="M40 10 32 15 40 20Z" fill="currentColor"/></svg></button>
+      <a class="site-header__logo" href="index.html" aria-label="JuegosOnline, volver al inicio"><img src="assets/logo-juegos-online.png" alt=""></a>
+    </div>
+    <div class="site-header__balance"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 1 2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6z" fill="currentColor"/></svg><strong>10 coins</strong><a href="#reward">Recargar</a></div>
+    <a class="site-header__profile" href="pages/login.html" aria-label="Ingresar a mi perfil"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="9" r="6" fill="currentColor"/><path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor"/></svg></a>
+    <nav class="site-menu" id="site-menu" aria-label="Menú principal" hidden>
+      <a href="index.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8"/></svg><span>Inicio</span></a>
+      <a href="#novedades"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M17 6V2m0 0h-4m4 0-3 3M10 3a7 7 0 1 0 7 7M10 6v4l3 2"/></svg><span>Novedades</span></a>
+      <a href="#popular"><svg class="site-menu__fire" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2c1 3-1 4 1 6 1-1 2-2 2-4 4 4 5 8 3 11a6 6 0 0 1-12-1c0-3 2-5 4-7 0 3 0 4 1 5 2-2 1-6 1-10z"/></svg><span>Populares</span></a>
+      <div class="site-menu__divider"></div>
+      <button class="site-menu__categories" type="button" aria-expanded="false" aria-controls="site-categories"><span>Categorías</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="m8 1-5 5 5 5"/></svg></button>
+      <div class="site-menu__sublist" id="site-categories" hidden>
+        <a href="#game-multiplayer"><svg class="site-menu__category-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3"/><circle cx="17.5" cy="8" r="2.5"/><path d="M2 21v-2.5a6 6 0 0 1 12 0V21zm12.5 0v-2a5 5 0 0 0-2-4 5 5 0 0 1 9.5 3v3z"/></svg><span>Multijugador</span></a>
+        <a href="#game-action"><svg class="site-menu__category-icon site-menu__category-icon--swords" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l13 13m5-13L8 16M3 3l5 1-4 4zm18 0-5 1 4 4zM8 16l-5 5m13-5 5 5M5 15l4 4m6 0 4-4"/></svg><span>Pelea</span></a>
+        <a href="#popular"><svg class="site-menu__category-icon site-menu__category-icon--fire" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c1.5 4-1 5 1 8 1.4-1 2-2.4 2-4 5 5 6 10 3.4 14a7 7 0 0 1-12.8-1c-1-3.4 1-6 3.4-9 0 3 .3 4 1.4 5 2-3 1.5-8 1.6-13z"/></svg><span>Populares</span></a>
+        <a href="#game-adventure"><svg class="site-menu__category-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 1h2v22H3zM5 2h16l-3.5 5L21 12H5z"/></svg><span>Aventura</span></a>
+        <a href="#game-classics"><svg class="site-menu__category-icon site-menu__category-icon--classic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 8.7 14.9L12 12l8.7-4.9A10 10 0 0 0 12 2z"/></svg><span>Clásicos</span></a>
+        <a href="#game-minecraft"><svg class="site-menu__category-icon site-menu__category-icon--minecraft" viewBox="0 0 24 24" aria-hidden="true"><path class="site-menu__minecraft-face" d="M2 2h20v20H2z"/><path class="site-menu__minecraft-detail" d="M5 7h5v5H5zm9 0h5v5h-5zm-4 6h4v3h-4zm-3 3h3v4H7zm7 0h3v4h-3z"/></svg><span>Minecraft</span></a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero"><h1>Demo gratuita</h1><div class="hero-grid">
+      <aside class="ranking"><div>🏆</div><h2>Competí por el 1er puesto</h2><p>Puesto　 Usuario　 Horas　 Recompensa</p><ol><li>1°　 Matí123　 148　 10 coins</li><li>2°　 Juan12　 130　 8 coins</li><li>3°　 Pedro54　 128　 4 coins</li></ol></aside>
+      <a class="featured" href="pages/game.html"><b>▶ Jugá ahora</b><strong>Fungi Solitaire</strong></a>
+      <a class="reward" id="reward" href="pages/register.html"><small>⚡ Solo por hoy</small><strong><i>+2</i> coins</strong><span>Reclamá tu recompensa</span><b>🎁 Reclamar</b></a>
+    </div></section>
+    <section class="strip" id="library"><h2>Mi biblioteca</h2><p class="strip__note">Selección de prueba</p><span class="carousel-anchor" id="game-multiplayer"></span><span class="carousel-anchor" id="game-classics"></span><span class="carousel-anchor" id="game-adventure"></span><div class="carousel" data-carousel><button class="previous" aria-label="Anterior">‹</button><div class="track">
+      </div><button class="next" aria-label="Siguiente">›</button></div></section>
+    <section class="strip" id="popular"><h2>Más jugados</h2><p class="strip__note">Selección por calificación</p><span class="carousel-anchor" id="game-action"></span><span class="carousel-anchor" id="game-minecraft"></span><div class="carousel" data-carousel><button class="previous" aria-label="Anterior">‹</button><div class="track">
+      </div><button class="next" aria-label="Siguiente">›</button></div></section>
+    <section class="strip" id="novedades"><h2>Creemos que te pueden gustar</h2><div class="carousel" data-carousel><button class="previous" aria-label="Anterior">‹</button><div class="track">
+      </div><button class="next" aria-label="Siguiente">›</button></div></section>
+  </main>
+  <dialog class="game-dialog" id="game-details" aria-labelledby="game-details-title">
+    <button class="game-dialog__close" type="button" aria-label="Cerrar ficha">×</button>
+    <img class="game-dialog__image" alt="">
+    <div class="game-dialog__body">
+      <span class="game-dialog__eyebrow">Ficha de videojuego</span>
+      <h2 id="game-details-title"></h2>
+      <p class="game-dialog__rating" data-detail-rating></p>
+      <dl class="game-dialog__facts"><div><dt>Géneros</dt><dd data-detail-genres></dd></div><div><dt>Plataformas</dt><dd data-detail-platforms></dd></div></dl>
+      <p class="game-dialog__description" data-detail-description></p>
+      <p class="game-dialog__notice">Ficha informativa: este juego no tiene una versión ejecutable en JuegosOnline.</p>
+    </div>
+  </dialog>
+  <footer class="site-footer">
+    <div class="site-footer__content">
+      <a class="site-footer__brand" href="index.html" aria-label="JuegosOnline, inicio"><img src="assets/logo-juegos-online.png" alt=""><span>Juegos<em>Online</em></span></a>
+      <div class="site-footer__navigation">
+        <div class="site-footer__columns">
+          <section class="site-footer__column"><h2>Empresa:</h2><a href="#">Quiénes somos</a><a href="#">Accesibilidad</a><a href="#">Sponsors</a><a href="#">Términos</a></section>
+          <section class="site-footer__column"><h2>Comunidad:</h2><a href="#">Foros</a><a href="#">Eventos</a><a href="#">Desarrolladores</a><a href="#">Open Source</a></section>
+          <section class="site-footer__column site-footer__social"><h2>Nuestras redes</h2><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="#" aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a></section>
+          <section class="site-footer__column"><h2>Legal y privacidad:</h2><a href="#">Política de privacidad</a><a href="#">Términos y condiciones</a><a href="#">Cookies</a><a href="#">Seguridad</a></section>
+          <section class="site-footer__column"><h2>Recursos:</h2><a href="#">Centro de ayuda</a><a href="#">Tutoriales</a><a href="#">Blog</a><a href="#">Guias</a><a href="#">Documentacion</a></section>
+        </div>
+        <div class="site-footer__legal">Legal © 2026 Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </footer><script src="js/catalog-fallback.js"></script><script src="js/catalog.js"></script><script src="js/main.js"></script>
+</body></html>

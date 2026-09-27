@@ -1,0 +1,118 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fungi Solitaire: cómo jugar, juegos clásicos y comentarios en JuegosOnline.">
+  <title>Fungi Solitaire | JuegosOnline</title>
+  <link rel="icon" type="image/png" href="../assets/logo-juegos-online.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/game.css">
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="site-header__left">
+      <button class="site-header__menu-button" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu"><svg viewBox="0 0 40 32" aria-hidden="true"><path d="M2 5h31M2 15h31M2 25h31" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/><path class="site-header__arrow-right" d="M32 10 40 15 32 20Z" fill="currentColor"/><path class="site-header__arrow-left" d="M40 10 32 15 40 20Z" fill="currentColor"/></svg></button>
+      <a class="site-header__logo" href="../index.html" aria-label="JuegosOnline, volver al inicio"><img src="../assets/logo-juegos-online.png" alt=""></a>
+    </div>
+    <div class="site-header__balance"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 1 2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6z" fill="currentColor"/></svg><strong>10 coins</strong><a href="../index.html#reward">Recargar</a></div>
+    <a class="site-header__profile" href="login.html" aria-label="Ingresar a mi perfil"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="9" r="6" fill="currentColor"/><path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor"/></svg></a>
+    <nav class="site-menu" id="site-menu" aria-label="Menú principal" hidden>
+      <a href="../index.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8"/></svg><span>Inicio</span></a>
+      <a href="../index.html#novedades"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M17 6V2m0 0h-4m4 0-3 3M10 3a7 7 0 1 0 7 7M10 6v4l3 2"/></svg><span>Novedades</span></a>
+      <a href="../index.html#popular"><svg class="site-menu__fire" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2c1 3-1 4 1 6 1-1 2-2 2-4 4 4 5 8 3 11a6 6 0 0 1-12-1c0-3 2-5 4-7 0 3 0 4 1 5 2-2 1-6 1-10z"/></svg><span>Populares</span></a>
+      <div class="site-menu__divider"></div>
+      <button class="site-menu__categories" type="button" aria-expanded="false" aria-controls="site-categories"><span>Categorías</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="m8 1-5 5 5 5"/></svg></button>
+      <div class="site-menu__sublist" id="site-categories" hidden>
+        <a href="../index.html#game-multiplayer"><svg class="site-menu__category-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3"/><circle cx="17.5" cy="8" r="2.5"/><path d="M2 21v-2.5a6 6 0 0 1 12 0V21zm12.5 0v-2a5 5 0 0 0-2-4 5 5 0 0 1 9.5 3v3z"/></svg><span>Multijugador</span></a>
+        <a href="../index.html#game-action"><svg class="site-menu__category-icon site-menu__category-icon--swords" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l13 13m5-13L8 16M3 3l5 1-4 4zm18 0-5 1 4 4zM8 16l-5 5m13-5 5 5M5 15l4 4m6 0 4-4"/></svg><span>Pelea</span></a>
+        <a href="../index.html#popular"><svg class="site-menu__category-icon site-menu__category-icon--fire" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c1.5 4-1 5 1 8 1.4-1 2-2.4 2-4 5 5 6 10 3.4 14a7 7 0 0 1-12.8-1c-1-3.4 1-6 3.4-9 0 3 .3 4 1.4 5 2-3 1.5-8 1.6-13z"/></svg><span>Populares</span></a>
+        <a href="../index.html#game-adventure"><svg class="site-menu__category-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 1h2v22H3zM5 2h16l-3.5 5L21 12H5z"/></svg><span>Aventura</span></a>
+        <a href="../index.html#game-classics"><svg class="site-menu__category-icon site-menu__category-icon--classic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 8.7 14.9L12 12l8.7-4.9A10 10 0 0 0 12 2z"/></svg><span>Clásicos</span></a>
+        <a href="../index.html#game-minecraft"><svg class="site-menu__category-icon site-menu__category-icon--minecraft" viewBox="0 0 24 24" aria-hidden="true"><path class="site-menu__minecraft-face" d="M2 2h20v20H2z"/><path class="site-menu__minecraft-detail" d="M5 7h5v5H5zm9 0h5v5h-5zm-4 6h4v3h-4zm-3 3h3v4H7zm7 0h3v4h-3z"/></svg><span>Minecraft</span></a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="game-summary" aria-label="Ficha de Fungi Solitaire">
+      <div class="game-summary__inner">
+        <a class="game-summary__back" href="../index.html" aria-label="Volver al inicio">←</a>
+        <img class="game-summary__thumb" src="../assets/fungi-solitaire-board.png" alt="">
+        <div class="game-summary__identity">
+          <h1>Fungi Solitaire</h1>
+          <nav class="breadcrumbs" aria-label="Ruta de navegación"><a href="../index.html">Home</a><span aria-hidden="true">›</span><a href="../index.html#popular">Populares</a><span aria-hidden="true">›</span><span aria-current="page">Fungi Solitaire</span></nav>
+        </div>
+        <div class="game-summary__rating" aria-label="Valoración 3,2 de 5, 67 mil votos">
+          <button class="reaction" type="button" data-reaction="like" aria-label="Me gusta Fungi Solitaire" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 21h4V9H1zm22-11c0-1.1-.9-2-2-2h-6.3l.95-4.6.03-.3c0-.4-.17-.8-.44-1.06L14.17 1 7.6 7.6C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73z"/></svg></button>
+          <div><span class="game-summary__stars" aria-hidden="true">★★★☆☆</span><span class="game-summary__votes">3.2 - 67K votos</span></div>
+          <button class="reaction" type="button" data-reaction="dislike" aria-label="No me gusta Fungi Solitaire" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 21h4V9H1zm22-11c0-1.1-.9-2-2-2h-6.3l.95-4.6.03-.3c0-.4-.17-.8-.44-1.06L14.17 1 7.6 7.6C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73z"/></svg></button>
+        </div>
+      </div>
+    </section>
+    <section class="game-stage" aria-label="Vista del juego">
+      <figure class="game-stage__frame"><img src="../assets/fungi-solitaire-board.png" width="1402" height="1122" alt="Imagen de ejemplo de Fungi Solitaire: tablero circular de hongos de colores en un bosque"><figcaption class="sr-only">Vista de ejemplo del juego; tablero no interactivo.</figcaption></figure>
+    </section>
+    <section class="game-guide">
+      <div class="game-guide__grid">
+        <article class="game-guide__copy">
+          <h2><span class="info-icon" aria-hidden="true">i</span>¿Cómo jugar: Fungi Solitaire?</h2>
+          <div class="game-guide__text">
+            <p>¡Pon a prueba tu inteligencia con Fungi Solitaire!<br>El objetivo es eliminar todas las fichas del tablero hasta conseguir dejar solamente una.</p>
+            <p>Haz clic en una ficha y luego en un espacio vacío para hacerla saltar sobre otra ficha. La ficha saltada desaparecerá.<br>¡Piensa bien cada movimiento y encuentra la forma de completar el tablero!</p>
+            <p>Controles: utiliza el ratón para seleccionar y mover las fichas.</p>
+            <h3>¿Quién creó Peg Solitaire?</h3>
+            <p>Peg Solitaire es un clásico juego de ingenio y estrategia que ha sido adaptado a diferentes versiones y plataformas a lo largo de los años. Esta versión para PC te permite disfrutar desde tu navegador.</p>
+          </div>
+          <div class="game-controls"><h3>Controles:</h3><div class="game-controls__item"><strong>Seleccionar</strong><span class="mouse-icon" aria-hidden="true"><i></i></span></div></div>
+        </article>
+        <aside class="game-guide__aside" aria-label="Publicidad"><h2>Publicidad</h2><div class="promo-poster promo-poster--peak"><span class="promo-poster__title">PEAK</span><span class="promo-poster__play" aria-hidden="true">▶</span><span class="promo-poster__tag">OFFICIAL TRAILER</span></div><p class="game-guide__promo-note"><span aria-hidden="true">🏆</span> ¡Participá en torneos, chateá y haz amigos!</p></aside>
+      </div>
+    </section>
+    <section class="classics" aria-labelledby="classics-title">
+      <h2 id="classics-title"><span aria-hidden="true">◕</span> Más juegos clásicos:</h2>
+      <div class="classics__carousel"><button class="classics__arrow classics__arrow--previous" type="button" aria-label="Ver juegos anteriores">‹</button><div class="classics__track" id="classics-track">
+        <article class="classic-card"><img src="../assets/classic-pacman.svg" alt="" loading="lazy"><h3>Pac-Man</h3></article>
+        <article class="classic-card"><img src="../assets/classic-mario.svg" alt="" loading="lazy"><h3>Super Mario Bros</h3></article>
+        <article class="classic-card"><img src="../assets/classic-street-fighter.svg" alt="" loading="lazy"><h3>Street Fighter 2</h3></article>
+        <article class="classic-card"><img src="../assets/classic-contra.svg" alt="" loading="lazy"><h3>Contra</h3></article>
+        <article class="classic-card"><img src="../assets/classic-metal-slug.svg" alt="" loading="lazy"><h3>Metal Slug X</h3></article>
+        <article class="classic-card"><img src="../assets/classic-crash.svg" alt="" loading="lazy"><h3>Crash Bandicoot</h3></article>
+      </div><button class="classics__arrow classics__arrow--next" type="button" aria-label="Ver más juegos clásicos">›</button></div>
+    </section>
+    <section class="community" aria-labelledby="comments-title"><div class="community__grid">
+      <div class="comments"><h2 id="comments-title"><span aria-hidden="true">▣</span> Comentarios</h2>
+        <form class="comment-form" id="comment-form"><div class="comment-form__user"><span class="avatar avatar--self" aria-hidden="true"></span><span>Tú</span></div><label class="sr-only" for="comment-text">¿Qué piensas de este juego?</label><textarea id="comment-text" name="comment" maxlength="500" placeholder="¿Qué piensas de este juego?.." required></textarea><div class="comment-form__actions"><span id="comment-feedback" role="status" aria-live="polite"></span><button type="submit">Publicar comentario</button></div></form>
+        <div class="comment-tabs" role="tablist" aria-label="Orden de comentarios"><button type="button" role="tab" aria-selected="false" data-comments-tab="featured"><span aria-hidden="true">✦</span> Comentarios destacados</button><button type="button" role="tab" aria-selected="true" data-comments-tab="latest"><span aria-hidden="true">◷</span> Últimos comentarios</button></div>
+        <div class="comment-list" id="comment-list">
+          <article class="comment-card" data-date="2020-10-14" data-likes="3"><div class="comment-card__head"><span class="avatar avatar--ana" aria-hidden="true">AP</span><strong>Ana Paula <small>15</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de Ana Paula"><span>3 me gusta</span> ♡</button></div><div class="comment-card__body"><p>Me acuerdo de que en la primaria nos la pasábamos jugando en la sala de computación D:</p><time datetime="2020-10-14">14 de octubre de 2020</time></div></article>
+          <article class="comment-card" data-date="2020-10-02" data-likes="11"><div class="comment-card__head"><span class="avatar avatar--yameli" aria-hidden="true">YA</span><strong>yameli123 <small>15</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de yameli123"><span>11 me gusta</span> ♡</button></div><div class="comment-card__body"><p>este juego me gusta</p><time datetime="2020-10-02">2 de octubre de 2020</time></div></article>
+          <article class="comment-card" data-date="2020-10-02" data-likes="11"><div class="comment-card__head"><span class="avatar avatar--chiwa" aria-hidden="true">CH</span><strong>chiwa <small>15</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de chiwa"><span>11 me gusta</span> ♡</button></div><div class="comment-card__body"><p>Qué fácil que es el juego, me gané el 1, el 2 y el 3 yo solo.</p><time datetime="2020-10-02">2 de octubre de 2020</time></div></article>
+        </div>
+      </div>
+      <aside class="tutorials" aria-label="Tutoriales"><h2><span class="info-icon" aria-hidden="true">i</span> Tutoriales</h2><div class="promo-poster promo-poster--minecraft"><span class="promo-poster__title">MINECRAFT<br>GUÍA</span><span class="promo-poster__play" aria-hidden="true">▶</span></div><div class="promo-poster promo-poster--challenge"><span class="promo-poster__title">NUEVOS<br>RETOS</span><span class="promo-poster__play" aria-hidden="true">▶</span></div></aside>
+    </div></section>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer__content">
+      <a class="site-footer__brand" href="../index.html" aria-label="JuegosOnline, inicio"><img src="../assets/logo-juegos-online.png" alt=""><span>Juegos<em>Online</em></span></a>
+      <div class="site-footer__navigation">
+        <div class="site-footer__columns">
+          <section class="site-footer__column"><h2>Empresa:</h2><a href="../index.html#">Quiénes somos</a><a href="../index.html#">Accesibilidad</a><a href="../index.html#">Sponsors</a><a href="../index.html#">Términos</a></section>
+          <section class="site-footer__column"><h2>Comunidad:</h2><a href="../index.html#">Foros</a><a href="../index.html#">Eventos</a><a href="../index.html#">Desarrolladores</a><a href="../index.html#">Open Source</a></section>
+          <section class="site-footer__column site-footer__social"><h2>Nuestras redes</h2><a href="../index.html#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="../index.html#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a><a href="../index.html#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="../index.html#" aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a></section>
+          <section class="site-footer__column"><h2>Legal y privacidad:</h2><a href="../index.html#">Política de privacidad</a><a href="../index.html#">Términos y condiciones</a><a href="../index.html#">Cookies</a><a href="../index.html#">Seguridad</a></section>
+          <section class="site-footer__column"><h2>Recursos:</h2><a href="../index.html#">Centro de ayuda</a><a href="../index.html#">Tutoriales</a><a href="../index.html#">Blog</a><a href="../index.html#">Guias</a><a href="../index.html#">Documentacion</a></section>
+        </div>
+        <div class="site-footer__legal">Legal © 2026 Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/game.js"></script>
+</body>
+</html>
+

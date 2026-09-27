@@ -1,0 +1,175 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  padding: 0 5.55%;
+  color: #fff;
+  background: linear-gradient(180deg, #1454a1 0%, #0d376c 48%, #07182e 100%);
+}
+
+.site-header__left {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  min-width: 0;
+}
+
+.site-header__menu-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  color: #e8f1ff;
+  background: transparent;
+  cursor: pointer;
+  transition: color .2s, transform .2s;
+}
+
+.site-header__menu-button svg { width: 40px; height: 32px; }
+.site-header__arrow-left,
+.site-header__menu-button[aria-expanded="true"] .site-header__arrow-right { display: none; }
+.site-header__menu-button[aria-expanded="true"] .site-header__arrow-left { display: inline; }
+.site-header__menu-button:hover { color: #12e4d8; transform: scale(1.08); }
+.site-header__menu-button:focus-visible,
+.site-header__logo:focus-visible,
+.site-header__profile:focus-visible,
+.site-header__balance a:focus-visible,
+.site-menu a:focus-visible,
+.site-menu button:focus-visible { outline: 2px solid #0de8d4; outline-offset: 3px; }
+
+.site-header__logo { display: block; width: 52px; height: 52px; flex: 0 0 52px; border-radius: 50%; }
+.site-header__logo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+.site-header__balance {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  gap: 8px;
+  white-space: nowrap;
+  color: #00e6d6;
+  font-family: 'Courier New', monospace;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: .07em;
+}
+
+.site-header__balance svg { width: 20px; height: 20px; flex: 0 0 20px; }
+.site-header__balance strong { font-weight: 900; }
+.site-header__balance a {
+  margin-left: 5px;
+  padding: 3px 11px;
+  border-radius: 18px;
+  color: #0d4251;
+  background: #06e3d3;
+  font: 800 10px Nunito, Arial, sans-serif;
+  letter-spacing: 0;
+  transition: transform .2s, filter .2s;
+}
+.site-header__balance a:hover { transform: translateY(-2px); filter: brightness(1.18); }
+
+.site-header__profile {
+  justify-self: end;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 44px;
+  color: #fff;
+  transition: color .2s, transform .2s;
+}
+.site-header__profile svg { width: 28px; height: 28px; }
+.site-header__profile:hover { color: #0de8d4; transform: scale(1.08); }
+.site-header__account { justify-self: end; display: flex; align-items: center; gap: 7px; color: #fff; font-size: .8rem; }
+.site-header__account strong { color: #0de8d4; }
+.site-header__account button { padding: 5px 8px; border: 1px solid #0de8d4; border-radius: 14px; background: #082c4d; color: #fff; font: 800 .7rem Nunito, Arial, sans-serif; cursor: pointer; }
+.site-header__account button:hover { background: #0de8d4; color: #082c4d; }
+.site-header__account button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.site-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: 212px;
+  min-height: calc(100vh - 70px);
+  max-height: calc(100vh - 70px);
+  overflow-y: auto;
+  padding: 17px 12px;
+  color: #fff;
+  background: #0c2343;
+  box-shadow: 6px 9px 22px #020c1d55;
+  font: 18px Nunito, Arial, sans-serif;
+}
+.site-menu[hidden], .site-menu__sublist[hidden] { display: none; }
+.site-menu > a {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 37px;
+  white-space: nowrap;
+  transition: color .2s, transform .2s;
+}
+.site-menu > a:hover, .site-menu__sublist a:hover { color: #0de8d4; transform: translateX(3px); }
+.site-menu > a svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.site-menu > a .site-menu__fire { color: #ff172b; stroke-width: 1.7; }
+.site-menu__divider { width: 100%; height: 1px; margin: 5px 0 7px; background: #8b9aaf; }
+.site-menu__categories {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  min-height: 35px;
+  padding: 0;
+  border: 0;
+  color: #aebbd0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color .2s;
+}
+.site-menu__categories:hover { color: #fff; }
+.site-menu__categories svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.site-menu__categories[aria-expanded="true"] svg { transform: rotate(-90deg); }
+.site-menu__sublist { display: grid; gap: 2px; padding: 4px 0 0 17px; font-size: 18px; }
+.site-menu__sublist a { display: flex; align-items: center; gap: 8px; min-height: 29px; white-space: nowrap; transition: color .2s, transform .2s; }
+.site-menu__category-icon { width: 21px; height: 21px; flex: 0 0 21px; fill: #fff; }
+.site-menu__category-icon--swords { fill: none; stroke: #fff; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.site-menu__category-icon--fire { fill: none; stroke: #ff202e; stroke-width: 2; stroke-linejoin: round; }
+.site-menu__category-icon--classic { fill: #ffdd0a; }
+.site-menu__minecraft-face { fill: #36d313; }
+.site-menu__minecraft-detail { fill: #073b18; }
+
+@media (max-width: 699px) {
+  .site-header { grid-template-columns: auto 1fr auto; height: 56px; padding: 0 13px; }
+  .site-header__left { gap: 12px; }
+  .site-header__menu-button { width: 34px; height: 38px; }
+  .site-header__menu-button svg { width: 31px; height: 27px; }
+  .site-header__logo { width: 39px; height: 39px; flex-basis: 39px; }
+  .site-header__balance { gap: 3px; font-size: 13px; letter-spacing: 0; }
+  .site-header__balance svg { width: 12px; height: 12px; flex-basis: 12px; }
+  .site-header__balance a { margin-left: 2px; padding: 2px 5px; font-size: 8px; }
+  .site-header__profile { width: 29px; height: 38px; }
+  .site-header__profile svg { width: 23px; height: 23px; }
+  .site-header__account { gap: 3px; font-size: .66rem; }
+  .site-header__account button { padding: 3px 4px; font-size: .61rem; }
+  .site-menu { width: min(80vw, 212px); min-height: calc(100vh - 56px); max-height: calc(100vh - 56px); }
+}
