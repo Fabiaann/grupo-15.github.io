@@ -27,18 +27,6 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !siteMenu.hidden) closeMenu(true);
 });
 
-if (sessionStorage.getItem('juegosonline-demo-user') === 'root') {
-  const profile = document.querySelector('.site-header__profile');
-  const account = document.createElement('div');
-  account.className = 'site-header__account';
-  account.innerHTML = '<strong>root</strong><button type="button" aria-label="Cerrar sesión de prueba">Salir</button>';
-  profile.replaceWith(account);
-  account.querySelector('button').addEventListener('click', () => {
-    sessionStorage.removeItem('juegosonline-demo-user');
-    window.location.href = '../index.html';
-  });
-}
-
 const form = document.querySelector('.auth-form');
 const message = document.querySelector('#auth-message');
 

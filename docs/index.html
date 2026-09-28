@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Juegos Online"><title>JuegosOnline</title><link rel="icon" type="image/png" href="assets/logo-juegos-online.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><link rel="stylesheet" href="css/style.css?v=20260927"><link rel="stylesheet" href="css/footer.css?v=20260927"><link rel="stylesheet" href="css/header.css?v=20260927"><link rel="stylesheet" href="css/cards.css?v=20260927"></head>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Juegos Online"><title>JuegosOnline</title><link rel="icon" type="image/png" href="assets/logo-juegos-online.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><link rel="stylesheet" href="css/style.css?v=20260928-6"><link rel="stylesheet" href="css/footer.css?v=20260927"><link rel="stylesheet" href="css/header.css?v=20260928"><link rel="stylesheet" href="css/cards.css?v=20260927"></head>
 <body>
   <div class="loader" id="loader" role="status" aria-live="off"><canvas id="canvas" width="500" height="350" aria-hidden="true"></canvas><strong>Preparando la partida</strong><span class="loader__progress" id="progress">0%</span></div>
   <header class="site-header">
@@ -8,7 +8,7 @@
       <a class="site-header__logo" href="index.html" aria-label="JuegosOnline, volver al inicio"><img src="assets/logo-juegos-online.png" alt=""></a>
     </div>
     <div class="site-header__balance"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 1 2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6z" fill="currentColor"/></svg><strong>10 coins</strong><a href="#reward">Recargar</a></div>
-    <a class="site-header__profile" href="pages/login.html" aria-label="Ingresar a mi perfil"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="9" r="6" fill="currentColor"/><path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor"/></svg></a>
+    <div class="site-header__profile-wrap"><button class="site-header__profile" type="button" aria-label="Abrir perfil" aria-expanded="false" aria-controls="profile-menu"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="9" r="6" fill="currentColor"/><path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor"/></svg></button><div class="profile-menu" id="profile-menu" aria-label="Panel de perfil" hidden></div></div>
     <nav class="site-menu" id="site-menu" aria-label="Menú principal" hidden>
       <a href="index.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8"/></svg><span>Inicio</span></a>
       <a href="#novedades"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M17 6V2m0 0h-4m4 0-3 3M10 3a7 7 0 1 0 7 7M10 6v4l3 2"/></svg><span>Novedades</span></a>
@@ -27,9 +27,22 @@
   </header>
   <main>
     <section class="hero"><h1>Demo gratuita</h1><div class="hero-grid">
-      <aside class="ranking"><div>🏆</div><h2>Competí por el 1er puesto</h2><p>Puesto　 Usuario　 Horas　 Recompensa</p><ol><li>1°　 Matí123　 148　 10 coins</li><li>2°　 Juan12　 130　 8 coins</li><li>3°　 Pedro54　 128　 4 coins</li></ol></aside>
+      <aside class="ranking" tabindex="0" aria-label="Ranking de jugadores; enfocar para ver tu puesto">
+        <div class="ranking__trophy" aria-hidden="true"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M20 7h24v14c0 10-5 17-12 20-7-3-12-10-12-20V7Zm-3 4v7H9c0 9 4 15 13 16l3 5C12 39 3 31 3 15v-4h14Zm30 0h14v4c0 16-9 24-22 24l3-5c9-1 13-7 13-16h-8v-7ZM29 40h6v9h9v5H20v-5h9v-9ZM16 56h32v5H16v-5Z"/></svg></div>
+        <div class="ranking__content"><h2>Competí por el 1er puesto</h2><table><thead><tr><th scope="col">Puesto</th><th scope="col">Usuario</th><th scope="col">Horas</th><th scope="col">Recompensa</th></tr></thead><tbody><tr><td>1°</td><td>Matí123</td><td>148</td><td>10 coins</td></tr><tr><td>2°</td><td>Juan12</td><td>130</td><td>8 coins</td></tr><tr><td>3°</td><td>Pedro54</td><td>128</td><td>4 coins</td></tr></tbody></table></div>
+        <p class="ranking__position">Estás en el puesto <strong>N°61</strong></p>
+      </aside>
       <a class="featured" href="pages/game.html"><b>▶ Jugá ahora</b><strong>Fungi Solitaire</strong></a>
-      <a class="reward" id="reward" href="pages/register.html"><small>⚡ Solo por hoy</small><strong><i>+2</i> coins</strong><span>Reclamá tu recompensa</span><b>🎁 Reclamar</b></a>
+      <div class="reward" id="reward">
+        <div class="reward__badge"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="4" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 9h16M6 2v4m8-4v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><time class="reward__date"></time><span>Solo por hoy</span></div>
+        <strong><i>+2</i> coins</strong>
+        <span class="reward__message" aria-live="polite">Reclamá tu recompensa</span>
+        <button class="reward__button" type="button" aria-label="Reclamar dos coins">
+          <span class="reward__button-label">Reclamar</span>
+          <span class="reward__gift" aria-hidden="true"><span class="reward__gift-lid"></span><span class="reward__gift-box"></span></span>
+        </button>
+        <span class="reward__coins" aria-hidden="true"></span>
+      </div>
     </div></section>
     <section class="strip" id="library"><h2>Mi biblioteca</h2><p class="strip__note">Selección de prueba</p><span class="carousel-anchor" id="game-multiplayer"></span><span class="carousel-anchor" id="game-classics"></span><span class="carousel-anchor" id="game-adventure"></span><div class="carousel" data-carousel><button class="previous" aria-label="Anterior">‹</button><div class="track">
       </div><button class="next" aria-label="Siguiente">›</button></div></section>
@@ -64,5 +77,5 @@
         <div class="site-footer__legal">Legal © 2026 Todos los derechos reservados.</div>
       </div>
     </div>
-  </footer><script src="js/catalog-fallback.js?v=20260927"></script><script src="js/catalog.js?v=20260927"></script><script src="js/main.js?v=20260927"></script>
+  </footer><script src="js/catalog-fallback.js?v=20260927"></script><script src="js/catalog.js?v=20260927"></script><script src="js/profile-menu.js?v=20260928"></script><script src="js/main.js?v=20260928-7"></script>
 </body></html>

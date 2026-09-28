@@ -1,15 +1,3 @@
-if (sessionStorage.getItem('juegosonline-demo-user') === 'root') {
-  const profile = document.querySelector('.site-header__profile');
-  const account = document.createElement('div');
-  account.className = 'site-header__account';
-  account.innerHTML = '<strong>root</strong><button type="button" aria-label="Cerrar sesión de prueba">Salir</button>';
-  profile.replaceWith(account);
-  account.querySelector('button').addEventListener('click', () => {
-    sessionStorage.removeItem('juegosonline-demo-user');
-    window.location.reload();
-  });
-}
-
 const menuButton = document.querySelector('.site-header__menu-button');
 const siteMenu = document.querySelector('#site-menu');
 const categoriesButton = document.querySelector('.site-menu__categories');
@@ -42,6 +30,55 @@ categoriesButton.addEventListener('click', () => {
 siteMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !siteMenu.hidden) closeMenu(true);
+});
+
+const rewardCard = document.querySelector('#reward');
+const rewardDate = rewardCard.querySelector('.reward__date');
+const today = new Date();
+rewardDate.dateTime = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+rewardDate.textContent = `${today.getDate()}/${today.getMonth() + 1}`;
+rewardDate.setAttribute('aria-label', today.toLocaleDateString('es-AR', { day: 'numeric', month: 'long' }));
+const rewardButton = rewardCard.querySelector('.reward__button');
+const rewardMessage = rewardCard.querySelector('.reward__message');
+const rewardCoins = rewardCard.querySelector('.reward__coins');
+const reducedRewardMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let rewardClaimed = false;
+
+function releaseRewardCoins() {
+  // Cambiá estas velocidades para modificar la apertura durante la defensa.
+  const speeds = [-150, -95, -38, 38, 95, 150];
+  const gravity = 520; // píxeles por segundo cuadrado
+  const coins = speeds.map((vx, index) => {
+    const element = document.createElement('span');
+    element.className = 'reward__coin';
+    rewardCoins.append(element);
+    return { element, vx, vy: -315 - (index % 2) * 35 };
+  });
+  let firstFrame;
+
+  function moveCoins(now) {
+    if (firstFrame === undefined) firstFrame = now;
+    const seconds = (now - firstFrame) / 1000;
+    coins.forEach(({ element, vx, vy }, index) => {
+      const x = vx * seconds;
+      const y = vy * seconds + gravity * seconds * seconds / 2;
+      element.style.transform = `translate(${x}px, ${y}px) rotate(${(index % 2 ? 1 : -1) * seconds * 260}deg)`;
+    });
+    if (seconds < 1.25) requestAnimationFrame(moveCoins);
+    else rewardCoins.replaceChildren();
+  }
+
+  requestAnimationFrame(moveCoins);
+}
+
+rewardButton.addEventListener('click', () => {
+  if (rewardClaimed) return;
+  rewardClaimed = true;
+  rewardCard.classList.add('is-claimed');
+  rewardMessage.textContent = 'Recompensa obtenida';
+  rewardButton.setAttribute('aria-label', 'Recompensa obtenida');
+  rewardButton.setAttribute('aria-disabled', 'true');
+  if (!reducedRewardMotion.matches) releaseRewardCoins();
 });
 
 const loader = document.querySelector('#loader');

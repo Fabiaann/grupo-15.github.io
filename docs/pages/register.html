@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/style.css?v=20260927">
+  <link rel="stylesheet" href="../css/footer.css?v=20260927">
+  <link rel="stylesheet" href="../css/header.css?v=20260928">
+  <link rel="stylesheet" href="../css/auth.css?v=20260927">
 </head>
 <body class="auth-page">
 <header class="site-header">
@@ -20,7 +20,7 @@
       <a class="site-header__logo" href="../index.html" aria-label="JuegosOnline, volver al inicio"><img src="../assets/logo-juegos-online.png" alt=""></a>
     </div>
     <div class="site-header__balance"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 1 2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6z" fill="currentColor"/></svg><strong>10 coins</strong><a href="../index.html#reward">Recargar</a></div>
-    <a class="site-header__profile" href="login.html" aria-label="Ingresar a mi perfil"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="9" r="6" fill="currentColor"/><path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor"/></svg></a>
+    <div class="site-header__profile-wrap"><button class="site-header__profile" type="button" aria-label="Abrir perfil" aria-expanded="false" aria-controls="profile-menu"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="9" r="6" fill="currentColor"/><path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor"/></svg></button><div class="profile-menu" id="profile-menu" aria-label="Panel de perfil" hidden></div></div>
     <nav class="site-menu" id="site-menu" aria-label="Menú principal" hidden>
       <a href="../index.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8"/></svg><span>Inicio</span></a>
       <a href="../index.html#novedades"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M17 6V2m0 0h-4m4 0-3 3M10 3a7 7 0 1 0 7 7M10 6v4l3 2"/></svg><span>Novedades</span></a>
@@ -101,6 +101,7 @@
       </div>
     </div>
   </footer>
-<script src="../js/auth.js"></script>
+<script src="../js/profile-menu.js?v=20260928"></script>
+<script src="../js/auth.js?v=20260928"></script>
 </body>
 </html>

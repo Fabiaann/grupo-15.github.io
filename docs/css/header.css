@@ -75,21 +75,111 @@
 .site-header__balance a:hover { transform: translateY(-2px); filter: brightness(1.18); }
 
 .site-header__profile {
-  justify-self: end;
   display: grid;
   place-items: center;
   width: 38px;
   height: 44px;
+  padding: 0;
+  border: 0;
   color: #fff;
+  background: transparent;
+  cursor: pointer;
   transition: color .2s, transform .2s;
 }
 .site-header__profile svg { width: 28px; height: 28px; }
 .site-header__profile:hover { color: #0de8d4; transform: scale(1.08); }
-.site-header__account { justify-self: end; display: flex; align-items: center; gap: 7px; color: #fff; font-size: .8rem; }
-.site-header__account strong { color: #0de8d4; }
-.site-header__account button { padding: 5px 8px; border: 1px solid #0de8d4; border-radius: 14px; background: #082c4d; color: #fff; font: 800 .7rem Nunito, Arial, sans-serif; cursor: pointer; }
-.site-header__account button:hover { background: #0de8d4; color: #082c4d; }
-.site-header__account button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.site-header__profile-wrap { position: relative; justify-self: end; display: grid; place-items: center; }
+
+.profile-menu {
+  position: absolute;
+  top: calc(100% + 13px);
+  right: 0;
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: min(340px, calc(100vw - 24px));
+  max-height: calc(100dvh - 70px);
+  overflow-y: auto;
+  padding: 18px;
+  border-radius: 0 0 15px 15px;
+  background: linear-gradient(165deg, #1c4f91, #153c78 72%, #102f63);
+  box-shadow: 0 14px 28px #06162aa8;
+  color: #fff;
+  font-family: Nunito, Arial, sans-serif;
+}
+.profile-menu[hidden] { display: none; }
+.profile-menu__identity {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+}
+.profile-menu__avatar { width: 70px; height: 70px; color: #fff; }
+.profile-menu__avatar svg { display: block; width: 100%; height: 100%; }
+.profile-menu__person { min-width: 0; }
+.profile-menu__name,
+.profile-menu__email {
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.profile-menu__name {
+  font: 800 32px/1 'Barlow Condensed', Arial, sans-serif;
+  text-transform: uppercase;
+}
+.profile-menu__email { margin-top: 6px; font-size: 14px; line-height: 1.25; }
+.profile-menu__stats { display: grid; gap: 10px; }
+.profile-menu__coins,
+.profile-menu__activity {
+  display: grid;
+  justify-items: start;
+  gap: 4px;
+  padding: 11px 13px;
+  border-radius: 10px;
+  background: #0d346c99;
+  font-size: 16px;
+  line-height: 1.25;
+}
+.profile-menu__coins strong { font-size: 19px; }
+.profile-menu__coins a,
+.profile-menu__actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 31px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: #05dfc9;
+  color: #063a43;
+  font-size: 13px;
+  font-weight: 800;
+  transition: transform .2s, filter .2s;
+}
+.profile-menu__coins a:hover,
+.profile-menu__actions a:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.profile-menu__activity strong { color: #ffdb55; }
+.profile-menu__logout {
+  align-self: flex-start;
+  min-height: 33px;
+  padding: 5px 15px;
+  border: 0;
+  border-radius: 999px;
+  background: #a3274f;
+  color: #fff;
+  font: 800 14px Nunito, Arial, sans-serif;
+  cursor: pointer;
+  transition: transform .2s, background-color .2s;
+}
+.profile-menu__logout:hover { transform: translateY(-2px); background: #c02f5f; }
+.profile-menu__welcome { margin: 0; font-size: 14px; line-height: 1.4; }
+.profile-menu__actions { display: flex; flex-wrap: wrap; gap: 9px; }
+.profile-menu__actions a:last-child { background: #8d3eea; color: #fff; }
+.profile-menu a:focus-visible,
+.profile-menu button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 
 .site-menu {
   position: absolute;
@@ -169,7 +259,9 @@
   .site-header__balance a { margin-left: 2px; padding: 2px 5px; font-size: 8px; }
   .site-header__profile { width: 29px; height: 38px; }
   .site-header__profile svg { width: 23px; height: 23px; }
-  .site-header__account { gap: 3px; font-size: .66rem; }
-  .site-header__account button { padding: 3px 4px; font-size: .61rem; }
+  .profile-menu { top: calc(100% + 9px); max-height: calc(100dvh - 56px); padding: 15px; }
+  .profile-menu__identity { grid-template-columns: 58px minmax(0, 1fr); gap: 12px; }
+  .profile-menu__avatar { width: 58px; height: 58px; }
+  .profile-menu__name { font-size: 28px; }
   .site-menu { width: min(80vw, 212px); min-height: calc(100vh - 56px); max-height: calc(100vh - 56px); }
 }
