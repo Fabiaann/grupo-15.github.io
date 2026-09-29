@@ -1,15 +1,32 @@
 
 const juegos = [
   { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
+    { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
+      { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
+        { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
+           { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
+        { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
   { titulo: 'Mario Kart', imagen: './img/juego1.jpg', precio: 80, categoria: 'Carreras' },
+   { titulo: 'Assetto Corsa', imagen: './img/assetoCorsa.jpg', precio: 80, categoria: 'Carreras' },
+    { titulo: 'Bream Ng Drive', imagen: './img/BeamNg.drive.jpg', precio: 80, categoria: 'Carreras' },
+     { titulo: 'Proyects Cars 2', imagen: './img/proyectsCars2.jpg', precio: 80, categoria: 'Carreras' },
+      { titulo: 'Moto Gp 2', imagen: './img/MotoGp24.jpg', precio: 80, categoria: 'Carreras' },
+       { titulo: 'Moto Gp 2', imagen: './img/MotoGp24.jpg', precio: 80, categoria: 'Carreras' },
   { titulo: '1', imagen: './img/tenis.jpg', precio: 120, categoria: 'Deportes' },
   { titulo: '2', imagen: './img/juego3.jpg', precio: 120, categoria: 'Deportes' },
   { titulo: '3', imagen: './img/juego4.jpg', precio: 120, categoria: 'Deportes' },
   { titulo: '4', imagen: './img/juego5.jpg', precio: 120, categoria: 'Deportes' },
   { titulo: '5', imagen: './img/juegoAventura1.jpg', precio: 120, categoria: 'Deportes' },
   { titulo: '6', imagen: './img/juegoAventura2.jpg', precio: 120, categoria: 'Deportes' },
+    { titulo: '5', imagen: './img/juegoAventura1.jpg', precio: 120, categoria: 'Deportes' },
+  { titulo: '6', imagen: './img/juegoAventura2.jpg', precio: 120, categoria: 'Deportes' },
   
-  { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'Mas Jugados' }
+  { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'Mas Jugados' },
+  { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'Mas Jugados' },
+    { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'Mas Jugados' },
+      { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'Mas Jugados' },
+            { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'Mas Jugados' },
+                  { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'Mas Jugados' }
 
 
 
