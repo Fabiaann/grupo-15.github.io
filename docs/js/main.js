@@ -81,6 +81,10 @@ rewardButton.addEventListener('click', () => {
   if (!reducedRewardMotion.matches) releaseRewardCoins();
 });
 
+
+
+
+
 const loader = document.querySelector('#loader');
 const progress = document.querySelector('#progress');
 const canvas = document.querySelector('#canvas');
