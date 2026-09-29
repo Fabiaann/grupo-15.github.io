@@ -5,7 +5,7 @@
 }
 
 * {
-  box-sizing: border-box
+  box-sizing: border-box;
   margin:0;
   padding: 0;
 }
@@ -13,9 +13,11 @@
 body {
   margin: 0;
   background: radial-gradient(circle at 78% 30%, #157a78 0, transparent 28%), 
-              radial-gradient(circle at 24% 43%, #761dd9 0, transparent 33%), #061226
-              ;
-              min-width: 1440px;
+              radial-gradient(circle at 24% 43%, #761dd9 0, transparent 33%), #061226;
+}
+
+html::-webkit-scrollbar {
+  display: none;                /* Chrome, Edge, Safari */
 }
 
 
@@ -23,9 +25,9 @@ body {
 
 
 .contenedor {
- 
-    width: 1440px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 a {
@@ -287,10 +289,7 @@ nav {
 
 
 
-.mini {
-  flex-basis: 136px;
-  height: 99px
-}
+
 
 
 
@@ -423,15 +422,8 @@ nav {
     gap: 14px
   }
 
-  .card {
-    flex-basis: calc((100vw - 74px)/4);
-    height: 150px
-  }
+  
 
-  .mini {
-    flex-basis: calc((100vw - 92px)/6);
-    height: 78px
-  }
 
   .previous,
   .next {

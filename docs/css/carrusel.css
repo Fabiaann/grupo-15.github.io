@@ -325,19 +325,26 @@ margin-top: 34px;
 
 
 
-
+#contenedor-principal{
+    gap: 32px;
+    display: flex;
+    flex-direction: column;
+}
 .carrusel-juegos {
     width: 1440px;
     height: auto;
-
+    gap: 2px;
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .carrusel-scroll {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
 }
 
 .viewport-carrusel {
@@ -348,7 +355,7 @@ margin-top: 34px;
 .contenedor-cards {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+
     width: max-content;
     height: auto;
 
