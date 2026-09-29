@@ -15,7 +15,7 @@ body {
   background: radial-gradient(circle at 78% 30%, #157a78 0, transparent 28%), 
               radial-gradient(circle at 24% 43%, #761dd9 0, transparent 33%), #061226
               ;
-              
+              min-width: 1440px;
 }
 
 
@@ -23,8 +23,8 @@ body {
 
 
 .contenedor {
-    width: 100%;
-    max-width: 1440px;
+ 
+    width: 1440px;
     margin: 0 auto;
 }
 
