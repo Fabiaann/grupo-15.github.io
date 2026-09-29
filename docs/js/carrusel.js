@@ -260,25 +260,38 @@ document.querySelectorAll('.juego').forEach(function (juego) {
 
 });
 
-
 const recargarCoins = document.querySelector(".recargar-coins");
 const btnRecargarCoins = document.querySelector("#recargarCoins");
+
 const formularioRecargaCoins = document.querySelector(".recargar-coins-formulario");
+const mostrarQr = document.querySelector(".mostrar-qr");
+
 const input = document.getElementById("cantidad-coins-comprar");
-let cantidad = parseInt(input.value);
 
-btnRecargarCoins.addEventListener("click",()=>{
-recargarCoins.classList.remove("ocultar-qr");
-
-
-})
+const btnQr = document.getElementById("generar-qr");
+const cerrarQr = document.querySelector(".cerrar-qr");
+const cerrarBtnQr = document.getElementById("cerrar-generar-qr");
 
 const totalPagar = document.querySelectorAll(".total-pago-coins");
 
-input.addEventListener("input", () => {
-       let cantidad = parseInt(input.value) || 0;
+btnRecargarCoins.addEventListener("click", () => {
 
-    let total = cantidad * 1200;
+    recargarCoins.classList.remove("ocultar-qr");
+
+    
+    formularioRecargaCoins.classList.remove("ocultar-qr");
+
+
+    mostrarQr.classList.add("ocultar-qr");
+
+});
+
+
+
+input.addEventListener("input", () => {
+
+    const cantidad = parseInt(input.value) || 0;
+    const total = cantidad * 1200;
 
     totalPagar.forEach((elemento) => {
         elemento.innerHTML = total;
@@ -286,13 +299,34 @@ input.addEventListener("input", () => {
 
 });
 
-const btnQr= document.getElementById("generar-qr");
-
-btnQr.addEventListener('click' ,()=>{
-  const mostrarQr=document.querySelector(".mostrar-qr");
-  mostrarQr.classList.remove("ocultar-qr");
-  formularioRecargaCoins.classList.add("ocultar-qr");
 
 
+btnQr.addEventListener("click", () => {
+
+    formularioRecargaCoins.classList.add("ocultar-qr");
+
+    mostrarQr.classList.remove("ocultar-qr");
+
+});
+
+
+
+
+cerrarQr.addEventListener("click", () => {
+
+    mostrarQr.classList.add("ocultar-qr");
+
+    formularioRecargaCoins.classList.remove("ocultar-qr");
+
+});
+
+
+cerrarBtnQr.addEventListener("click", () => {
+
+    formularioRecargaCoins.classList.add("ocultar-qr");
+
+    mostrarQr.classList.add("ocultar-qr");
+
+    recargarCoins.classList.add("ocultar-qr");
 
 });
