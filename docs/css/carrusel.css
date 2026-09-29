@@ -26,6 +26,9 @@
     border: 1px solid rgba(255, 255, 255, 0.4)
     
 }
+.contenedor-login p, h1,label {
+    color: black;
+}
 
 .contenedor-input-label{
     width: 348px;
@@ -74,9 +77,10 @@
     margin-bottom: 4px;
 }
 .campo-formulario > p{
-    color: 
-#49494A;
+    color: #302A34;
     font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 200;
 }
 
 
@@ -275,6 +279,7 @@ margin-top: 15px;
 .inicio-redes p {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
+    color: black;
    
 }
 .p-o{
@@ -627,7 +632,39 @@ width: 80%;
 .juego{
     margin: 2px;
 }
+.btn-jugar{
+    width: 124px;
+    height: 40px;
+    border-radius: 30px;
+    border-style: none;
+}
+.btn-extender{
+    width: 100px;
+    height: 39px;
+    border-radius: 30px;
+    border-style: none;
+}
 
+.tiempo-de-alquiler{
+    font-size: 18px;
+    position: absolute;
+    z-index: 20;
+    background-color: #e5920c9d;
+    border-radius: 12px;
+    width: 80%;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    flex-direction: row;
+    margin: 2px;
+    gap: 40px;
+}
+.tiempo-de-alquiler img{
+    width: 30px;
+    height: 30px;
+    font-weight: 1000;
+
+}
 
 
 /*****************/
@@ -639,18 +676,18 @@ width: 80%;
     display: flex;
     flex-direction: column;
     border-radius: 12px;
-    background-color: #26154C;
-
+    background-color: #154488;
     color: #ffffff;
-    padding: 10px;
-    width: 260px;
+    padding: 20px;
+    width: 400px;
     height: auto;
     align-items: center;
-   position: absolute;
+    position: absolute;
    right: 0;
    top: 100%;
     left: 700px;  
     z-index: 2147483647; 
+    gap: 20px;
 }
 
 .recargar-coins button{
@@ -663,15 +700,78 @@ width: 80%;
 }
 
 .recargar-coins-formulario label{
-    width: 100%;
-white-space: normal;
+    width: 300px;
+    height: 71px;
+    white-space: normal;
+    font-size: 22px;
+    color: white;
+}
+
+.recargar-coins-formulario strong{
+    font-weight: 1000;
+    color: #00bfff;
+    font-size: 26px;
 }
 
 .total-a-pagar{
     margin: 0px;
-padding: 0px;
+    padding: 0px;
+    font-size: 20px;
 }
 #total-pago-coins{
     margin: 0px;
     padding: 0px;
+    font-size: 14px;
 }
+
+.cerrar-btn-qr{
+    width:  101px;
+    height: 28px;
+    background-color: rgba(255, 0, 0, 0.699);
+    color: white;
+    border-radius: none;
+    border-radius: 12px;
+}
+.cerrar-btn-qr:hover{
+    
+    height: 32px;
+    background-color: rgba(226, 6, 6, 0.907);
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#generar-qr{
+    width: 148px;
+    height: 41px;
+    background: #FFB02E;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    
+}
+#generar-qr:hover{
+    height: 50px;
+    background-color: #ff9d00;
+    color: black;
+    cursor: pointer;
+}
+
+#cantidad-coins-comprar{
+    width: 250px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: white;
+    border-style: none;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 25px;
+    
+}
+
+.img-qr-coins{
+    width: 150px;
+    height: 150px;
+}
+
+
+

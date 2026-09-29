@@ -1,5 +1,14 @@
 
 const juegos = [
+ 
+   { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca' , tiempo: '36:11:12' },
+
+      { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca' , tiempo: '10 dias'  },
+            { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '4 dias' },
+                  { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '4hs'  },
+                     { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca' , tiempo: '30min'  },
+            { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '10min' },
+                  { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '5min'  },
   { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
     { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
       { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
@@ -30,6 +39,9 @@ const juegos = [
 
 
 
+
+
+
 ];
 
 const porCategoria = {};
@@ -41,113 +53,139 @@ juegos.forEach(function (j) {
   porCategoria[j.categoria].push(j);
 });
 
-
 const contenedor = document.querySelector('#contenedor-principal');
 
-Object.keys(porCategoria).forEach(function (categoria) {
 
+
+function opcionesAlquiler(extraClase = "") {
+  return `<div class="card-alquilar ${extraClase}">
+            <p>¿Por cuanto tiempo deseas alquilar?</p>
+            <div class="btn-card-alquilar">
+              <div class="alq-1mes"><button class="btn-alquiler">1 mes</button></div>
+              <div class="alq-2mes"><button class="btn-alquiler">2 meses</button></div>
+              <div class="alq-3mes"><button class="btn-alquiler">3 meses</button></div>
+            </div>
+          </div>`;
+}
+
+function cardConfirmacion(j) {
+  return `<div class="card card-confirmacion ocultar-card">
+            <div class="cards">
+              <div class="cara card-frente">
+                <img src="${j.imagen}" class="imagen-juego">
+                <p class="titulo-juego">${j.titulo}</p>
+              </div>
+              <div class="cara card-dorso">
+                <img src="${j.imagen}" class="imagen-juego">
+                <div class="card-alquilar">
+                  <p>Confirma tu alquiler</p>
+                  <div class="mostrar-info-alquiler">
+                    <div class="fila-dato">
+                      <p>Precio:</p>
+                      <p class="mostrar-precio"></p>
+                      <p class="colocacion-precio">${j.precio}</p>
+                    </div>
+                    <div class="fila-dato">
+                      <p>Tiempo alquiler:</p>
+                      <p class="mostrar-tiempo"></p>
+                    </div>
+                  </div>
+                  <div class="btn-card-confirmacion">
+                    <button class="cancelar-confirmacion">Cancelar</button>
+                    <button class="confirmar-confirmacion">Confirmar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>`;
+}
+
+
+
+function cardAlquiler(j) {
+  return `<div class="juego">
+            <div class="card card-muestra">
+              <div class="cards">
+                <div class="cara card-frente">
+                  <img src="${j.imagen}" class="imagen-juego">
+                  <p class="titulo-juego">${j.titulo}</p>
+                </div>
+                <div class="cara card-dorso">
+                  <img src="${j.imagen}" class="imagen-juego">
+                  ${opcionesAlquiler()}
+                </div>
+              </div>
+            </div>
+            ${cardConfirmacion(j)}
+          </div>`;
+}
+
+function cardBiblioteca(j) {
+  return `<div class="juego">
+            <div class="card card-muestra ">
+               
+              <div class="cards">
+          
+              <div class="cara card-frente ">
+              <div class="tiempo-de-alquiler">  <img src="./svg/time.svg" >
+               <p> ${j.tiempo}</p>  </div>
+             
+              <img src="${j.imagen}" class="imagen-juego">
+                  <p class="titulo-juego">${j.titulo}</p>
+              
+                </div>
+                <div class="cara card-dorso">
+                  <img src="${j.imagen}" class="imagen-juego">
+
+                  <div class="card-alquilar acciones-biblioteca">
+                    <div class="btn-card-alquilar">
+                      <button class="btn-jugar">Jugar</button>
+                      <button class="btn-extender">Extender</button>
+                    </div>
+                  </div>
+
+                  ${opcionesAlquiler("opciones-alquiler ocultar-card")}
+                </div>
+              </div>
+            </div>
+            ${cardConfirmacion(j)}
+          </div>`;
+}
+
+
+
+Object.keys(porCategoria).forEach(function (categoria) {
   let cardsHTML = '';
 
-
   porCategoria[categoria].forEach(function (j) {
-    cardsHTML += `<div class="juego ">
-                    <div class="card card-muestra" >
-                      <div class="cards">
-                        <div class="cara card-frente">
-                            <img src="${j.imagen}" class="imagen-juego">
-                            <p class="titulo-juego">${j.titulo}</p>
-                          </div>
-
-                        <div class="cara card-dorso">
-                          <img src="${j.imagen}" class="imagen-juego">
-                            <div class="card-alquilar" > 
-                              <p >¿Por cuanto tiempo deseas alquilar?</p> 
-                                <div class="btn-card-alquilar">  
-                                  <div class="alq-1mes"> 
-                                    <button class="btn-alquiler"  >1 mes </button>
-                                  </div>
-
-                                  <div class="alq-2mes"> 
-                                    <button class="btn-alquiler"  >2 meses</button>             
-                                    </div>
-                                  <div class="alq-3mes"> 
-                                    <button class="btn-alquiler ">3 meses</button>
-                                   </div>
-                   
-                                </div>
-                              </div>
-                            </div>
-
-                          </div>
-                         </div>
-
-                         <div class="card card-confirmacion ocultar-card">
-
-
-                           <div class="cards">
-
-                            <div class="cara card-frente">
-                              <img src="${j.imagen}" class="imagen-juego">
-                              <p class="titulo-juego">${j.titulo}juego</p>
-                              </div>
-
-                            <div class="cara card-dorso">
-              
-                              <img src="${j.imagen}" class="imagen-juego">
-                              <div class="card-alquilar" > 
-                                <p >Confirma tu alquiler</p> 
-
-                                  <div class="mostrar-info-alquiler">  
-                                    <div class="fila-dato">
-                                      <p>Precio:</p>
-                                      <p class="mostrar-precio"></p>
-                                      <p class="colocacion-precio">${j.precio}</p>
-                                      </div>
-    
-                                    <div class="fila-dato">
-                                        <p>Tiempo alquiler:</p>
-                                        <p class="mostrar-tiempo"></p>
-                                      </div>
-
-                                    </div>
-                                  <div class="btn-card-confirmacion">  
-                                    <button class="cancelar-confirmacion">Cancelar</button>
-                                    <button class="confirmar-confirmacion">Confirmar</button>
-                   
-                                    </div>
-                             </div>
-                           </div>
-                         </div>
-                      </div>
-                    </div>
-      `;
+    cardsHTML += categoria.toLowerCase() === "biblioteca"
+      ? cardBiblioteca(j)
+      : cardAlquiler(j);
   });
+
   contenedor.insertAdjacentHTML('beforeend', `
-        <div class="carrusel-juegos">
-            <h2 class="titulo-carrusel">${categoria}</h2>
-
-            <div class="carrusel-scroll">
-                <button class="mover-izquierda">&lt;</button>
-
-                <div class="contenedor-cards">
-
-                    ${cardsHTML}
-                </div>
-
-                <button class="mover-derecha">&gt;</button>
-            </div>
+    <div class="carrusel-juegos">
+      <h2 class="titulo-carrusel">${categoria}</h2>
+      <div class="carrusel-scroll">
+        <button class="mover-izquierda">&lt;</button>
+        <div class="contenedor-cards">
+          ${cardsHTML}
         </div>
-    `);
+        <button class="mover-derecha">&gt;</button>
+      </div>
+    </div>
+  `);
 });
 
 
 
-
-
-
-
-
-
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("btn-extender")) {
+    const dorso = e.target.closest(".card-dorso");
+    dorso.querySelector(".acciones-biblioteca").classList.add("ocultar-card");
+    dorso.querySelector(".opciones-alquiler").classList.remove("ocultar-card");
+  }
+});
 
 
 

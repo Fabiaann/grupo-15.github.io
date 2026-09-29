@@ -57,18 +57,18 @@
         <div class="recargar-coins ocultar-qr">
 
     <div class="recargar-coins-formulario"> 
-    <label>Ingrese la cantidad de coins</label>
+    <label>Ingrese la cantidad de coins , <strong>1 coins = 1200 pesos</strong></label>
     <input id="cantidad-coins-comprar" type="number" placeholder="10">
-    <p class="total-a-pagar">Total a pagar:</p>
-    <p class="total-pago-coins"></p>
+    <p class="total-a-pagar">Total a pagar en pesos:</p>
+    <p class="total-pago-coins">0</p>
     <button id="generar-qr">Generar qr</button>
-    <button id="cerrar-generar-qr">Cerrar</button>
+    <button id="cerrar-generar-qr" class="cerrar-btn-qr">Cerrar</button>
     </div>
     <div class="mostrar-qr ocultar-qr recargar-coins-formulario">
-        <p>total a pagar</p>
-            <p class="total-pago-coins"></p>
-        <img src="./img/qr.jpg" style="height: 104px; width: 91px;">
-        <button type="button" class="cerrar-qr">Cerrar</button>
+        <p>total a pagar en pesos:</p>
+            <p class="total-pago-coins">0</p>
+        <img src="./img/qr.jpg"  class="img-qr-coins">
+        <button type="button" class="cerrar-qr cerrar-btn-qr">Cerrar</button>
         
     </div>
 </div>
