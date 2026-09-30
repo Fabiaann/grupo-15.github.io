@@ -1,0 +1,25 @@
+.coin-recharge-dialog { width: min(430px, calc(100% - 28px)); max-height: calc(100dvh - 28px); overflow: auto; padding: 0; border: 1px solid #21ddd3; border-radius: 22px; color: #fff; background: linear-gradient(145deg, #153b70, #24114e 72%); box-shadow: 0 24px 80px #000c; }
+.coin-recharge-dialog::backdrop { background: #020817c7; backdrop-filter: blur(4px); }
+.coin-recharge-dialog__content { position: relative; display: grid; gap: 18px; padding: 32px; text-align: center; }
+.coin-recharge-dialog__close { position: absolute; top: 12px; right: 12px; display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 1px solid #ffffff66; border-radius: 50%; color: #fff; background: #081d43; font-size: 1.5rem; cursor: pointer; }
+.coin-recharge-dialog h2 { margin: 0; padding: 0 30px; font: 800 2rem/1 'Barlow Condensed', Arial, sans-serif; text-transform: uppercase; }
+.coin-recharge-dialog__lead { margin: 0; color: #d9e9fa; line-height: 1.4; }
+.coin-recharge-dialog form, .coin-recharge-dialog__qr { display: grid; gap: 14px; }
+.coin-recharge-dialog label { color: #fff; font-weight: 800; text-align: left; }
+.coin-recharge-dialog input { width: 100%; min-height: 48px; padding: 8px 12px; border: 2px solid #7762b5; border-radius: 10px; color: #07152e; background: #fff; font: 800 1.15rem Nunito, Arial, sans-serif; text-align: center; }
+.coin-recharge-dialog input[aria-invalid="true"] { border-color: #ff7596; }
+.coin-recharge-dialog__rate, .coin-recharge-dialog__total, .coin-recharge-dialog__error, .coin-recharge-dialog__demo { margin: 0; }
+.coin-recharge-dialog__rate { color: #8ff8ed; font-size: .86rem; }
+.coin-recharge-dialog__total { font-size: 1.05rem; }
+.coin-recharge-dialog__error { min-height: 1.25em; color: #ffb7c7; font-size: .84rem; font-weight: 800; }
+.coin-recharge-dialog button:not(.coin-recharge-dialog__close) { min-height: 44px; padding: 9px 18px; border: 0; border-radius: 22px; color: #061b36; background: #12ddd1; font-weight: 900; cursor: pointer; }
+.coin-recharge-dialog button:disabled { opacity: .45; cursor: not-allowed; }
+.coin-recharge-dialog button:focus-visible, .coin-recharge-dialog input:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.coin-recharge-dialog__qr img { width: min(220px, 70vw); aspect-ratio: 1; margin: 0 auto; border: 10px solid #fff; border-radius: 12px; background: #fff; }
+.coin-recharge-dialog__summary { display: grid; gap: 2px; margin: 0; font-size: 1.05rem; }
+.coin-recharge-dialog__demo { padding: 10px; border-radius: 10px; color: #ffe182; background: #071b3a; font-size: .82rem; font-weight: 800; }
+.coin-recharge-dialog__actions { display: flex; justify-content: center; gap: 10px; }
+.coin-recharge-dialog__actions [data-close-recharge] { color: #fff; background: #b72d59; }
+.coin-recharge-dialog [hidden] { display: none; }
+@media (max-width: 480px) { .coin-recharge-dialog__content { gap: 14px; padding: 28px 18px 22px; } .coin-recharge-dialog h2 { font-size: 1.7rem; } .coin-recharge-dialog__actions { flex-direction: column; } }
+@media (prefers-reduced-motion: reduce) { .coin-recharge-dialog::backdrop { backdrop-filter: none; } }

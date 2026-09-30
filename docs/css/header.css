@@ -1,13 +1,13 @@
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 110;
+  z-index: 30;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  width: 1440px;
+  width: 100%;
   height: 70px;
-
+  padding: 0 5.55%;
   color: #fff;
   background: linear-gradient(180deg, #1454a1 0%, #0d376c 48%, #07182e 100%);
 }
@@ -24,7 +24,7 @@
   place-items: center;
   width: 44px;
   height: 44px;
-  padding-left: 20px;
+  padding: 0;
   border: 0;
   color: #e8f1ff;
   background: transparent;
@@ -55,7 +55,7 @@
   white-space: nowrap;
   color: #00e6d6;
   font-family: 'Courier New', monospace;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 900;
   letter-spacing: .07em;
 }
@@ -64,11 +64,15 @@
 .site-header__balance strong { font-weight: 900; }
 .site-header__balance a {
   margin-left: 5px;
-  padding: 3px 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 6px 13px;
   border-radius: 18px;
   color: #0d4251;
   background: #06e3d3;
-  font: 800 10px Nunito, Arial, sans-serif;
+  font: 800 13px Nunito, Arial, sans-serif;
   letter-spacing: 0;
   transition: transform .2s, filter .2s;
 }
@@ -79,7 +83,7 @@
   place-items: center;
   width: 38px;
   height: 44px;
-  padding-right: 20px;
+  padding: 0;
   border: 0;
   color: #fff;
   background: transparent;
@@ -254,9 +258,9 @@
   .site-header__menu-button { width: 34px; height: 38px; }
   .site-header__menu-button svg { width: 31px; height: 27px; }
   .site-header__logo { width: 39px; height: 39px; flex-basis: 39px; }
-  .site-header__balance { gap: 3px; font-size: 13px; letter-spacing: 0; }
+  .site-header__balance { gap: 3px; font-size: 14px; letter-spacing: 0; }
   .site-header__balance svg { width: 12px; height: 12px; flex-basis: 12px; }
-  .site-header__balance a { margin-left: 2px; padding: 2px 5px; font-size: 8px; }
+  .site-header__balance a { margin-left: 1px; min-height: 36px; padding: 5px 7px; font-size: 10px; }
   .site-header__profile { width: 29px; height: 38px; }
   .site-header__profile svg { width: 23px; height: 23px; }
   .profile-menu { top: calc(100% + 9px); max-height: calc(100dvh - 56px); padding: 15px; }

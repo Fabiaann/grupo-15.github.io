@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ingresar | JuegosOnline</title>
+  <title>Registro | JuegosOnline</title>
   <link rel="icon" type="image/png" href="../assets/logo-juegos-online.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,27 +38,52 @@
     </nav>
   </header>
 <main class="auth-main">
-  <section class="auth-card" aria-labelledby="auth-title">
+  <section class="auth-card auth-card--register" aria-labelledby="auth-title">
     <div class="auth-card__brand"><img src="../assets/logo-juegos-online.png" alt=""></div>
-    <p class="auth-card__eyebrow">JuegosOnline · acceso</p>
-    <h1 id="auth-title">Hola de nuevo</h1>
-    <p class="auth-card__lead">Iniciá sesión y seguí jugando.</p>
-    <div class="auth-demo"><strong>Usuario de prueba</strong><span>Usuario: <code>root</code></span><span>Contraseña: <code>1234</code></span><small>Acceso simulado: no se envían ni guardan datos en un servidor.</small></div>
-    <form id="login-form" class="auth-form" novalidate>
+    <p class="auth-card__eyebrow">JuegosOnline · registro</p>
+    <h1 id="auth-title">Bienvenido</h1>
+    <p class="auth-card__lead">Completá el formulario para ver la experiencia de registro.</p>
+    <p class="auth-card__notice">Este registro es una demostración. No crea una cuenta; para ingresar usá el usuario de prueba del login.</p>
+    <form id="register-form" class="auth-form" novalidate>
       <div class="auth-field">
-        <label for="username">Usuario <small>(usuario de prueba)</small></label>
-        <input id="username" name="username" type="text" autocomplete="username" placeholder="Ingresá tu usuario" aria-describedby="username-error" required>
-        <small class="auth-error" id="username-error" aria-live="polite"></small>
+        <label for="full-name">Nombre y apellido <small>(nombre completo)</small></label>
+        <input id="full-name" name="full-name" type="text" autocomplete="name" placeholder="Ej.: José García" aria-describedby="full-name-error" required>
+        <small class="auth-error" id="full-name-error" aria-live="polite"></small>
       </div>
       <div class="auth-field">
-        <label for="password">Contraseña</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Ingresá tu contraseña" aria-describedby="password-error" required>
-        <small class="auth-error" id="password-error" aria-live="polite"></small>
+        <label for="nickname">NickName <small>(opcional)</small></label>
+        <input id="nickname" name="nickname" type="text" autocomplete="nickname" placeholder="¿Cómo querés que te llamen?">
+      </div>
+      <div class="auth-field">
+        <label for="birth-date">Fecha de nacimiento <small>(debés ser mayor de 12)</small></label>
+        <input id="birth-date" name="birth-date" type="date" autocomplete="bday" aria-describedby="birth-date-error" required>
+        <small class="auth-error" id="birth-date-error" aria-live="polite"></small>
+      </div>
+      <div class="auth-field">
+        <label for="email">Correo electrónico</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="Ej.: jose@correo.com" aria-describedby="email-error" required>
+        <small class="auth-error" id="email-error" aria-live="polite"></small>
+      </div>
+      <div class="auth-field">
+        <label for="new-password">Contraseña <small>(mínimo 8 caracteres)</small></label>
+        <input id="new-password" name="new-password" type="password" autocomplete="new-password" placeholder="Creá una contraseña" aria-describedby="new-password-error" required>
+        <small class="auth-error" id="new-password-error" aria-live="polite"></small>
+      </div>
+      <div class="auth-field">
+        <label for="confirm-password">Repetí la contraseña</label>
+        <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password" placeholder="Repetí tu contraseña" aria-describedby="confirm-password-error" required>
+        <small class="auth-error" id="confirm-password-error" aria-live="polite"></small>
       </div>
       <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
-      <button class="auth-submit" type="submit">Ingresar</button>
+      <button class="auth-submit" type="submit">Crear cuenta de prueba</button>
     </form>
-    <p class="auth-card__switch">¿No tenés cuenta? <a href="register.html">Conocé el registro</a></p>
+    <div class="auth-success" id="register-success" role="status" aria-live="polite" hidden>
+      <span class="auth-success__icon" aria-hidden="true">✓</span>
+      <h2>¡Registro completado!</h2>
+      <p>Esta fue una demostración: no se creó ninguna cuenta.</p>
+      <a href="login.html">Ir al login de prueba</a>
+    </div>
+    <p class="auth-card__switch">¿Ya tenés cuenta? <a href="login.html">Iniciá sesión</a></p>
   </section>
 </main>
 <footer class="site-footer">

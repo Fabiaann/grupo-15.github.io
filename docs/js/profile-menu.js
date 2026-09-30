@@ -22,8 +22,8 @@ function renderProfile() {
       <div class="profile-menu__stats">
         <div class="profile-menu__coins">
           <span>Tus monedas</span>
-          <strong>10 coins</strong>
-          <a href="${homeUrl}#reward">Recargar</a>
+          <strong>260 coins</strong>
+          <a href="${homeUrl}#coin-recharge" data-open-recharge>Recargar</a>
         </div>
         <div class="profile-menu__activity">
           <span>21 horas jugadas</span>

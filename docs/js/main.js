@@ -45,7 +45,7 @@ const reducedRewardMotion = window.matchMedia('(prefers-reduced-motion: reduce)'
 let rewardClaimed = false;
 
 function releaseRewardCoins() {
- 
+  // Cambiá estas velocidades para modificar la apertura durante la defensa.
   const speeds = [-150, -95, -38, 38, 95, 150];
   const gravity = 520; // píxeles por segundo cuadrado
   const coins = speeds.map((vx, index) => {
@@ -80,10 +80,6 @@ rewardButton.addEventListener('click', () => {
   rewardButton.setAttribute('aria-disabled', 'true');
   if (!reducedRewardMotion.matches) releaseRewardCoins();
 });
-
-
-
-
 
 const loader = document.querySelector('#loader');
 const progress = document.querySelector('#progress');
