@@ -1,59 +1,179 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Juegos Online"><title>JuegosOnline</title><link rel="icon" type="image/png" href="assets/logo-juegos-online.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Roboto:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><link rel="stylesheet" href="css/style.css?v=20260928-9"><link rel="stylesheet" href="css/footer.css?v=20260927"><link rel="stylesheet" href="css/header.css?v=20260928-2"><link rel="stylesheet" href="css/local-cards.css?v=20260930-6"><link rel="stylesheet" href="css/recharge.css?v=20260930-1"></head>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Juegos Online">
+  <title>JuegosOnline</title>
+  <link rel="icon" type="image/png" href="assets/logo-juegos-online.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Roboto:wght@700;800;900&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/style.css?v=20260928-9">
+  <link rel="stylesheet" href="css/footer.css?v=20260927">
+  <link rel="stylesheet" href="css/header.css?v=20260928-2">
+  <link rel="stylesheet" href="css/local-cards.css?v=20260930-6">
+  <link rel="stylesheet" href="css/recharge.css?v=20260930-1">
+</head>
+
 <body>
-  <div class="loader" id="loader" role="status" aria-live="off"><canvas id="canvas" width="500" height="350" aria-hidden="true"></canvas><strong>Preparando la partida</strong><span class="loader__progress" id="progress">0%</span></div>
+  <div class="loader" id="loader" role="status" aria-live="off"><canvas id="canvas" width="500" height="350"
+      aria-hidden="true"></canvas><strong>Preparando la partida</strong><span class="loader__progress"
+      id="progress">0%</span></div>
   <header class="site-header">
     <div class="site-header__left">
-      <button class="site-header__menu-button" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu"><svg viewBox="0 0 40 32" aria-hidden="true"><path d="M2 5h31M2 15h31M2 25h31" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/><path class="site-header__arrow-right" d="M32 10 40 15 32 20Z" fill="currentColor"/><path class="site-header__arrow-left" d="M40 10 32 15 40 20Z" fill="currentColor"/></svg></button>
-      <a class="site-header__logo" href="index.html" aria-label="JuegosOnline, volver al inicio"><img src="assets/logo-juegos-online.png" alt=""></a>
+      <button class="site-header__menu-button" type="button" aria-label="Abrir menú" aria-expanded="false"
+        aria-controls="site-menu"><svg viewBox="0 0 40 32" aria-hidden="true">
+          <path d="M2 5h31M2 15h31M2 25h31" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+          <path class="site-header__arrow-right" d="M32 10 40 15 32 20Z" fill="currentColor" />
+          <path class="site-header__arrow-left" d="M40 10 32 15 40 20Z" fill="currentColor" />
+        </svg></button>
+      <a class="site-header__logo" href="index.html" aria-label="JuegosOnline, volver al inicio"><img
+          src="assets/logo-juegos-online.png" alt=""></a>
     </div>
-    <div class="site-header__balance"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 1 2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6z" fill="currentColor"/></svg><strong>260 coins</strong><a href="#coin-recharge" data-open-recharge>Recargar</a></div>
-    <div class="site-header__profile-wrap"><button class="site-header__profile" type="button" aria-label="Abrir perfil" aria-expanded="false" aria-controls="profile-menu"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="9" r="6" fill="currentColor"/><path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor"/></svg></button><div class="profile-menu" id="profile-menu" aria-label="Panel de perfil" hidden></div></div>
+    <div class="site-header__balance"><svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m12 1 2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6z" fill="currentColor" />
+      </svg><strong>260 coins</strong><a href="#coin-recharge" data-open-recharge>Recargar</a></div>
+    <div class="site-header__profile-wrap"><button class="site-header__profile" type="button" aria-label="Abrir perfil"
+        aria-expanded="false" aria-controls="profile-menu"><svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="9" r="6" fill="currentColor" />
+          <path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor" />
+        </svg></button>
+      <div class="profile-menu" id="profile-menu" aria-label="Panel de perfil" hidden></div>
+    </div>
     <nav class="site-menu" id="site-menu" aria-label="Menú principal" hidden>
-      <a href="index.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8"/></svg><span>Inicio</span></a>
-      <a href="#novedades"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M17 6V2m0 0h-4m4 0-3 3M10 3a7 7 0 1 0 7 7M10 6v4l3 2"/></svg><span>Recomendados</span></a>
-      <a href="#popular"><svg class="site-menu__fire" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2c1 3-1 4 1 6 1-1 2-2 2-4 4 4 5 8 3 11a6 6 0 0 1-12-1c0-3 2-5 4-7 0 3 0 4 1 5 2-2 1-6 1-10z"/></svg><span>Más jugados</span></a>
+      <a href="index.html"><svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8" />
+        </svg><span>Inicio</span></a>
+      <a href="#novedades"><svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M17 6V2m0 0h-4m4 0-3 3M10 3a7 7 0 1 0 7 7M10 6v4l3 2" />
+        </svg><span>Recomendados</span></a>
+      <a href="#popular"><svg class="site-menu__fire" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M10 2c1 3-1 4 1 6 1-1 2-2 2-4 4 4 5 8 3 11a6 6 0 0 1-12-1c0-3 2-5 4-7 0 3 0 4 1 5 2-2 1-6 1-10z" />
+        </svg><span>Más jugados</span></a>
       <div class="site-menu__divider"></div>
-      <button class="site-menu__categories" type="button" aria-expanded="false" aria-controls="site-categories"><span>Categorías</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="m8 1-5 5 5 5"/></svg></button>
+      <button class="site-menu__categories" type="button" aria-expanded="false"
+        aria-controls="site-categories"><span>Categorías</span><svg viewBox="0 0 12 12" aria-hidden="true">
+          <path d="m8 1-5 5 5 5" />
+        </svg></button>
       <div class="site-menu__sublist" id="site-categories" hidden>
-        <a href="#library"><svg class="site-menu__category-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3"/><circle cx="17.5" cy="8" r="2.5"/><path d="M2 21v-2.5a6 6 0 0 1 12 0V21zm12.5 0v-2a5 5 0 0 0-2-4 5 5 0 0 1 9.5 3v3z"/></svg><span>Biblioteca</span></a>
-        <a href="#popular"><svg class="site-menu__category-icon site-menu__category-icon--fire" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c1.5 4-1 5 1 8 1.4-1 2-2.4 2-4 5 5 6 10 3.4 14a7 7 0 0 1-12.8-1c-1-3.4 1-6 3.4-9 0 3 .3 4 1.4 5 2-3 1.5-8 1.6-13z"/></svg><span>Más jugados</span></a>
-        <a href="#novedades"><svg class="site-menu__category-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 1h2v22H3zM5 2h16l-3.5 5L21 12H5z"/></svg><span>Recomendados</span></a>
-        <a href="#game-survival"><svg class="site-menu__category-icon site-menu__category-icon--minecraft" viewBox="0 0 24 24" aria-hidden="true"><path class="site-menu__minecraft-face" d="M2 2h20v20H2z"/><path class="site-menu__minecraft-detail" d="M5 7h5v5H5zm9 0h5v5h-5zm-4 6h4v3h-4zm-3 3h3v4H7zm7 0h3v4h-3z"/></svg><span>Survival</span></a>
+        <a href="#library"><svg class="site-menu__category-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="9" cy="7" r="3" />
+            <circle cx="17.5" cy="8" r="2.5" />
+            <path d="M2 21v-2.5a6 6 0 0 1 12 0V21zm12.5 0v-2a5 5 0 0 0-2-4 5 5 0 0 1 9.5 3v3z" />
+          </svg><span>Biblioteca</span></a>
+        <a href="#popular"><svg class="site-menu__category-icon site-menu__category-icon--fire" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path
+              d="M12 1c1.5 4-1 5 1 8 1.4-1 2-2.4 2-4 5 5 6 10 3.4 14a7 7 0 0 1-12.8-1c-1-3.4 1-6 3.4-9 0 3 .3 4 1.4 5 2-3 1.5-8 1.6-13z" />
+          </svg><span>Más jugados</span></a>
+        <a href="#novedades"><svg class="site-menu__category-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 1h2v22H3zM5 2h16l-3.5 5L21 12H5z" />
+          </svg><span>Recomendados</span></a>
+        <a href="#game-survival"><svg class="site-menu__category-icon site-menu__category-icon--minecraft"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path class="site-menu__minecraft-face" d="M2 2h20v20H2z" />
+            <path class="site-menu__minecraft-detail"
+              d="M5 7h5v5H5zm9 0h5v5h-5zm-4 6h4v3h-4zm-3 3h3v4H7zm7 0h3v4h-3z" />
+          </svg><span>Survival</span></a>
       </div>
     </nav>
   </header>
   <main>
-    <section class="hero"><h1>Jugá gratis por tiempo limitado</h1><div class="hero-grid">
-      <aside class="ranking" tabindex="0" aria-label="Ranking de jugadores; enfocar para ver tu puesto">
-        <div class="ranking__trophy" aria-hidden="true"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M20 7h24v14c0 10-5 17-12 20-7-3-12-10-12-20V7Zm-3 4v7H9c0 9 4 15 13 16l3 5C12 39 3 31 3 15v-4h14Zm30 0h14v4c0 16-9 24-22 24l3-5c9-1 13-7 13-16h-8v-7ZM29 40h6v9h9v5H20v-5h9v-9ZM16 56h32v5H16v-5Z"/></svg></div>
-        <div class="ranking__content"><h2>Competí por el 1er puesto</h2><table><thead><tr><th scope="col">Puesto</th><th scope="col">Usuario</th><th scope="col">Horas</th><th scope="col">Recompensa</th></tr></thead><tbody><tr><td>1°</td><td>Matí123</td><td>148</td><td>10 coins</td></tr><tr><td>2°</td><td>Juan12</td><td>130</td><td>8 coins</td></tr><tr><td>3°</td><td>Pedro54</td><td>128</td><td>4 coins</td></tr></tbody></table></div>
-        <p class="ranking__position">Estás en el puesto <strong>N°61</strong></p>
-      </aside>
-      <a class="featured" href="pages/game.html"><b>▶ Jugá ahora</b><strong>Fungi Solitaire</strong></a>
-      <div class="reward" id="reward">
-        <div class="reward__badge"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="4" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 9h16M6 2v4m8-4v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><time class="reward__date"></time><span>Solo por hoy</span></div>
-        <strong><i>+2</i> coins</strong>
-        <span class="reward__message" aria-live="polite">Reclamá tu recompensa</span>
-        <button class="reward__button" type="button" aria-label="Reclamar dos coins">
-          <span class="reward__button-label">Reclamar</span>
-          <span class="reward__gift" aria-hidden="true"><span class="reward__gift-lid"></span><span class="reward__gift-box"></span></span>
-        </button>
-        <span class="reward__coins" aria-hidden="true"></span>
+    <section class="hero">
+      <h1>Jugá gratis por tiempo limitado</h1>
+      <div class="hero-grid">
+        <aside class="ranking" tabindex="0" aria-label="Ranking de jugadores; enfocar para ver tu puesto">
+          <div class="ranking__trophy" aria-hidden="true"><svg viewBox="0 0 64 64" fill="currentColor">
+              <path
+                d="M20 7h24v14c0 10-5 17-12 20-7-3-12-10-12-20V7Zm-3 4v7H9c0 9 4 15 13 16l3 5C12 39 3 31 3 15v-4h14Zm30 0h14v4c0 16-9 24-22 24l3-5c9-1 13-7 13-16h-8v-7ZM29 40h6v9h9v5H20v-5h9v-9ZM16 56h32v5H16v-5Z" />
+            </svg></div>
+          <div class="ranking__content">
+            <h2>Competí por el 1er puesto</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Puesto</th>
+                  <th scope="col">Usuario</th>
+                  <th scope="col">Horas</th>
+                  <th scope="col">Recompensa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1°</td>
+                  <td>Matí123</td>
+                  <td>148</td>
+                  <td>10 coins</td>
+                </tr>
+                <tr>
+                  <td>2°</td>
+                  <td>Juan12</td>
+                  <td>130</td>
+                  <td>8 coins</td>
+                </tr>
+                <tr>
+                  <td>3°</td>
+                  <td>Pedro54</td>
+                  <td>128</td>
+                  <td>4 coins</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ranking__position">Estás en el puesto <strong>N°61</strong></p>
+        </aside>
+        <a class="featured" href="pages/game.html"><b>▶ Jugá ahora</b><strong>Fungi Solitaire</strong></a>
+        <div class="reward" id="reward">
+          <div class="reward__badge"><svg viewBox="0 0 20 20" aria-hidden="true">
+              <rect x="2" y="4" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M2 9h16M6 2v4m8-4v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg><time class="reward__date"></time><span>Solo por hoy</span></div>
+          <strong><i>+2</i> coins</strong>
+          <span class="reward__message" aria-live="polite">Reclamá tu recompensa</span>
+          <button class="reward__button" type="button" aria-label="Reclamar dos coins">
+            <span class="reward__button-label">Reclamar</span>
+            <span class="reward__gift" aria-hidden="true"><span class="reward__gift-lid"></span><span
+                class="reward__gift-box"></span></span>
+          </button>
+          <span class="reward__coins" aria-hidden="true"></span>
+        </div>
       </div>
-    </div></section>
+    </section>
     <div class="local-game-catalog" id="local-game-catalog" aria-label="Catálogo de juegos"></div>
   </main>
   <footer class="site-footer">
     <div class="site-footer__content">
-      <a class="site-footer__brand" href="index.html" aria-label="JuegosOnline, inicio"><img src="assets/logo-juegos-online.png" alt=""><span>Juegos<em>Online</em></span></a>
+      <a class="site-footer__brand" href="index.html" aria-label="JuegosOnline, inicio"><img
+          src="assets/logo-juegos-online.png" alt=""><span>Juegos<em>Online</em></span></a>
       <div class="site-footer__navigation">
         <div class="site-footer__columns">
-          <section class="site-footer__column"><h2>Empresa:</h2><a href="#">Quiénes somos</a><a href="#">Accesibilidad</a><a href="#">Sponsors</a><a href="#">Términos</a></section>
-          <section class="site-footer__column"><h2>Comunidad:</h2><a href="#">Foros</a><a href="#">Eventos</a><a href="#">Desarrolladores</a><a href="#">Open Source</a></section>
-          <section class="site-footer__column site-footer__social"><h2>Nuestras redes</h2><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="#" aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a></section>
-          <section class="site-footer__column"><h2>Legal y privacidad:</h2><a href="#">Política de privacidad</a><a href="#">Términos y condiciones</a><a href="#">Cookies</a><a href="#">Seguridad</a></section>
-          <section class="site-footer__column"><h2>Recursos:</h2><a href="#">Centro de ayuda</a><a href="#">Tutoriales</a><a href="#">Blog</a><a href="#">Guias</a><a href="#">Documentacion</a></section>
+          <section class="site-footer__column">
+            <h2>Empresa:</h2><a href="#">Quiénes somos</a><a href="#">Accesibilidad</a><a href="#">Sponsors</a><a
+              href="#">Términos</a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Comunidad:</h2><a href="#">Foros</a><a href="#">Eventos</a><a href="#">Desarrolladores</a><a
+              href="#">Open Source</a>
+          </section>
+          <section class="site-footer__column site-footer__social">
+            <h2>Nuestras redes</h2><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"
+                aria-hidden="true"></i></a><a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"
+                aria-hidden="true"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"
+                aria-hidden="true"></i></a><a href="#" aria-label="Discord"><i class="fa-brands fa-discord"
+                aria-hidden="true"></i></a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Legal y privacidad:</h2><a href="#">Política de privacidad</a><a href="#">Términos y condiciones</a><a
+              href="#">Cookies</a><a href="#">Seguridad</a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Recursos:</h2><a href="#">Centro de ayuda</a><a href="#">Tutoriales</a><a href="#">Blog</a><a
+              href="#">Guias</a><a href="#">Documentacion</a>
+          </section>
         </div>
         <div class="site-footer__legal">Legal © 2026 Todos los derechos reservados.</div>
       </div>
@@ -61,13 +181,15 @@
   </footer>
   <dialog class="coin-recharge-dialog" id="coin-recharge" aria-labelledby="coin-recharge-title">
     <div class="coin-recharge-dialog__content">
-      <button class="coin-recharge-dialog__close" type="button" data-close-recharge aria-label="Cerrar recarga">×</button>
+      <button class="coin-recharge-dialog__close" type="button" data-close-recharge
+        aria-label="Cerrar recarga">×</button>
       <h2 id="coin-recharge-title">Recargar coins</h2>
       <p class="coin-recharge-dialog__lead">Elegí cuántas coins querés cargar y generá el QR.</p>
       <div data-recharge-form-view>
         <form novalidate>
           <label for="recharge-amount">Cantidad de coins</label>
-          <input id="recharge-amount" name="amount" type="number" min="1" step="1" inputmode="numeric" aria-describedby="recharge-rate recharge-error" placeholder="10">
+          <input id="recharge-amount" name="amount" type="number" min="1" step="1" inputmode="numeric"
+            aria-describedby="recharge-rate recharge-error" placeholder="10">
           <p class="coin-recharge-dialog__rate" id="recharge-rate">1 coin = 1.200 pesos</p>
           <p class="coin-recharge-dialog__total">Total: <strong data-recharge-total>0 pesos</strong></p>
           <p class="coin-recharge-dialog__error" id="recharge-error" data-recharge-error role="status"></p>
@@ -78,9 +200,15 @@
         <img src="assets/demo-qr.svg" alt="QR de demostración para recargar coins">
         <p class="coin-recharge-dialog__summary"><strong data-qr-coins></strong><span data-qr-total></span></p>
         <p class="coin-recharge-dialog__demo">Demostración: este QR no procesa pagos ni modifica tu saldo.</p>
-        <div class="coin-recharge-dialog__actions"><button type="button" data-edit-recharge>Cambiar cantidad</button><button type="button" data-close-recharge>Cerrar</button></div>
+        <div class="coin-recharge-dialog__actions"><button type="button" data-edit-recharge>Cambiar
+            cantidad</button><button type="button" data-close-recharge>Cerrar</button></div>
       </div>
     </div>
   </dialog>
-  <script src="js/local-cards.js?v=20260930-4"></script><script src="js/profile-menu.js?v=20260930-1"></script><script src="js/recharge.js?v=20260930-1"></script><script src="js/main.js?v=20260928-9"></script>
-</body></html>
+  <script src="js/local-cards.js?v=20260930-4"></script>
+  <script src="js/profile-menu.js?v=20260930-1"></script>
+  <script src="js/recharge.js?v=20260930-1"></script>
+  <script src="js/main.js?v=20260928-9"></script>
+</body>
+
+</html>

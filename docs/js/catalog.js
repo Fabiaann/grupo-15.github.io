@@ -207,7 +207,7 @@
           { transform: 'translateX(0) scale(1)', opacity: 1 }
         ], { duration: 560, easing: 'ease-in-out' });
       });
-      state.moving = Promise.all(animations.map((animation) => animation.finished.catch(() => {})))
+      state.moving = Promise.all(animations.map((animation) => animation.finished.catch(() => { })))
         .then(() => {
           state.moving = null;
           previous.disabled = false;
