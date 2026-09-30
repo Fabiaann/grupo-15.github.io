@@ -230,7 +230,10 @@
 .auth-card__switch {
   margin: 22px 0 0;
   color: #e4eafb;
-  font-size: .9rem;
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .auth-card__switch a {
