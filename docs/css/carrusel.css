@@ -646,23 +646,31 @@ width: 80%;
 }
 
 .tiempo-de-alquiler{
-    font-size: 18px;
+    font-size: 22px;
     position: absolute;
     z-index: 20;
-    background-color: #e5920c9d;
+    background-color: #e5920cce;
     border-radius: 12px;
-    width: 80%;
+    width: 45%;
     padding-left: 5px;
     padding-right: 5px;
     display: flex;
     flex-direction: row;
     margin: 2px;
-    gap: 40px;
+    gap: 5px;
+    border: solid 2px #000000;; 
+    color: black;
+    font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow:2px 2px 2px rgb(255, 255, 255);
+    align-items: center;
+
 }
 .tiempo-de-alquiler img{
     width: 30px;
     height: 30px;
     font-weight: 1000;
+
 
 }
 
@@ -775,3 +783,15 @@ width: 80%;
 
 
 
+
+
+/**
+  <div class="contenedor">
+  <div class="loader" id="loader" role="status" aria-live="off">
+    <canvas id="canvas" width="500" height="350"
+      aria-hidden="true">
+    </canvas>
+    <strong>Preparando la partida</strong>
+    <span class="loader__progress"
+      id="progress">0%</span></div> */
+      

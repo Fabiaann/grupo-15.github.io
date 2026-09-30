@@ -2,19 +2,18 @@
 const juegos = [
  
    { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca' , tiempo: '36:11:12' },
-
-      { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca' , tiempo: '10 dias'  },
-            { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '4 dias' },
-                  { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '4hs'  },
-                     { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca' , tiempo: '30min'  },
-            { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '10min' },
-                  { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '5min'  },
+  { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca' , tiempo: '10 dias'  },
+  { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '4 dias' },
+{ titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '4hs'  },
+ { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca' , tiempo: '30min'  },
+ { titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '10min' },
+{ titulo: 'FIFA', imagen: './img/logo.jpg', precio: 120, categoria: 'biblioteca'  , tiempo: '5min'  },
   { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
+  { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
+   { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
+   { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
+ { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
     { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
-      { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
-        { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
-           { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
-        { titulo: 'Zelda', imagen: './img/tom.jpg', precio: 100, categoria: 'Aventura' },
   { titulo: 'Mario Kart', imagen: './img/juego1.jpg', precio: 80, categoria: 'Carreras' },
    { titulo: 'Assetto Corsa', imagen: './img/assetoCorsa.jpg', precio: 80, categoria: 'Carreras' },
     { titulo: 'Bream Ng Drive', imagen: './img/BeamNg.drive.jpg', precio: 80, categoria: 'Carreras' },
@@ -56,7 +55,6 @@ juegos.forEach(function (j) {
 const contenedor = document.querySelector('#contenedor-principal');
 
 
-
 function opcionesAlquiler(extraClase = "") {
   return `<div class="card-alquilar ${extraClase}">
             <p>¿Por cuanto tiempo deseas alquilar?</p>
@@ -65,6 +63,7 @@ function opcionesAlquiler(extraClase = "") {
               <div class="alq-2mes"><button class="btn-alquiler">2 meses</button></div>
               <div class="alq-3mes"><button class="btn-alquiler">3 meses</button></div>
             </div>
+               <button class="" >cerrar</button>
           </div>`;
 }
 
@@ -145,6 +144,7 @@ function cardBiblioteca(j) {
                   </div>
 
                   ${opcionesAlquiler("opciones-alquiler ocultar-card")}
+               
                 </div>
               </div>
             </div>
