@@ -45,9 +45,9 @@ const reducedRewardMotion = window.matchMedia('(prefers-reduced-motion: reduce)'
 let rewardClaimed = false;
 
 function releaseRewardCoins() {
-  // Cambiá estas velocidades para modificar la apertura durante la defensa.
+  // Lanza monedas; toca speeds, gravity o 1.25 para cambiarlo.
   const speeds = [-150, -95, -38, 38, 95, 150];
-  const gravity = 520; // píxeles por segundo cuadrado
+  const gravity = 520;
   const coins = speeds.map((vx, index) => {
     const element = document.createElement('span');
     element.className = 'reward__coin';
@@ -85,6 +85,7 @@ const loader = document.querySelector('#loader');
 const progress = document.querySelector('#progress');
 const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext('2d');
+// Rebota las pelotas; toca duration, gravity o launchSpeed.
 const duration = 5000;
 const gravity = 1.8 * canvas.height;
 const cycleDuration = 1.25;

@@ -5,10 +5,7 @@
   overflow: hidden;
 }
 
-.local-games-section {
-  min-width: 0;
-}
-
+.local-games-section { min-width: 0; }
 .local-games-section h2 {
   margin: 0 0 12px;
   text-align: center;
@@ -18,18 +15,8 @@
   text-shadow: 2px 2px #3a1f75;
 }
 
-.local-carousel {
-  position: relative;
-  width: 100%;
-}
-
-.local-carousel__viewport {
-  width: 100%;
-  min-width: 0;
-  overflow: hidden;
-  padding: 5px 0;
-}
-
+.local-carousel { position: relative; width: 100%; }
+.local-carousel__viewport { width: 100%; min-width: 0; overflow: hidden; padding: 5px 0; }
 .local-carousel__track {
   position: relative;
   display: flex;
@@ -38,19 +25,12 @@
   transform: translateX(0);
   will-change: transform;
 }
+/* Desliza el carrusel; cambia .58s para la velosidad. */
+.local-carousel__track.is-moving { transition: transform .58s ease-in-out; }
+.local-carousel.has-active-card .local-carousel__track { z-index: 4; }
+.local-carousel.has-active-card .local-carousel__button { z-index: 6; }
 
-.local-carousel__track.is-moving {
-  transition: transform .58s ease-in-out;
-}
-
-.local-carousel.has-active-card .local-carousel__track {
-  z-index: 4;
-}
-
-.local-carousel.has-active-card .local-carousel__button {
-  display: none;
-}
-
+/* Agranda las flechas; cambia .2s o scale. */
 .local-carousel__button {
   position: absolute;
   z-index: 3;
@@ -68,33 +48,11 @@
   transform: translateY(-50%);
   transition: background .2s, color .2s, transform .2s;
 }
-
-.local-carousel__button--previous {
-  left: 0;
-  border-radius: 0 12px 12px 0;
-}
-
-.local-carousel__button--next {
-  right: 0;
-  border-radius: 12px 0 0 12px;
-}
-
-.local-carousel__button:hover {
-  color: #06274c;
-  background: var(--cyan);
-  transform: translateY(-50%) scale(1.06);
-}
-
-.local-carousel__button:focus-visible {
-  outline: 3px solid #fff;
-  outline-offset: 2px;
-}
-
-.local-carousel__button:disabled {
-  opacity: .55;
-  cursor: wait;
-  transform: translateY(-50%);
-}
+.local-carousel__button--previous { left: 0; border-radius: 0 12px 12px 0; }
+.local-carousel__button--next { right: 0; border-radius: 12px 0 0 12px; }
+.local-carousel__button:hover { color: #06274c; background: var(--cyan); transform: translateY(-50%) scale(1.06); }
+.local-carousel__button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.local-carousel__button:disabled { opacity: .55; cursor: wait; transform: translateY(-50%); }
 
 .local-game-card {
   position: relative;
@@ -102,12 +60,8 @@
   height: 190px;
   perspective: 1000px;
 }
-
-.local-games-section--compact .local-game-card {
-  flex-basis: min(220px, 72vw);
-  height: 127px;
-}
-
+.local-games-section--compact .local-game-card { flex-basis: min(220px, 72vw); height: 127px; }
+/* Da vuelta la card; cambia .55s para la duracion. */
 .local-game-card__inner {
   position: relative;
   width: 100%;
@@ -115,30 +69,15 @@
   transform-style: preserve-3d;
   transition: transform .55s ease;
 }
-
-.local-game-card.is-pinned .local-game-card__inner {
-  transition: none;
-}
-
+.local-game-card.is-pinned .local-game-card__inner { transition: none; }
 .local-game-card:hover,
 .local-game-card:focus-within,
-.local-game-card.is-pinned {
-  z-index: 4;
-}
-
+.local-game-card.is-pinned { z-index: 4; }
 .local-game-card:hover .local-game-card__inner,
 .local-game-card.is-pinned .local-game-card__inner,
-.local-game-card:focus-within .local-game-card__inner {
-  transform: rotateY(180deg);
-}
-
-.local-game-card.is-pinned .local-game-card__front {
-  pointer-events: none;
-}
-
-.local-game-card.is-pinned .local-game-card__back {
-  pointer-events: auto;
-}
+.local-game-card:focus-within .local-game-card__inner { transform: rotateY(180deg); }
+.local-game-card.is-pinned .local-game-card__front { pointer-events: none; }
+.local-game-card.is-pinned .local-game-card__back { pointer-events: auto; }
 
 .local-game-card__front,
 .local-game-card__back {
@@ -152,7 +91,6 @@
   backface-visibility: hidden;
   box-shadow: 0 7px 18px #01081778;
 }
-
 .local-game-card__front {
   display: flex;
   flex-direction: column;
@@ -162,15 +100,7 @@
   background: #0b2849;
   cursor: pointer;
 }
-
-.local-game-card__front img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+.local-game-card__front img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .local-game-card__front::after {
   content: '';
   position: absolute;
@@ -182,33 +112,11 @@
   box-shadow: inset 0 1px #1596bd70;
   pointer-events: none;
 }
-
 .local-game-card__front strong,
-.local-game-card__front span {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-
-.local-game-card__front strong {
-  padding: 9px 10px 2px;
-  font: 800 1.25rem/1.05 'Roboto', Arial, sans-serif;
-  text-transform: uppercase;
-}
-
-.local-game-card__front span {
-  padding: 2px 8px 9px;
-  color: #ffe162;
-  font-size: .75rem;
-  font-weight: 800;
-}
-
-.local-game-card__front>span:last-child {
-  font-family: 'Roboto', Arial, sans-serif;
-}
-
+.local-game-card__front span { position: relative; z-index: 1; display: block; width: 100%; text-align: center; }
+.local-game-card__front strong { padding: 9px 10px 2px; font: 800 1.25rem/1.05 'Roboto', Arial, sans-serif; text-transform: uppercase; }
+.local-game-card__front span { padding: 2px 8px 9px; color: #ffe162; font-size: .75rem; font-weight: 800; }
+.local-game-card__front > span:last-child { font-family: 'Roboto', Arial, sans-serif; }
 .local-game-card__front .local-game-card__time {
   position: absolute;
   top: 7px;
@@ -225,20 +133,8 @@
   box-shadow: 1px 2px 0 #fff9;
   font-size: .7rem;
 }
-
-.local-game-card__time svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-}
-
-.local-game-card__front:focus-visible {
-  outline: 3px solid var(--cyan);
-  outline-offset: -4px;
-}
+.local-game-card__time svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.local-game-card__front:focus-visible { outline: 3px solid var(--cyan); outline-offset: -4px; }
 
 .local-game-card__back {
   display: flex;
@@ -251,30 +147,14 @@
   background: linear-gradient(145deg, #0a315c, #08162e 68%, #411a7a);
   transform: rotateY(180deg);
 }
-
-.local-game-card__back>strong {
-  font: 800 1.25rem/1 'Barlow Condensed', Arial, sans-serif;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.local-game-card__back p {
-  margin: 0;
-  text-align: center;
-  font-size: .78rem;
-}
-
+.local-game-card__back > strong { font: 800 1.25rem/1 'Barlow Condensed', Arial, sans-serif; text-align: center; text-transform: uppercase; }
+.local-game-card__back p { margin: 0; text-align: center; font-size: .78rem; }
 .local-game-card__terms,
-.local-game-card__confirmation>div,
-.local-game-card__library-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
+.local-game-card__confirmation > div,
+.local-game-card__library-actions { display: flex; align-items: center; justify-content: center; gap: 6px; }
 .local-game-card__terms button,
 .local-game-card__confirmation button,
+/* Sube los botones; cambia .18s o -2px. */
 .local-game-card__library-actions a,
 .local-game-card__library-actions button,
 .local-game-card__back-action {
@@ -287,49 +167,31 @@
   font-weight: 900;
   cursor: pointer;
 }
-
 .local-game-card__library-actions a {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
   background: #54e194;
 }
-
 .local-game-card__library-actions a,
 .local-game-card__library-actions button {
   transition: background-color .18s ease, box-shadow .18s ease, transform .18s ease;
 }
-
-.local-game-card__library-actions button {
-  background: #ffe047;
-}
-
-.local-game-card__library-actions a:hover {
-  background: #72efaa;
-}
-
-.local-game-card__library-actions button:hover {
-  background: #ffea75;
-}
-
+.local-game-card__library-actions button { background: #ffe047; }
+.local-game-card__library-actions a:hover { background: #72efaa; }
+.local-game-card__library-actions button:hover { background: #ffea75; }
 .local-game-card__library-actions a:hover,
 .local-game-card__library-actions button:hover {
   box-shadow: 0 4px 8px #020a1d80;
   transform: translateY(-2px);
 }
-
 .local-game-card__library-actions a:focus-visible,
 .local-game-card__library-actions button:focus-visible {
   outline: 3px solid #fff;
   outline-offset: 2px;
   box-shadow: 0 0 0 5px #0a315c;
 }
-
-.local-game-card__back-action {
-  color: #fff;
-  background: #b82956;
-}
-
+.local-game-card__back-action { color: #fff; background: #b82956; }
 .local-game-card__extension {
   position: relative;
   z-index: 5;
@@ -338,77 +200,26 @@
   gap: 5px;
   pointer-events: auto;
 }
-
-.local-game-card__extension button {
-  pointer-events: auto;
-}
-
-.local-game-card__terms button:hover {
-  background: var(--cyan);
-}
-
-.local-game-card__confirmation {
-  display: grid;
-  gap: 8px;
-}
-
+.local-game-card__extension button { pointer-events: auto; }
+.local-game-card__terms button:hover { background: var(--cyan); }
+.local-game-card__confirmation { display: grid; gap: 8px; }
 .local-game-card__confirmation[hidden],
 .local-game-card__terms[hidden],
 .local-game-card__prompt[hidden],
 .local-game-card__library-actions[hidden],
-.local-game-card__extension[hidden] {
-  display: none;
-}
+.local-game-card__extension[hidden] { display: none; }
+.local-game-card__confirmation [data-cancel] { color: #fff; background: #b82956; }
+.local-game-card__confirmation [data-confirm] { color: #073b28; background: #54e194; }
+.local-game-card__message { min-height: 1.2em; color: var(--cyan); font-weight: 800; }
 
-.local-game-card__confirmation [data-cancel] {
-  color: #fff;
-  background: #b82956;
-}
-
-.local-game-card__confirmation [data-confirm] {
-  color: #073b28;
-  background: #54e194;
-}
-
-.local-game-card__message {
-  min-height: 1.2em;
-  color: var(--cyan);
-  font-weight: 800;
-}
-
-.local-games-section--compact .local-game-card__front strong {
-  padding: 5px 7px 1px;
-  font-size: .9rem;
-}
-
-.local-games-section--compact .local-game-card__front span {
-  padding: 1px 6px 5px;
-  font-size: .65rem;
-}
-
-.local-games-section--compact .local-game-card__front::after {
-  height: 44px;
-}
-
-.local-games-section--compact .local-game-card__back {
-  gap: 3px;
-  padding: 6px;
-}
-
-.local-games-section--compact .local-game-card__back>strong {
-  font-size: .92rem;
-}
-
-.local-games-section--compact .local-game-card__back p {
-  font-size: .62rem;
-  line-height: 1.05;
-}
-
+.local-games-section--compact .local-game-card__front strong { padding: 5px 7px 1px; font-size: .9rem; }
+.local-games-section--compact .local-game-card__front span { padding: 1px 6px 5px; font-size: .65rem; }
+.local-games-section--compact .local-game-card__front::after { height: 44px; }
+.local-games-section--compact .local-game-card__back { gap: 3px; padding: 6px; }
+.local-games-section--compact .local-game-card__back > strong { font-size: .92rem; }
+.local-games-section--compact .local-game-card__back p { font-size: .62rem; line-height: 1.05; }
 .local-games-section--compact .local-game-card__terms,
-.local-games-section--compact .local-game-card__confirmation>div {
-  gap: 4px;
-}
-
+.local-games-section--compact .local-game-card__confirmation > div { gap: 4px; }
 .local-games-section--compact .local-game-card__terms button,
 .local-games-section--compact .local-game-card__confirmation button,
 .local-games-section--compact .local-game-card__back-action {
@@ -417,7 +228,6 @@
   border-radius: 7px;
   font-size: .62rem;
 }
-
 .local-games-section--compact .local-game-card__library-actions a,
 .local-games-section--compact .local-game-card__library-actions button {
   min-height: 28px;
@@ -425,41 +235,19 @@
   border-radius: 8px;
   font-size: .66rem;
 }
-
-.local-games-section--compact .local-game-card__front .local-game-card__time {
-  padding: 3px 6px;
-  font-size: .62rem;
-}
-
-.local-games-section--compact .local-game-card__time svg {
-  width: 12px;
-  height: 12px;
-}
-
-.local-games-section--compact .local-game-card__confirmation {
-  gap: 3px;
-}
-
-.local-games-section--compact .local-game-card__message {
-  min-height: .8em;
-  font-size: .62rem;
-}
+.local-games-section--compact .local-game-card__front .local-game-card__time { padding: 3px 6px; font-size: .62rem; }
+.local-games-section--compact .local-game-card__time svg { width: 12px; height: 12px; }
+.local-games-section--compact .local-game-card__confirmation { gap: 3px; }
+.local-games-section--compact .local-game-card__message { min-height: .8em; font-size: .62rem; }
 
 @media (min-width: 700px) {
-  .local-carousel__button {
-    width: 44px;
-  }
-
-  .local-carousel__track {
-    gap: clamp(20px, 1.25vw, 24px);
-  }
-
+  .local-carousel__button { width: 44px; }
+  .local-carousel__track { gap: clamp(20px, 1.25vw, 24px); }
   .local-games-section--compact .local-game-card {
     flex-basis: clamp(235px, 15.3vw, 245px);
     height: auto;
     aspect-ratio: 220 / 127;
   }
-
   .local-games-section--large .local-game-card {
     flex-basis: clamp(340px, 24vw, 380px);
     height: 180px;
@@ -467,10 +255,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .local-carousel__track.is-moving,
   .local-game-card__inner,
-  .local-carousel__button {
-    transition: none;
-  }
+  .local-carousel__button { transition: none; }
 }

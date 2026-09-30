@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="es">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,216 +7,124 @@
   <link rel="icon" type="image/png" href="../assets/logo-juegos-online.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css?v=20260927">
   <link rel="stylesheet" href="../css/footer.css?v=20260927">
   <link rel="stylesheet" href="../css/header.css?v=20260928-2">
-  <link rel="stylesheet" href="../css/auth.css?v=20260927">
+  <link rel="stylesheet" href="../css/auth.css?v=20260930">
 </head>
-
 <body class="auth-page">
-  <header class="site-header">
+<header class="site-header">
     <div class="site-header__left">
-      <button class="site-header__menu-button" type="button" aria-label="Abrir menú" aria-expanded="false"
-        aria-controls="site-menu"><svg viewBox="0 0 40 32" aria-hidden="true">
-          <path d="M2 5h31M2 15h31M2 25h31" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
-          <path class="site-header__arrow-right" d="M32 10 40 15 32 20Z" fill="currentColor" />
-          <path class="site-header__arrow-left" d="M40 10 32 15 40 20Z" fill="currentColor" />
-        </svg></button>
-      <a class="site-header__logo" href="../index.html" aria-label="JuegosOnline, volver al inicio"><img
-          src="../assets/logo-juegos-online.png" alt=""></a>
+      <button class="site-header__menu-button" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu"><svg viewBox="0 0 40 32" aria-hidden="true"><path d="M2 5h31M2 15h31M2 25h31" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/><path class="site-header__arrow-right" d="M32 10 40 15 32 20Z" fill="currentColor"/><path class="site-header__arrow-left" d="M40 10 32 15 40 20Z" fill="currentColor"/></svg></button>
+      <a class="site-header__logo" href="../index.html" aria-label="JuegosOnline, volver al inicio"><img src="../assets/logo-juegos-online.png" alt=""></a>
     </div>
-    <div class="site-header__balance"><svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="m12 1 2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6z" fill="currentColor" />
-      </svg><strong>10 coins</strong><a href="../index.html#reward">Recargar</a></div>
-    <div class="site-header__profile-wrap"><button class="site-header__profile" type="button" aria-label="Abrir perfil"
-        aria-expanded="false" aria-controls="profile-menu"><svg viewBox="0 0 32 32" aria-hidden="true">
-          <circle cx="16" cy="9" r="6" fill="currentColor" />
-          <path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor" />
-        </svg></button>
-      <div class="profile-menu" id="profile-menu" aria-label="Panel de perfil" hidden></div>
-    </div>
+    <div class="site-header__balance"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 1 2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6z" fill="currentColor"/></svg><strong>10 coins</strong><a href="../index.html#reward">Recargar</a></div>
+    <div class="site-header__profile-wrap"><button class="site-header__profile" type="button" aria-label="Abrir perfil" aria-expanded="false" aria-controls="profile-menu"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="9" r="6" fill="currentColor"/><path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor"/></svg></button><div class="profile-menu" id="profile-menu" aria-label="Panel de perfil" hidden></div></div>
     <nav class="site-menu" id="site-menu" aria-label="Menú principal" hidden>
-      <a href="../index.html"><svg viewBox="0 0 20 20" aria-hidden="true">
-          <path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8" />
-        </svg><span>Inicio</span></a>
-      <a href="../index.html#novedades"><svg viewBox="0 0 20 20" aria-hidden="true">
-          <path d="M17 6V2m0 0h-4m4 0-3 3M10 3a7 7 0 1 0 7 7M10 6v4l3 2" />
-        </svg><span>Novedades</span></a>
-      <a href="../index.html#popular"><svg class="site-menu__fire" viewBox="0 0 20 20" aria-hidden="true">
-          <path d="M10 2c1 3-1 4 1 6 1-1 2-2 2-4 4 4 5 8 3 11a6 6 0 0 1-12-1c0-3 2-5 4-7 0 3 0 4 1 5 2-2 1-6 1-10z" />
-        </svg><span>Populares</span></a>
+      <a href="../index.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8"/></svg><span>Inicio</span></a>
+      <a href="../index.html#novedades"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M17 6V2m0 0h-4m4 0-3 3M10 3a7 7 0 1 0 7 7M10 6v4l3 2"/></svg><span>Novedades</span></a>
+      <a href="../index.html#popular"><svg class="site-menu__fire" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2c1 3-1 4 1 6 1-1 2-2 2-4 4 4 5 8 3 11a6 6 0 0 1-12-1c0-3 2-5 4-7 0 3 0 4 1 5 2-2 1-6 1-10z"/></svg><span>Populares</span></a>
       <div class="site-menu__divider"></div>
-      <button class="site-menu__categories" type="button" aria-expanded="false"
-        aria-controls="site-categories"><span>Categorías</span><svg viewBox="0 0 12 12" aria-hidden="true">
-          <path d="m8 1-5 5 5 5" />
-        </svg></button>
+      <button class="site-menu__categories" type="button" aria-expanded="false" aria-controls="site-categories"><span>Categorías</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="m8 1-5 5 5 5"/></svg></button>
       <div class="site-menu__sublist" id="site-categories" hidden>
-        <a href="../index.html#game-multiplayer"><svg class="site-menu__category-icon" viewBox="0 0 24 24"
-            aria-hidden="true">
-            <circle cx="9" cy="7" r="3" />
-            <circle cx="17.5" cy="8" r="2.5" />
-            <path d="M2 21v-2.5a6 6 0 0 1 12 0V21zm12.5 0v-2a5 5 0 0 0-2-4 5 5 0 0 1 9.5 3v3z" />
-          </svg><span>Multijugador</span></a>
-        <a href="../index.html#game-action"><svg class="site-menu__category-icon site-menu__category-icon--swords"
-            viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M3 3l13 13m5-13L8 16M3 3l5 1-4 4zm18 0-5 1 4 4zM8 16l-5 5m13-5 5 5M5 15l4 4m6 0 4-4" />
-          </svg><span>Pelea</span></a>
-        <a href="../index.html#popular"><svg class="site-menu__category-icon site-menu__category-icon--fire"
-            viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M12 1c1.5 4-1 5 1 8 1.4-1 2-2.4 2-4 5 5 6 10 3.4 14a7 7 0 0 1-12.8-1c-1-3.4 1-6 3.4-9 0 3 .3 4 1.4 5 2-3 1.5-8 1.6-13z" />
-          </svg><span>Populares</span></a>
-        <a href="../index.html#game-adventure"><svg class="site-menu__category-icon" viewBox="0 0 24 24"
-            aria-hidden="true">
-            <path d="M3 1h2v22H3zM5 2h16l-3.5 5L21 12H5z" />
-          </svg><span>Aventura</span></a>
-        <a href="../index.html#game-classics"><svg class="site-menu__category-icon site-menu__category-icon--classic"
-            viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2a10 10 0 1 0 8.7 14.9L12 12l8.7-4.9A10 10 0 0 0 12 2z" />
-          </svg><span>Clásicos</span></a>
-        <a href="../index.html#game-minecraft"><svg class="site-menu__category-icon site-menu__category-icon--minecraft"
-            viewBox="0 0 24 24" aria-hidden="true">
-            <path class="site-menu__minecraft-face" d="M2 2h20v20H2z" />
-            <path class="site-menu__minecraft-detail"
-              d="M5 7h5v5H5zm9 0h5v5h-5zm-4 6h4v3h-4zm-3 3h3v4H7zm7 0h3v4h-3z" />
-          </svg><span>Minecraft</span></a>
+        <a href="../index.html#game-multiplayer"><svg class="site-menu__category-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3"/><circle cx="17.5" cy="8" r="2.5"/><path d="M2 21v-2.5a6 6 0 0 1 12 0V21zm12.5 0v-2a5 5 0 0 0-2-4 5 5 0 0 1 9.5 3v3z"/></svg><span>Multijugador</span></a>
+        <a href="../index.html#game-action"><svg class="site-menu__category-icon site-menu__category-icon--swords" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l13 13m5-13L8 16M3 3l5 1-4 4zm18 0-5 1 4 4zM8 16l-5 5m13-5 5 5M5 15l4 4m6 0 4-4"/></svg><span>Pelea</span></a>
+        <a href="../index.html#popular"><svg class="site-menu__category-icon site-menu__category-icon--fire" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c1.5 4-1 5 1 8 1.4-1 2-2.4 2-4 5 5 6 10 3.4 14a7 7 0 0 1-12.8-1c-1-3.4 1-6 3.4-9 0 3 .3 4 1.4 5 2-3 1.5-8 1.6-13z"/></svg><span>Populares</span></a>
+        <a href="../index.html#game-adventure"><svg class="site-menu__category-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 1h2v22H3zM5 2h16l-3.5 5L21 12H5z"/></svg><span>Aventura</span></a>
+        <a href="../index.html#game-classics"><svg class="site-menu__category-icon site-menu__category-icon--classic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 8.7 14.9L12 12l8.7-4.9A10 10 0 0 0 12 2z"/></svg><span>Clásicos</span></a>
+        <a href="../index.html#game-minecraft"><svg class="site-menu__category-icon site-menu__category-icon--minecraft" viewBox="0 0 24 24" aria-hidden="true"><path class="site-menu__minecraft-face" d="M2 2h20v20H2z"/><path class="site-menu__minecraft-detail" d="M5 7h5v5H5zm9 0h5v5h-5zm-4 6h4v3h-4zm-3 3h3v4H7zm7 0h3v4h-3z"/></svg><span>Minecraft</span></a>
       </div>
     </nav>
   </header>
-  <main class="auth-main">
-    <section class="auth-card auth-card--register" aria-labelledby="auth-title">
-      <div class="auth-card__brand"><img src="../assets/logo-juegos-online.png" alt=""></div>
-      <p class="auth-card__eyebrow">JuegosOnline · registro</p>
-      <h1 id="auth-title">Bienvenido</h1>
-      <p class="auth-card__lead">Completá el formulario para ver la experiencia de registro.</p>
-      <p class="auth-card__notice">Este registro es una demostración. No crea una cuenta; para ingresar usá el usuario
-        de prueba del login.</p>
-      <form id="register-form" class="auth-form" novalidate>
-        <div class="auth-field">
-          <label for="full-name">Nombre y apellido <small>(nombre completo)</small></label>
-          <input id="full-name" name="full-name" type="text" autocomplete="name" placeholder="Ej.: José García"
-            aria-describedby="full-name-error" required>
-          <small class="auth-error" id="full-name-error" aria-live="polite"></small>
-        </div>
-        <div class="auth-field">
-          <label for="nickname">NickName <small>(opcional)</small></label>
-          <input id="nickname" name="nickname" type="text" autocomplete="nickname"
-            placeholder="¿Cómo querés que te llamen?">
-        </div>
-        <div class="auth-field">
-          <label for="birth-date">Fecha de nacimiento <small>(debés ser mayor de 12)</small></label>
-          <input id="birth-date" name="birth-date" type="date" autocomplete="bday" aria-describedby="birth-date-error"
-            required>
-          <small class="auth-error" id="birth-date-error" aria-live="polite"></small>
-        </div>
-        <div class="auth-field">
-          <label for="email">Correo electrónico</label>
-          <input id="email" name="email" type="email" autocomplete="email" placeholder="Ej.: jose@correo.com"
-            aria-describedby="email-error" required>
-          <small class="auth-error" id="email-error" aria-live="polite"></small>
-        </div>
-        <div class="auth-field">
-          <label for="new-password">Contraseña <small>(mínimo 8 caracteres)</small></label>
-          <input id="new-password" name="new-password" type="password" autocomplete="new-password"
-            placeholder="Creá una contraseña" aria-describedby="new-password-error" required>
-          <small class="auth-error" id="new-password-error" aria-live="polite"></small>
-        </div>
-        <div class="auth-field">
-          <label for="confirm-password">Repetí la contraseña</label>
-          <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password"
-            placeholder="Repetí tu contraseña" aria-describedby="confirm-password-error" required>
-          <small class="auth-error" id="confirm-password-error" aria-live="polite"></small>
-        </div>
-
-               <div class="reCaptcha-enviar">
-            <label class="reCaptcha">
-                <div class="reCaptcha-contenido">
-                    <input type="checkbox" id="mi-checkbox">
-                    <div class="reCaptcha-boton"></div>
-                    <span class="reCaptcha-texto">No soy un robot</span>
-                </div>
-
-
-                <div class="recaptcha-logo-container">
-                    <img src="../svg/recaptcha.svg" alt="reCaptcha-logo" class="recaptcha-logo">
-                </div>
-            </label>
-       
-            
-        </div>
-        <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
-        <button class="auth-submit" type="submit">Crear cuenta de prueba</button>
-            <div class="inicio-redes">
-            <p class="p-o">o</p>
-
-            
-         <a href="../index.html" class="iniciar-session-app ">
-    <div class="app-logo-container">
-        <img src="../svg/facebook.svg" alt="Facebook" class="facebook-logo">
-    </div>
-    <p>Continuar con Facebook</p>
-</a>
-
-
-
-            <a href="../index.html" class="iniciar-session-app ">
-    <div class="app-logo-container">
-        <img src="../svg/google.svg" alt="google" class="google-logo">
-    </div>
-    <p>Continuar con Google</p>
-</a>
-
-        </div>
-      </form>
-      <div class="auth-success" id="register-success" role="status" aria-live="polite" hidden>
-        <span class="auth-success__icon" aria-hidden="true">✓</span>
-        <h2>¡Registro completado!</h2>
-        <p>Esta fue una demostración: no se creó ninguna cuenta.</p>
-        <a href="login.html">Ir al login de prueba</a>
+<main class="auth-main">
+  <section class="auth-card auth-card--register" aria-labelledby="auth-title">
+    <div class="auth-card__brand"><img src="../assets/logo-juegos-online.png" alt=""></div>
+    <p class="auth-card__eyebrow">JuegosOnline · registro</p>
+    <h1 id="auth-title">Bienvenido</h1>
+    <p class="auth-card__lead">Completá el formulario para ver la experiencia de registro.</p>
+    <p class="auth-card__notice">Este registro es una demostración. No crea una cuenta; para ingresar usá el usuario de prueba del login.</p>
+    <form id="register-form" class="auth-form" novalidate>
+      <div class="auth-field">
+        <label for="full-name">Nombre y apellido <small>(nombre completo)</small></label>
+        <input id="full-name" name="full-name" type="text" autocomplete="name" placeholder="Ej.: José García" aria-describedby="full-name-error" required>
+        <small class="auth-error" id="full-name-error" aria-live="polite"></small>
       </div>
-      <p class="auth-card__switch">¿Ya tenés cuenta? <a href="login.html">Iniciá sesión</a></p>
-    </section>
-  </main>
-  <footer class="site-footer">
+      <div class="auth-field">
+        <label for="nickname">NickName <small>(opcional)</small></label>
+        <input id="nickname" name="nickname" type="text" autocomplete="nickname" placeholder="¿Cómo querés que te llamen?">
+      </div>
+      <div class="auth-field">
+        <label for="birth-date">Fecha de nacimiento <small>(debés ser mayor de 12)</small></label>
+        <input id="birth-date" name="birth-date" type="date" autocomplete="bday" aria-describedby="birth-date-error" required>
+        <small class="auth-error" id="birth-date-error" aria-live="polite"></small>
+      </div>
+      <div class="auth-field">
+        <label for="email">Correo electrónico</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="Ej.: jose@correo.com" aria-describedby="email-error" required>
+        <small class="auth-error" id="email-error" aria-live="polite"></small>
+      </div>
+      <div class="auth-field">
+        <label for="new-password">Contraseña <small>(mínimo 8 caracteres)</small></label>
+        <input id="new-password" name="new-password" type="password" autocomplete="new-password" placeholder="Creá una contraseña" aria-describedby="new-password-error" required>
+        <small class="auth-error" id="new-password-error" aria-live="polite"></small>
+      </div>
+      <div class="auth-field">
+        <label for="confirm-password">Repetí la contraseña</label>
+        <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password" placeholder="Repetí tu contraseña" aria-describedby="confirm-password-error" required>
+        <small class="auth-error" id="confirm-password-error" aria-live="polite"></small>
+      </div>
+      <div class="reCaptcha-enviar">
+        <label class="reCaptcha">
+          <span class="reCaptcha-contenido">
+            <input type="checkbox" id="register-recaptcha">
+            <span class="reCaptcha-boton" aria-hidden="true"></span>
+            <span class="reCaptcha-texto">No soy un robot</span>
+          </span>
+          <span class="recaptcha-logo-container">
+            <img src="../svg/recaptcha.svg" alt="" class="recaptcha-logo">
+          </span>
+        </label>
+      </div>
+      <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
+      <button class="auth-submit" type="submit">Crear cuenta de prueba</button>
+      <div class="inicio-redes">
+        <p class="p-o">o</p>
+        <a href="../index.html" class="iniciar-session-app">
+          <span class="app-logo-container"><img src="../svg/facebook.svg" alt="" class="facebook-logo"></span>
+          <span>Continuar con Facebook</span>
+        </a>
+        <a href="../index.html" class="iniciar-session-app">
+          <span class="app-logo-container"><img src="../svg/google.svg" alt="" class="google-logo"></span>
+          <span>Continuar con Google</span>
+        </a>
+      </div>
+    </form>
+    <div class="auth-success" id="register-success" role="status" aria-live="polite" hidden>
+      <span class="auth-success__icon" aria-hidden="true">✓</span>
+      <h2>¡Registro completado!</h2>
+      <p>Esta fue una demostración: no se creó ninguna cuenta.</p>
+      <a href="login.html">Ir al login de prueba</a>
+    </div>
+    <p class="auth-card__switch">¿Ya tenés cuenta? <a href="login.html">Iniciá sesión</a></p>
+  </section>
+</main>
+<footer class="site-footer">
     <div class="site-footer__content">
-      <a class="site-footer__brand" href="../index.html" aria-label="JuegosOnline, inicio"><img
-          src="../assets/logo-juegos-online.png" alt=""><span>Juegos<em>Online</em></span></a>
+      <a class="site-footer__brand" href="../index.html" aria-label="JuegosOnline, inicio"><img src="../assets/logo-juegos-online.png" alt=""><span>Juegos<em>Online</em></span></a>
       <div class="site-footer__navigation">
         <div class="site-footer__columns">
-          <section class="site-footer__column">
-            <h2>Empresa:</h2><a href="../index.html#">Quiénes somos</a><a href="../index.html#">Accesibilidad</a><a
-              href="../index.html#">Sponsors</a><a href="../index.html#">Términos</a>
-          </section>
-          <section class="site-footer__column">
-            <h2>Comunidad:</h2><a href="../index.html#">Foros</a><a href="../index.html#">Eventos</a><a
-              href="../index.html#">Desarrolladores</a><a href="../index.html#">Open Source</a>
-          </section>
-          <section class="site-footer__column site-footer__social">
-            <h2>Nuestras redes</h2><a href="../index.html#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"
-                aria-hidden="true"></i></a><a href="../index.html#" aria-label="TikTok"><i class="fa-brands fa-tiktok"
-                aria-hidden="true"></i></a><a href="../index.html#" aria-label="Instagram"><i
-                class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="../index.html#"
-              aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
-          </section>
-          <section class="site-footer__column">
-            <h2>Legal y privacidad:</h2><a href="../index.html#">Política de privacidad</a><a
-              href="../index.html#">Términos y condiciones</a><a href="../index.html#">Cookies</a><a
-              href="../index.html#">Seguridad</a>
-          </section>
-          <section class="site-footer__column">
-            <h2>Recursos:</h2><a href="../index.html#">Centro de ayuda</a><a href="../index.html#">Tutoriales</a><a
-              href="../index.html#">Blog</a><a href="../index.html#">Guias</a><a href="../index.html#">Documentacion</a>
-          </section>
+          <section class="site-footer__column"><h2>Empresa:</h2><a href="../index.html#">Quiénes somos</a><a href="../index.html#">Accesibilidad</a><a href="../index.html#">Sponsors</a><a href="../index.html#">Términos</a></section>
+          <section class="site-footer__column"><h2>Comunidad:</h2><a href="../index.html#">Foros</a><a href="../index.html#">Eventos</a><a href="../index.html#">Desarrolladores</a><a href="../index.html#">Open Source</a></section>
+          <section class="site-footer__column site-footer__social"><h2>Nuestras redes</h2><a href="../index.html#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="../index.html#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a><a href="../index.html#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="../index.html#" aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a></section>
+          <section class="site-footer__column"><h2>Legal y privacidad:</h2><a href="../index.html#">Política de privacidad</a><a href="../index.html#">Términos y condiciones</a><a href="../index.html#">Cookies</a><a href="../index.html#">Seguridad</a></section>
+          <section class="site-footer__column"><h2>Recursos:</h2><a href="../index.html#">Centro de ayuda</a><a href="../index.html#">Tutoriales</a><a href="../index.html#">Blog</a><a href="../index.html#">Guias</a><a href="../index.html#">Documentacion</a></section>
         </div>
         <div class="site-footer__legal">Legal © 2026 Todos los derechos reservados.</div>
       </div>
     </div>
   </footer>
-  <script src="../js/profile-menu.js?v=20260928"></script>
-  <script src="../js/auth.js?v=20260928"></script>
+<script src="../js/profile-menu.js?v=20260928"></script>
+<script src="../js/auth.js?v=20260928"></script>
 </body>
-
 </html>

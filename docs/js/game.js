@@ -43,6 +43,7 @@ const classicObserver = new IntersectionObserver(entries => {
 }, { root: classicsTrack, threshold: .45 });
 classicCards.forEach(card => classicObserver.observe(card));
 
+// Desliza y revela cards; cambia .45s y 500 para el tiempo.
 document.querySelectorAll('.classics__arrow').forEach(button => button.addEventListener('click', () => {
   const direction = button.classList.contains('classics__arrow--next') ? 1 : -1;
   const step = classicCards[0].getBoundingClientRect().width + 24;

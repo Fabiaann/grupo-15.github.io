@@ -67,6 +67,7 @@ if (loginForm) {
     message.textContent = '¡Acceso correcto! Entrando al Home…';
     message.classList.add('is-success');
     loginForm.querySelector('button[type="submit"]').disabled = true;
+    // Deja ver el exito; cambia 950 para la espera.
     window.setTimeout(() => { window.location.href = '../index.html'; }, 950);
   });
 }
