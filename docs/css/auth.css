@@ -53,6 +53,7 @@
   margin: 0;
   font: 800 clamp(2.2rem, 8vw, 3rem)/1 'Barlow Condensed', sans-serif;
   text-transform: uppercase;
+  margin-bottom: 40px;
 }
 
 .auth-card__lead {
@@ -380,11 +381,10 @@
     gap: 16px;
     width: 324px;
     height: 70px;
-
     padding: 8px 16px 8px 24px; 
     background-color: #F9F9F9;
     border: #747775 3px solid;
-    border-radius: 30.5px;
+    border-radius: 30px;
     text-decoration: none;
     box-sizing: border-box; 
 }
