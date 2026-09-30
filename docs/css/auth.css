@@ -357,82 +357,70 @@
 
 }
 
-.iniciar-session-app{
 
+.inicio-redes {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15px;
+    gap: 6px;
+}
+
+.inicio-redes p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: black;
+}  
+
+.iniciar-session-app {
     display: flex;
     flex-direction: row;
     align-items: center; 
-    text-align: center;
     gap: 16px;
     width: 324px;
     height: 48px;
-    padding: 8px;
-    background-color: #0f2a30;
-    border-radius: 30.5px;
-    justify-content: center;
+
+    padding: 8px 16px 8px 24px; 
     background-color: #F9F9F9;
     border: #747775 3px solid;
+    border-radius: 30.5px;
+    text-decoration: none;
+    box-sizing: border-box; 
 }
 
-.iniciar-session-app > p{
+.iniciar-session-app:hover {
+    border: 4px #464847 solid;
+    user-select: none;
+    cursor: pointer;
+}
 
-    width: auto;
-    height: 48px; 
+
+.iniciar-session-app > p {
     font-size: 16px;
     font-weight: 500;
-    display: flex;
-    align-items: center;
-   
+    color: #000000;
+    margin: 0;
 }
 
 
-
-.iniciar-session-app:hover{
-    border: 4px  #464847  solid;
-    height: 52px;
-    width: 328px;
-     user-select:none;
-     cursor:pointer;
-}
-.app-logo-container{
+.app-logo-container {
     width: 32px;
     height: 32px;
     display: flex;
-    align-items:center;
-    justify-content:space-between;
-    
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
-.facebook-logo{
+
+.facebook-logo,
+.google-logo {
     width: 35px;
     height: 35px;
     max-width: 35px;
     max-height: 35px;
     background-color: #F9F9F9;
-    
-}
-.google-logo{
-    width: 32px;
-    height: 32px;
-    max-width: 32px;
-    max-height: 32px;
-    background-color: #F9F9F9;
-}
-
-
-.inicio-redes{
-display: flex;
-flex-direction: column;
-gap: 6px;
-align-items: center;
-margin-top: 15px;
-
-}
-.inicio-redes p {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 20px;
-    color: black;
-   
 }
 .p-o{
     margin-top: 20px;
