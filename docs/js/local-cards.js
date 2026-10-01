@@ -7,16 +7,25 @@
         ['Counter-Strike 2', 'counter-strike.jpg', '10 días'], ['God of War', 'god-of-war.jpg', '4 días'],
         ['Grand Theft Auto V', 'gta-v.jpg', '1 día'], ['Portal 2', 'portal-2.jpg', '4 h'],
         ['Hollow Knight', 'hollow-knight.jpg', '30 min'], ['Rocket League', 'rocket-league.jpg', '10 min'],
+        ['Stardew Valley', 'stardew-valley.jpg', '5 min'],  ['Grand Theft Auto V', 'gta-v.jpg', '1 día'], ['Portal 2', 'portal-2.jpg', '4 h'],
+        ['Hollow Knight', 'hollow-knight.jpg', '30 min'], ['Rocket League', 'rocket-league.jpg', '10 min'],
         ['Stardew Valley', 'stardew-valley.jpg', '5 min']]
     },
     {
       id: 'popular', title: 'Más jugados', variant: 'large', games: [
         ['Grand Theft Auto V', 'gta-v.jpg'], ['Cyberpunk 2077', 'cyberpunk-2077.jpg'],
         ['Horizon Zero Dawn', 'horizon-zero-dawn.jpg'], ['Destiny 2', 'destiny-2.jpg'],
-        ['BioShock Infinite', 'bioshock-infinite.jpg']]
+        ['BioShock Infinite', 'bioshock-infinite.jpg'],
+        ['Grand Theft Auto V', 'gta-v.jpg'], ['Cyberpunk 2077', 'cyberpunk-2077.jpg'],
+        ['Horizon Zero Dawn', 'horizon-zero-dawn.jpg'], ['Destiny 2', 'destiny-2.jpg'],
+        ['BioShock Infinite', 'bioshock-infinite.jpg'],
+      ]
     },
     {
       id: 'novedades', title: 'Creemos que te puede gustar', variant: 'compact', games: [
+        ['Life is Strange', 'life-is-strange.jpg'], ['Rise of the Tomb Raider', 'rise-of-the-tomb-raider.jpg'],
+        ['Portal 2', 'portal-2.jpg'], ['Portal', 'portal.jpg'], ['Half-Life 2', 'half-life-2.jpg'],
+        ['BioShock', 'bioshock.jpg'], ['Alan Wake', 'alan-wake.jpg'],
         ['Life is Strange', 'life-is-strange.jpg'], ['Rise of the Tomb Raider', 'rise-of-the-tomb-raider.jpg'],
         ['Portal 2', 'portal-2.jpg'], ['Portal', 'portal.jpg'], ['Half-Life 2', 'half-life-2.jpg'],
         ['BioShock', 'bioshock.jpg'], ['Alan Wake', 'alan-wake.jpg']]
@@ -25,7 +34,11 @@
       id: 'game-survival', title: 'Juegos Survival', variant: 'compact', games: [
         ['Terraria', 'terraria.jpg'], ['Stardew Valley', 'stardew-valley.jpg'], ["Garry's Mod", 'garrys-mod.jpg'],
         ['Path of Exile', 'path-of-exile.jpg'], ['Warframe', 'warframe.jpg'],
-        ['Hollow Knight', 'hollow-knight.jpg'], ['The Walking Dead', 'walking-dead.jpg']]
+        ['Hollow Knight', 'hollow-knight.jpg'], ['The Walking Dead', 'walking-dead.jpg'],
+         ['Terraria', 'terraria.jpg'], ['Stardew Valley', 'stardew-valley.jpg'], ["Garry's Mod", 'garrys-mod.jpg'],
+        ['Path of Exile', 'path-of-exile.jpg'], ['Warframe', 'warframe.jpg'],
+        ['Hollow Knight', 'hollow-knight.jpg'], ['The Walking Dead', 'walking-dead.jpg'],
+      ]
     }
   ].map((group) => ({ ...group, games: group.games.map(([title, image, remainingTime]) => ({ title, image: `img/${image}`, remainingTime })) }));
 
@@ -40,7 +53,7 @@
   function setCarouselCardActive(card, active) {
     const carousel = card.closest('.local-carousel');
     if (!carousel) return;
-    if (active) carousel.classList.add('has-active-card');
+    if (active) carousel.classList.add('has-active-vcard');
     else if (!carousel.querySelector('.local-game-card.is-pinned, .local-game-card:hover, .local-game-card:focus-within')) carousel.classList.remove('has-active-card');
   }
 
@@ -184,29 +197,194 @@
     const pinned = document.querySelector('.local-game-card.is-pinned');
     if (pinned && !pinned.contains(event.target)) closeCard(pinned);
   });
-  document.addEventListener('close-game-overlays', () => closePinnedCards());
 
-  document.querySelectorAll('[data-local-carousel]').forEach((carousel) => {
-    const track = carousel.querySelector('.local-carousel__track');
-    const previous = carousel.querySelector('.local-carousel__button--previous');
-    const next = carousel.querySelector('.local-carousel__button--next');
-    let moving = false;
-    const stepSize = () => track.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 0);
-    function finish() { moving = false; previous.disabled = false; next.disabled = false; track.classList.remove('is-moving'); }
-    function move(direction) {
-      if (moving || track.children.length < 2) return;
-      moving = true; previous.disabled = true; next.disabled = true; closePinnedCards();
-      const step = stepSize();
-      if (reducedMotion.matches) { direction > 0 ? track.append(track.firstElementChild) : track.prepend(track.lastElementChild); finish(); return; }
-      track.classList.add('is-moving');
-      if (direction > 0) {
-        const done = (event) => { if (event.target !== track || event.propertyName !== 'transform') return; track.removeEventListener('transitionend', done); track.classList.remove('is-moving'); track.append(track.firstElementChild); track.style.transform = 'translateX(0)'; finish(); };
-        track.addEventListener('transitionend', done); track.style.transform = `translateX(-${step}px)`;
-      } else {
-        const done = (event) => { if (event.target !== track || event.propertyName !== 'transform') return; track.removeEventListener('transitionend', done); finish(); };
-        track.classList.remove('is-moving'); track.prepend(track.lastElementChild); track.style.transform = `translateX(-${step}px)`; track.getBoundingClientRect(); track.addEventListener('transitionend', done); track.classList.add('is-moving'); track.style.transform = 'translateX(0)';
-      }
-    }
-    previous.addEventListener('click', () => move(-1)); next.addEventListener('click', () => move(1));
-  });
+
+  //Implementacion del movimeinto del carruse aaa
+
+
+
+// Implementacion del movimiento del carrusel
+
+const carruseles = document.querySelectorAll('.local-games-section--compact');
+
+
+carruseles.forEach(carrusel => {
+
+    const contenedor = carrusel.querySelector('.local-carousel__track');
+
+    const btnDerecha = carrusel.querySelector('.local-carousel__button--next');
+
+    const btnIzquierda = carrusel.querySelector('.local-carousel__button--previous');
+
+
+    // MOVER HACIA LA IZQUIERDA
+
+    btnIzquierda.addEventListener('click', () => {
+
+        const juegos = contenedor.querySelectorAll('.local-game-card');
+
+
+        juegos.forEach(juego => {
+
+            juego.classList.add('animar');
+
+        });
+
+
+        setTimeout(() => {
+
+            const primerJuego = contenedor.querySelector('.local-game-card');
+
+            contenedor.appendChild(primerJuego);
+
+
+            juegos.forEach(juego => {
+
+                juego.classList.remove('animar');
+
+            });
+
+        }, 1900);
+
+    });
+
+
+    // MOVER HACIA LA DERECHA
+
+    btnDerecha.addEventListener('click', () => {
+
+        const juegos = contenedor.querySelectorAll('.local-game-card');
+
+        const ultimoJuego = juegos[juegos.length - 1];
+
+
+        juegos.forEach(juego => {
+
+            if (juego !== ultimoJuego) {
+
+                juego.classList.add('animar-derecha');
+
+            }
+
+        });
+
+
+        setTimeout(() => {
+
+            contenedor.prepend(ultimoJuego);
+
+
+            juegos.forEach(juego => {
+
+                juego.classList.remove('animar-derecha');
+
+            });
+
+        }, 1900);
+
+    });
+
+});
+
+
+// Implementacion del movimiento del carrusel
+
+const carruselesGrandes = document.querySelectorAll('.local-games-section--large');
+
+
+carruselesGrandes.forEach(carrusel => {
+
+    const contenedor = carrusel.querySelector('.local-carousel__track');
+
+    const btnDerecha = carrusel.querySelector('.local-carousel__button--next');
+
+    const btnIzquierda = carrusel.querySelector('.local-carousel__button--previous');
+
+
+    // MOVER HACIA LA IZQUIERDA
+
+    btnIzquierda.addEventListener('click', () => {
+
+        const juegos = contenedor.querySelectorAll('.local-game-card');
+
+
+        juegos.forEach(juego => {
+
+            juego.classList.add('animar-grande');
+
+        });
+
+
+        setTimeout(() => {
+
+            const primerJuego = contenedor.querySelector('.local-game-card');
+
+            contenedor.appendChild(primerJuego);
+
+
+            juegos.forEach(juego => {
+
+                juego.classList.remove('animar-grande');
+
+            });
+
+        }, 1900);
+
+    });
+
+
+    // MOVER HACIA LA DERECHA
+
+    btnDerecha.addEventListener('click', () => {
+
+        const juegos = contenedor.querySelectorAll('.local-game-card');
+
+        const ultimoJuego = juegos[juegos.length - 1];
+
+
+        juegos.forEach(juego => {
+
+            if (juego !== ultimoJuego) {
+
+                juego.classList.add('animar-derecha-grande');
+
+            }
+
+        });
+
+
+        setTimeout(() => {
+
+            
+            contenedor.prepend(ultimoJuego);
+
+
+            juegos.forEach(juego => {
+
+                juego.classList.remove('animar-derecha-grande');
+
+            });
+
+        }, 1900);
+
+    });
+
+});
+
+
+
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+

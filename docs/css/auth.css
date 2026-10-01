@@ -147,7 +147,8 @@
 }
 
 .auth-field input:hover {
-  border-color: #9b60ef;
+  border: #9b60ef 3px solid;
+  
 }
 
 .auth-field input:focus {
