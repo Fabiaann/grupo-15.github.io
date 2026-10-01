@@ -168,3 +168,59 @@
   .card__inner,
   .card .card__play { transition-duration: 0s; }
 }
+
+/* Animacion del carrusel incorporada desde la rama remota. */
+.carrusel-scroll {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.mover-derecha,
+.mover-izquierda {
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 34px;
+  height: 41px;
+  border: 0;
+  color: #72f5d0;
+  background-color: #8d1420;
+  font-size: 42px;
+}
+.mover-derecha:hover,
+.mover-izquierda:hover { background-color: #0f2a30; }
+.mover-derecha {
+  right: 1px;
+  padding-left: 15px;
+  border-radius: 100px 0 0 100px;
+}
+.mover-izquierda {
+  left: 1px;
+  padding-left: 5px;
+  border-radius: 0 100px 100px 0;
+}
+
+.animar { animation: moverIzquierda 1.9s ease-in-out; }
+.animar-derecha { animation: moverDerecha 1.9s ease-in-out; }
+
+@keyframes moverIzquierda {
+  0% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(-177px) scale(.8); }
+  100% { transform: translateX(-354px) scale(1); }
+}
+
+@keyframes moverDerecha {
+  0% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(177px) scale(.8); }
+  100% { transform: translateX(354px) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animar,
+  .animar-derecha { animation: none; }
+}

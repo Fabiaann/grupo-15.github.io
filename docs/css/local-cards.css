@@ -259,3 +259,45 @@
   .local-game-card__inner,
   .local-carousel__button { transition: none; }
 }
+
+/* Movimiento por tarjeta aportado por el carrusel remoto. */
+.local-games-section--compact .local-game-card.animar {
+  animation: moverIzquierda 1.9s ease-in-out;
+}
+.local-games-section--compact .local-game-card.animar-derecha {
+  animation: moverDerecha 1.9s ease-in-out;
+}
+.local-games-section--large .local-game-card.animar-grande {
+  animation: moverIzquierdaGrande 1.9s ease-in-out;
+}
+.local-games-section--large .local-game-card.animar-derecha-grande {
+  animation: moverDerechaGrande 1.9s ease-in-out;
+}
+
+@keyframes moverIzquierda {
+  0% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(-132px) scale(.8); }
+  100% { transform: translateX(-265px) scale(1); }
+}
+@keyframes moverDerecha {
+  0% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(132px) scale(.8); }
+  100% { transform: translateX(265px) scale(1); }
+}
+@keyframes moverIzquierdaGrande {
+  0% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(-200px) scale(.8); }
+  100% { transform: translateX(-400px) scale(1); }
+}
+@keyframes moverDerechaGrande {
+  0% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(200px) scale(.8); }
+  100% { transform: translateX(400px) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .local-game-card.animar,
+  .local-game-card.animar-derecha,
+  .local-game-card.animar-grande,
+  .local-game-card.animar-derecha-grande { animation: none; }
+}

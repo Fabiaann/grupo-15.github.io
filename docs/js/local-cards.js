@@ -6,16 +6,26 @@
       ['Counter-Strike 2', 'counter-strike.jpg', '10 días'], ['God of War', 'god-of-war.jpg', '4 días'],
       ['Grand Theft Auto V', 'gta-v.jpg', '1 día'], ['Portal 2', 'portal-2.jpg', '4 h'],
       ['Hollow Knight', 'hollow-knight.jpg', '30 min'], ['Rocket League', 'rocket-league.jpg', '10 min'],
-      ['Stardew Valley', 'stardew-valley.jpg', '5 min'] ] },
+      ['Stardew Valley', 'stardew-valley.jpg', '5 min'], ['Grand Theft Auto V', 'gta-v.jpg', '1 día'],
+      ['Portal 2', 'portal-2.jpg', '4 h'], ['Hollow Knight', 'hollow-knight.jpg', '30 min'],
+      ['Rocket League', 'rocket-league.jpg', '10 min'], ['Stardew Valley', 'stardew-valley.jpg', '5 min'] ] },
     { id: 'popular', title: 'Más jugados', variant: 'large', games: [
       ['Grand Theft Auto V', 'gta-v.jpg'], ['Cyberpunk 2077', 'cyberpunk-2077.jpg'],
       ['Horizon Zero Dawn', 'horizon-zero-dawn.jpg'], ['Destiny 2', 'destiny-2.jpg'],
-      ['BioShock Infinite', 'bioshock-infinite.jpg'] ] },
+      ['BioShock Infinite', 'bioshock-infinite.jpg'], ['Grand Theft Auto V', 'gta-v.jpg'],
+      ['Cyberpunk 2077', 'cyberpunk-2077.jpg'], ['Horizon Zero Dawn', 'horizon-zero-dawn.jpg'],
+      ['Destiny 2', 'destiny-2.jpg'], ['BioShock Infinite', 'bioshock-infinite.jpg'] ] },
     { id: 'novedades', title: 'Creemos que te puede gustar', variant: 'compact', games: [
       ['Life is Strange', 'life-is-strange.jpg'], ['Rise of the Tomb Raider', 'rise-of-the-tomb-raider.jpg'],
       ['Portal 2', 'portal-2.jpg'], ['Portal', 'portal.jpg'], ['Half-Life 2', 'half-life-2.jpg'],
-      ['BioShock', 'bioshock.jpg'], ['Alan Wake', 'alan-wake.jpg'] ] },
+      ['BioShock', 'bioshock.jpg'], ['Alan Wake', 'alan-wake.jpg'], ['Life is Strange', 'life-is-strange.jpg'],
+      ['Rise of the Tomb Raider', 'rise-of-the-tomb-raider.jpg'], ['Portal 2', 'portal-2.jpg'],
+      ['Portal', 'portal.jpg'], ['Half-Life 2', 'half-life-2.jpg'], ['BioShock', 'bioshock.jpg'],
+      ['Alan Wake', 'alan-wake.jpg'] ] },
     { id: 'game-survival', title: 'Juegos Survival', variant: 'compact', games: [
+      ['Terraria', 'terraria.jpg'], ['Stardew Valley', 'stardew-valley.jpg'], ["Garry's Mod", 'garrys-mod.jpg'],
+      ['Path of Exile', 'path-of-exile.jpg'], ['Warframe', 'warframe.jpg'],
+      ['Hollow Knight', 'hollow-knight.jpg'], ['The Walking Dead', 'walking-dead.jpg'],
       ['Terraria', 'terraria.jpg'], ['Stardew Valley', 'stardew-valley.jpg'], ["Garry's Mod", 'garrys-mod.jpg'],
       ['Path of Exile', 'path-of-exile.jpg'], ['Warframe', 'warframe.jpg'],
       ['Hollow Knight', 'hollow-knight.jpg'], ['The Walking Dead', 'walking-dead.jpg'] ] }
@@ -182,24 +192,44 @@
     const track = carousel.querySelector('.local-carousel__track');
     const previous = carousel.querySelector('.local-carousel__button--previous');
     const next = carousel.querySelector('.local-carousel__button--next');
+    const isLarge = carousel.closest('.local-games-section--large');
+    const animationLeft = isLarge ? 'animar-grande' : 'animar';
+    const animationRight = isLarge ? 'animar-derecha-grande' : 'animar-derecha';
     let moving = false;
-    const stepSize = () => track.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 0);
-    function finish() { moving = false; previous.disabled = false; next.disabled = false; track.classList.remove('is-moving'); }
-    // Mueve el carrusel; cambia .58s en CSS para la velosidad.
+
+    function finish(cards, animationClass) {
+      cards.forEach((card) => card.classList.remove(animationClass));
+      moving = false;
+      previous.disabled = false;
+      next.disabled = false;
+    }
+
+    // Conserva la animación por tarjeta y evita que varios clics la desordenen.
     function move(direction) {
       if (moving || track.children.length < 2) return;
-      moving = true; previous.disabled = true; next.disabled = true; closePinnedCards();
-      const step = stepSize();
-      if (reducedMotion.matches) { direction > 0 ? track.append(track.firstElementChild) : track.prepend(track.lastElementChild); finish(); return; }
-      track.classList.add('is-moving');
-      if (direction > 0) {
-        const done = (event) => { if (event.target !== track || event.propertyName !== 'transform') return; track.removeEventListener('transitionend', done); track.classList.remove('is-moving'); track.append(track.firstElementChild); track.style.transform = 'translateX(0)'; finish(); };
-        track.addEventListener('transitionend', done); track.style.transform = `translateX(-${step}px)`;
-      } else {
-        const done = (event) => { if (event.target !== track || event.propertyName !== 'transform') return; track.removeEventListener('transitionend', done); finish(); };
-        track.classList.remove('is-moving'); track.prepend(track.lastElementChild); track.style.transform = `translateX(-${step}px)`; track.getBoundingClientRect(); track.addEventListener('transitionend', done); track.classList.add('is-moving'); track.style.transform = 'translateX(0)';
+      moving = true;
+      previous.disabled = true;
+      next.disabled = true;
+      closePinnedCards();
+
+      const cards = [...track.querySelectorAll('.local-game-card')];
+      const animationClass = direction < 0 ? animationLeft : animationRight;
+
+      if (reducedMotion.matches) {
+        direction < 0 ? track.append(cards[0]) : track.prepend(cards[cards.length - 1]);
+        finish(cards, animationClass);
+        return;
       }
+
+      const animatedCards = direction > 0 ? cards.slice(0, -1) : cards;
+      animatedCards.forEach((card) => card.classList.add(animationClass));
+      window.setTimeout(() => {
+        direction < 0 ? track.append(cards[0]) : track.prepend(cards[cards.length - 1]);
+        finish(cards, animationClass);
+      }, 1900);
     }
-    previous.addEventListener('click', () => move(-1)); next.addEventListener('click', () => move(1));
+
+    previous.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
   });
 })();
