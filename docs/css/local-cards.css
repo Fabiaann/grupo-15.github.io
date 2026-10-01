@@ -191,7 +191,7 @@
   outline-offset: 2px;
   box-shadow: 0 0 0 5px #0a315c;
 }
-.local-game-card__back-action { color: #fff; background: #b82956; }
+.local-game-card__back-action { color: #fff; background: #8d1420; }
 .local-game-card__extension {
   position: relative;
   z-index: 5;
@@ -208,7 +208,7 @@
 .local-game-card__prompt[hidden],
 .local-game-card__library-actions[hidden],
 .local-game-card__extension[hidden] { display: none; }
-.local-game-card__confirmation [data-cancel] { color: #fff; background: #b82956; }
+.local-game-card__confirmation [data-cancel] { color: #fff; background: #8d1420; }
 .local-game-card__confirmation [data-confirm] { color: #073b28; background: #54e194; }
 .local-game-card__message { min-height: 1.2em; color: var(--cyan); font-weight: 800; }
 

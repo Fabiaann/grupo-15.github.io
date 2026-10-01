@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Juegos Online"><title>JuegosOnline</title><link rel="icon" type="image/png" href="assets/logo-juegos-online.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Roboto:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><link rel="stylesheet" href="css/style.css?v=20260928-9"><link rel="stylesheet" href="css/footer.css?v=20260927"><link rel="stylesheet" href="css/header.css?v=20260928-2"><link rel="stylesheet" href="css/local-cards.css?v=20260930-7"><link rel="stylesheet" href="css/recharge.css?v=20260930-1"></head>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Juegos Online"><title>JuegosOnline</title><link rel="icon" type="image/png" href="assets/logo-juegos-online.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Bowlby+One+SC&family=Nunito:wght@400;600;700;800&family=Roboto:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><link rel="stylesheet" href="css/style.css?v=20260930-12"><link rel="stylesheet" href="css/footer.css?v=20260927"><link rel="stylesheet" href="css/header.css?v=20260930-5"><link rel="stylesheet" href="css/local-cards.css?v=20260930-8"><link rel="stylesheet" href="css/recharge.css?v=20260930-3"></head>
 <body>
   <div class="loader" id="loader" role="status" aria-live="off"><canvas id="canvas" width="500" height="350" aria-hidden="true"></canvas><strong>Preparando la partida</strong><span class="loader__progress" id="progress">0%</span></div>
   <header class="site-header">
@@ -7,7 +7,7 @@
       <button class="site-header__menu-button" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu"><svg viewBox="0 0 40 32" aria-hidden="true"><path d="M2 5h31M2 15h31M2 25h31" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/><path class="site-header__arrow-right" d="M32 10 40 15 32 20Z" fill="currentColor"/><path class="site-header__arrow-left" d="M40 10 32 15 40 20Z" fill="currentColor"/></svg></button>
       <a class="site-header__logo" href="index.html" aria-label="JuegosOnline, volver al inicio"><img src="assets/logo-juegos-online.png" alt=""></a>
     </div>
-    <div class="site-header__balance"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 1 2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6z" fill="currentColor"/></svg><strong>260 coins</strong><a href="#coin-recharge" data-open-recharge>Recargar</a></div>
+    <div class="site-header__balance"><span class="site-header__currency" aria-hidden="true">$</span><strong>260 coins</strong><a href="#coin-recharge" data-open-recharge aria-expanded="false" aria-controls="coin-recharge">Recargar</a></div>
     <div class="site-header__profile-wrap"><button class="site-header__profile" type="button" aria-label="Abrir perfil" aria-expanded="false" aria-controls="profile-menu"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="9" r="6" fill="currentColor"/><path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor"/></svg></button><div class="profile-menu" id="profile-menu" aria-label="Panel de perfil" hidden></div></div>
     <nav class="site-menu" id="site-menu" aria-label="Menú principal" hidden>
       <a href="index.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8"/></svg><span>Inicio</span></a>
@@ -59,22 +59,21 @@
       </div>
     </div>
   </footer>
-  <dialog class="coin-recharge-dialog" id="coin-recharge" aria-labelledby="coin-recharge-title">
+  <dialog class="coin-recharge-dialog" id="coin-recharge" aria-label="Recargar coins">
     <div class="coin-recharge-dialog__content">
-      <button class="coin-recharge-dialog__close" type="button" data-close-recharge aria-label="Cerrar recarga">×</button>
-      <h2 id="coin-recharge-title">Recargar coins</h2>
-      <p class="coin-recharge-dialog__lead">Elegí cuántas coins querés cargar y generá el QR.</p>
       <div data-recharge-form-view>
         <form novalidate>
-          <label for="recharge-amount">Cantidad de coins</label>
-          <input id="recharge-amount" name="amount" type="number" min="1" step="1" inputmode="numeric" aria-describedby="recharge-rate recharge-error" placeholder="10">
+          <label for="recharge-amount">Ingresá la cantidad<br>de coins</label>
+          <input id="recharge-amount" name="amount" type="number" min="1" step="1" inputmode="numeric" aria-describedby="recharge-rate recharge-error">
           <p class="coin-recharge-dialog__rate" id="recharge-rate">1 coin = 1.200 pesos</p>
-          <p class="coin-recharge-dialog__total">Total: <strong data-recharge-total>0 pesos</strong></p>
+          <p class="coin-recharge-dialog__total">Total a pagar <strong data-recharge-total>$ 0</strong></p>
           <p class="coin-recharge-dialog__error" id="recharge-error" data-recharge-error role="status"></p>
           <button type="submit" data-generate-qr disabled>Generar QR</button>
+          <button type="button" data-close-recharge>Cerrar</button>
         </form>
       </div>
       <div class="coin-recharge-dialog__qr" data-recharge-qr-view hidden>
+        <h2>Escaneá el QR</h2>
         <img src="assets/demo-qr.svg" alt="QR de demostración para recargar coins">
         <p class="coin-recharge-dialog__summary"><strong data-qr-coins></strong><span data-qr-total></span></p>
         <p class="coin-recharge-dialog__demo">Demostración: este QR no procesa pagos ni modifica tu saldo.</p>
@@ -82,5 +81,5 @@
       </div>
     </div>
   </dialog>
-  <script src="js/local-cards.js?v=20260930-4"></script><script src="js/profile-menu.js?v=20260930-1"></script><script src="js/recharge.js?v=20260930-1"></script><script src="js/main.js?v=20260928-9"></script>
+  <script src="js/local-cards.js?v=20260930-4"></script><script src="js/profile-menu.js?v=20260930-2"></script><script src="js/recharge.js?v=20260930-2"></script><script src="js/main.js?v=20260928-9"></script>
 </body></html>

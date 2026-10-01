@@ -6,19 +6,22 @@ const registerUrl = new URL('pages/register.html', homeUrl).href;
 const avatar = '<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="9" r="6" fill="currentColor"/><path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor"/></svg>';
 
 function renderProfile() {
-  const isRoot = sessionStorage.getItem('juegosonline-demo-user') === 'root';
-  const name = isRoot ? 'root' : 'Invitado';
-  const subtitle = isRoot ? 'root@juegosonline.com' : 'Ingresá para ver tu perfil';
+  const storedUser = sessionStorage.getItem('juegosonline-demo-user')?.trim();
+  const isLoggedIn = Boolean(storedUser);
+  const name = isLoggedIn ? storedUser : 'Invitado';
+  const subtitle = isLoggedIn ? 'Sesión de demostración' : 'Ingresá para ver tu perfil';
+  const safeName = document.createElement('span');
+  safeName.textContent = name;
 
   profilePanel.innerHTML = `
     <div class="profile-menu__identity">
       <div class="profile-menu__avatar">${avatar}</div>
       <div class="profile-menu__person">
-        <strong class="profile-menu__name">${name}</strong>
+        <strong class="profile-menu__name">${safeName.innerHTML}</strong>
         <span class="profile-menu__email">${subtitle}</span>
       </div>
     </div>
-    ${isRoot ? `
+    ${isLoggedIn ? `
       <div class="profile-menu__stats">
         <div class="profile-menu__coins">
           <span>Tus monedas</span>

@@ -62,12 +62,7 @@ if (loginForm) {
       return;
     }
 
-    if (username.value !== 'root' || password.value !== '1234') {
-      message.textContent = 'Usuario o contraseña incorrectos. Usá las credenciales de prueba indicadas arriba.';
-      return;
-    }
-
-    sessionStorage.setItem('juegosonline-demo-user', 'root');
+    sessionStorage.setItem('juegosonline-demo-user', username.value.trim());
     message.textContent = '¡Acceso correcto! Entrando al Home…';
     message.classList.add('is-success');
     loginForm.querySelector('button[type="submit"]').disabled = true;

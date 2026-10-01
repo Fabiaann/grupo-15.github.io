@@ -55,14 +55,15 @@
   gap: 8px;
   white-space: nowrap;
   color: #00e6d6;
-  font-family: 'Courier New', monospace;
+  font-family: 'Bowlby One SC', 'Arial Black', sans-serif;
   font-size: 24px;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: .07em;
 }
 
 .site-header__balance svg { width: 20px; height: 20px; flex: 0 0 20px; }
-.site-header__balance strong { font-weight: 900; }
+.site-header__currency { color: #00e6d6; font-size: 1.08em; font-weight: 400; line-height: 1; }
+.site-header__balance strong { font-weight: 400; }
 /* Sube recargar; cambia .2s o -2px. */
 .site-header__balance a {
   margin-left: 5px;
@@ -177,13 +178,13 @@
   padding: 5px 15px;
   border: 0;
   border-radius: 999px;
-  background: #a3274f;
+  background: #8d1420;
   color: #fff;
   font: 800 14px Nunito, Arial, sans-serif;
   cursor: pointer;
   transition: transform .2s, background-color .2s;
 }
-.profile-menu__logout:hover { transform: translateY(-2px); background: #c02f5f; }
+.profile-menu__logout:hover { transform: translateY(-2px); background: #8d1420; filter: brightness(1.12); }
 .profile-menu__welcome { margin: 0; font-size: 14px; line-height: 1.4; }
 .profile-menu__actions { display: flex; flex-wrap: wrap; gap: 9px; }
 .profile-menu__actions a:last-child { background: #8d3eea; color: #fff; }

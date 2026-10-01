@@ -10,7 +10,9 @@
   background-position:center,center 34%;
   background-size:cover;
 }
-.featured strong{bottom:12px;color:#fff;text-shadow:0 2px 7px #05091e,0 0 3px #05091e}
+.featured strong{bottom:0;padding:10px 12px 9px;background:linear-gradient(100deg,#0b4d86f2 0%,#071a31f5 55%,#02050bf7 100%);box-shadow:inset 0 1px #1596bd70;color:#fff;text-shadow:none}
+.featured b{background:rgb(0 253 232 / 65%);color:#000;transition:background-color .2s}
+.featured:hover b,.featured:focus-visible b{background:#00fde8;transform:translate(-50%,-50%);filter:none}
 .reward{min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px 20px}
 .reward small{font-size:.9rem}
 .reward span{font-size:1rem}
