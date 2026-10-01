@@ -24,6 +24,7 @@
   width: max-content;
   transform: translateX(0);
   will-change: transform;
+  transform: translateX(-400px);
 }
 /* Desliza el carrusel; cambia .58s para la velosidad. */
 .local-carousel__track.is-moving { transition: transform .58s ease-in-out; }
