@@ -232,7 +232,7 @@
   stroke-linejoin: round;
 }
 .site-menu > a .site-menu__fire { color: #ff172b; stroke-width: 1.7; }
-.site-menu__divider { width: 100%; height: 1px; margin: 5px 0 7px; background: #8b9aaf; }
+
 .site-menu__categories {
   margin: 0;
   padding: 3px 0 2px;
