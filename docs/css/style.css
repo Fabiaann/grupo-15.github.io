@@ -779,6 +779,25 @@ nav {
   transform: scale(1.03);
   background: #ffb42c
 }
+.reward__button:active {
+
+  background: #00000000;
+  box-shadow: none;
+}
+
+
+
+
+
+ /*CAMBIOSSSSSSS REGALO*/
+.reward.is-claimed .reward__button{
+  margin-top: 30px;
+  background-color: #00183500;
+  box-shadow: none;
+  border: none;
+
+}
+
 
 .reward__button:focus-visible {
   outline: 3px solid #fff;
@@ -796,7 +815,7 @@ nav {
 .reward:focus-within .reward__button-label,
 .reward.is-claimed .reward__button-label {
   opacity: 0;
-  transform: translateX(30px)
+  transform: translateX(30px);
 }
 
 .reward__gift {
@@ -813,9 +832,16 @@ nav {
 .reward:hover .reward__gift,
 .reward:focus-within .reward__gift,
 .reward.is-claimed .reward__gift {
-  transform: translate(-50%, -50%) translateX(0)
+
+  transform:  translate(-50%, -50%);
+  transition: transform .5s ease-in-out;
 }
 
+.reward.is-claimed .reward__gift{
+ transform:  scale(2) translate(-50%, -50%);
+
+
+}
 .reward__gift-box,
 .reward__gift-lid {
   position: absolute;
@@ -852,13 +878,20 @@ nav {
   bottom: -2px;
   left: 50%;
   width: 6px;
-  transform: translateX(-50%);
+  transform: translateX(-50%) ;
   background: #ffe574;
 }
 
 .reward.is-claimed .reward__gift-lid {
-  transform: translate(-50%, -12px) rotate(-28deg)
+  transform: translate(-50%, -12px) rotate(-28deg) scale(2)
 }
+
+
+.reward.is-claimed .reward__gift-box{
+  transform: scale(2) ;
+}
+
+
 
 .reward__coins {
   position: absolute;

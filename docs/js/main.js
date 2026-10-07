@@ -78,9 +78,16 @@ rewardButton.addEventListener('click', () => {
   rewardMessage.textContent = 'Recompensa obtenida';
   rewardButton.setAttribute('aria-label', 'Recompensa obtenida');
   rewardButton.setAttribute('aria-disabled', 'true');
-  if (!reducedRewardMotion.matches) releaseRewardCoins();
+ 
+  if (!reducedRewardMotion.matches){ releaseRewardCoins()
+    
+
+  };
 });
 
+if(rewardClaimed){
+   rewardButton.classList.add('.ocultar');
+}
 const loader = document.querySelector('#loader');
 const progress = document.querySelector('#progress');
 const canvas = document.querySelector('#canvas');

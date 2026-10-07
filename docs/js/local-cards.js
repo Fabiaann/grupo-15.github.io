@@ -2,33 +2,41 @@
   const DEMO_BALANCE = 260;
   const RENTAL_COSTS = { 1: 100, 2: 200, 3: 300 };
   const catalog = [
-    { id: 'library', title: 'Biblioteca', variant: 'compact', library: true, games: [
-      ['Counter-Strike 2', 'counter-strike.jpg', '10 días'], ['God of War', 'god-of-war.jpg', '4 días'],
-      ['Grand Theft Auto V', 'gta-v.jpg', '1 día'], ['Portal 2', 'portal-2.jpg', '4 h'],
-      ['Hollow Knight', 'hollow-knight.jpg', '30 min'], ['Rocket League', 'rocket-league.jpg', '10 min'],
-      ['Stardew Valley', 'stardew-valley.jpg', '5 min'], ['Grand Theft Auto V', 'gta-v.jpg', '1 día'],
-      ['Portal 2', 'portal-2.jpg', '4 h'], ['Hollow Knight', 'hollow-knight.jpg', '30 min'],
-      ['Rocket League', 'rocket-league.jpg', '10 min'], ['Stardew Valley', 'stardew-valley.jpg', '5 min'] ] },
-    { id: 'popular', title: 'Más jugados', variant: 'large', games: [
-      ['Grand Theft Auto V', 'gta-v.jpg'], ['Cyberpunk 2077', 'cyberpunk-2077.jpg'],
-      ['Horizon Zero Dawn', 'horizon-zero-dawn.jpg'], ['Destiny 2', 'destiny-2.jpg'],
-      ['BioShock Infinite', 'bioshock-infinite.jpg'], ['Grand Theft Auto V', 'gta-v.jpg'],
-      ['Cyberpunk 2077', 'cyberpunk-2077.jpg'], ['Horizon Zero Dawn', 'horizon-zero-dawn.jpg'],
-      ['Destiny 2', 'destiny-2.jpg'], ['BioShock Infinite', 'bioshock-infinite.jpg'] ] },
-    { id: 'novedades', title: 'Creemos que te puede gustar', variant: 'compact', games: [
-      ['Life is Strange', 'life-is-strange.jpg'], ['Rise of the Tomb Raider', 'rise-of-the-tomb-raider.jpg'],
-      ['Portal 2', 'portal-2.jpg'], ['Portal', 'portal.jpg'], ['Half-Life 2', 'half-life-2.jpg'],
-      ['BioShock', 'bioshock.jpg'], ['Alan Wake', 'alan-wake.jpg'], ['Life is Strange', 'life-is-strange.jpg'],
-      ['Rise of the Tomb Raider', 'rise-of-the-tomb-raider.jpg'], ['Portal 2', 'portal-2.jpg'],
-      ['Portal', 'portal.jpg'], ['Half-Life 2', 'half-life-2.jpg'], ['BioShock', 'bioshock.jpg'],
-      ['Alan Wake', 'alan-wake.jpg'] ] },
-    { id: 'game-survival', title: 'Juegos Survival', variant: 'compact', games: [
-      ['Terraria', 'terraria.jpg'], ['Stardew Valley', 'stardew-valley.jpg'], ["Garry's Mod", 'garrys-mod.jpg'],
-      ['Path of Exile', 'path-of-exile.jpg'], ['Warframe', 'warframe.jpg'],
-      ['Hollow Knight', 'hollow-knight.jpg'], ['The Walking Dead', 'walking-dead.jpg'],
-      ['Terraria', 'terraria.jpg'], ['Stardew Valley', 'stardew-valley.jpg'], ["Garry's Mod", 'garrys-mod.jpg'],
-      ['Path of Exile', 'path-of-exile.jpg'], ['Warframe', 'warframe.jpg'],
-      ['Hollow Knight', 'hollow-knight.jpg'], ['The Walking Dead', 'walking-dead.jpg'] ] }
+    {
+      id: 'library', title: 'Biblioteca', variant: 'compact', library: true, games: [
+        ['Counter-Strike 2', 'counter-strike.jpg', '10 días'], ['God of War', 'god-of-war.jpg', '4 días'],
+        ['Grand Theft Auto V', 'gta-v.jpg', '1 día'], ['Portal 2', 'portal-2.jpg', '4 h'],
+        ['Hollow Knight', 'hollow-knight.jpg', '30 min'], ['Rocket League', 'rocket-league.jpg', '10 min'],
+        ['Stardew Valley', 'stardew-valley.jpg', '5 min'], ['Grand Theft Auto V', 'gta-v.jpg', '1 día'],
+        ['Portal 2', 'portal-2.jpg', '4 h'], ['Hollow Knight', 'hollow-knight.jpg', '30 min'],
+        ['Rocket League', 'rocket-league.jpg', '10 min'], ['Stardew Valley', 'stardew-valley.jpg', '5 min']]
+    },
+    {
+      id: 'popular', title: 'Más jugados', variant: 'large', games: [
+        ['Grand Theft Auto V', 'gta-v.jpg'], ['Cyberpunk 2077', 'cyberpunk-2077.jpg'],
+        ['Horizon Zero Dawn', 'horizon-zero-dawn.jpg'], ['Destiny 2', 'destiny-2.jpg'],
+        ['BioShock Infinite', 'bioshock-infinite.jpg'], ['Grand Theft Auto V', 'gta-v.jpg'],
+        ['Cyberpunk 2077', 'cyberpunk-2077.jpg'], ['Horizon Zero Dawn', 'horizon-zero-dawn.jpg'],
+        ['Destiny 2', 'destiny-2.jpg'], ['BioShock Infinite', 'bioshock-infinite.jpg']]
+    },
+    {
+      id: 'novedades', title: 'Creemos que te puede gustar', variant: 'compact', games: [
+        ['Life is Strange', 'life-is-strange.jpg'], ['Rise of the Tomb Raider', 'rise-of-the-tomb-raider.jpg'],
+        ['Portal 2', 'portal-2.jpg'], ['Portal', 'portal.jpg'], ['Half-Life 2', 'half-life-2.jpg'],
+        ['BioShock', 'bioshock.jpg'], ['Alan Wake', 'alan-wake.jpg'], ['Life is Strange', 'life-is-strange.jpg'],
+        ['Rise of the Tomb Raider', 'rise-of-the-tomb-raider.jpg'], ['Portal 2', 'portal-2.jpg'],
+        ['Portal', 'portal.jpg'], ['Half-Life 2', 'half-life-2.jpg'], ['BioShock', 'bioshock.jpg'],
+        ['Alan Wake', 'alan-wake.jpg']]
+    },
+    {
+      id: 'game-survival', title: 'Juegos Survival', variant: 'compact', games: [
+        ['Terraria', 'terraria.jpg'], ['Stardew Valley', 'stardew-valley.jpg'], ["Garry's Mod", 'garrys-mod.jpg'],
+        ['Path of Exile', 'path-of-exile.jpg'], ['Warframe', 'warframe.jpg'],
+        ['Hollow Knight', 'hollow-knight.jpg'], ['The Walking Dead', 'walking-dead.jpg'],
+        ['Terraria', 'terraria.jpg'], ['Stardew Valley', 'stardew-valley.jpg'], ["Garry's Mod", 'garrys-mod.jpg'],
+        ['Path of Exile', 'path-of-exile.jpg'], ['Warframe', 'warframe.jpg'],
+        ['Hollow Knight', 'hollow-knight.jpg'], ['The Walking Dead', 'walking-dead.jpg']]
+    }
   ].map((group) => ({ ...group, games: group.games.map(([title, image, remainingTime]) => ({ title, image: `img/${image}`, remainingTime })) }));
 
   const root = document.querySelector('#local-game-catalog');
@@ -83,7 +91,7 @@
               <a href="pages/game.html">Jugar</a><button type="button" data-extend>Extender</button>
             </div>
             <div class="local-game-card__extension" hidden>${rentalControls()}<button class="local-game-card__back-action" type="button" data-back-library>Cancelar</button></div>`
-            : `<p class="local-game-card__prompt">¿Por cuánto tiempo querés alquilarlo?</p>
+        : `<p class="local-game-card__prompt">¿Por cuánto tiempo querés alquilarlo?</p>
               <div class="local-game-card__terms" aria-label="Duración del alquiler">
                 <button type="button" data-months="1">1 mes</button><button type="button" data-months="2">2 meses</button><button type="button" data-months="3">3 meses</button>
               </div>`}
