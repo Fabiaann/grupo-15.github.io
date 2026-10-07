@@ -200,16 +200,17 @@
   align-items: stretch;
   gap: 0;
   width: 212px;
-  min-height: calc(100vh - 70px);
-  max-height: calc(100vh - 70px);
+  height: auto;
+  max-height: calc(100dvh - 70px);
   overflow-y: auto;
   padding: 17px 12px;
+  border-radius: 0 0 20px 0;
   color: #fff;
   background: #0c2343;
   box-shadow: 6px 9px 22px #020c1d55;
   font: 18px Nunito, Arial, sans-serif;
 }
-.site-menu[hidden], .site-menu__sublist[hidden] { display: none; }
+.site-menu[hidden] { display: none; }
 /* Corre los enlaces; cambia .2s o 3px. */
 .site-menu > a {
   display: flex;
@@ -233,23 +234,11 @@
 .site-menu > a .site-menu__fire { color: #ff172b; stroke-width: 1.7; }
 .site-menu__divider { width: 100%; height: 1px; margin: 5px 0 7px; background: #8b9aaf; }
 .site-menu__categories {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  width: 100%;
-  min-height: 35px;
-  padding: 0;
-  border: 0;
+  margin: 0;
+  padding: 3px 0 2px;
   color: #aebbd0;
-  background: transparent;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  transition: color .2s;
+  font: 700 18px/1.4 Nunito, Arial, sans-serif;
 }
-.site-menu__categories:hover { color: #fff; }
-.site-menu__categories svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 1.7; }
-.site-menu__categories[aria-expanded="true"] svg { transform: rotate(-90deg); }
 .site-menu__sublist { display: grid; gap: 2px; padding: 4px 0 0 17px; font-size: 18px; }
 .site-menu__sublist a { display: flex; align-items: center; gap: 8px; min-height: 29px; white-space: nowrap; transition: color .2s, transform .2s; }
 .site-menu__category-icon { width: 21px; height: 21px; flex: 0 0 21px; fill: #fff; }
@@ -274,5 +263,5 @@
   .profile-menu__identity { grid-template-columns: 58px minmax(0, 1fr); gap: 12px; }
   .profile-menu__avatar { width: 58px; height: 58px; }
   .profile-menu__name { font-size: 28px; }
-  .site-menu { width: min(80vw, 212px); min-height: calc(100vh - 56px); max-height: calc(100vh - 56px); }
+  .site-menu { width: min(80vw, 212px); max-height: calc(100dvh - 56px); }
 }

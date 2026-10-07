@@ -1,17 +1,15 @@
 const menuButton = document.querySelector('.site-header__menu-button');
 const siteMenu = document.querySelector('#site-menu');
-const categoriesButton = document.querySelector('.site-menu__categories');
-const categoriesList = document.querySelector('#site-categories');
 
+//abrir
 function closeMenu(restoreFocus = false) {
   siteMenu.hidden = true;
   menuButton.setAttribute('aria-expanded', 'false');
   menuButton.setAttribute('aria-label', 'Abrir menú');
-  categoriesList.hidden = true;
-  categoriesButton.setAttribute('aria-expanded', 'false');
   if (restoreFocus) menuButton.focus();
 }
 
+//cerrar
 menuButton.addEventListener('click', () => {
   if (!siteMenu.hidden) {
     closeMenu();
@@ -20,11 +18,6 @@ menuButton.addEventListener('click', () => {
   siteMenu.hidden = false;
   menuButton.setAttribute('aria-expanded', 'true');
   menuButton.setAttribute('aria-label', 'Cerrar menú');
-});
-
-categoriesButton.addEventListener('click', () => {
-  categoriesList.hidden = !categoriesList.hidden;
-  categoriesButton.setAttribute('aria-expanded', String(!categoriesList.hidden));
 });
 
 siteMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
@@ -94,13 +87,16 @@ const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext('2d');
 // Rebota las pelotas; toca duration, gravity o launchSpeed.
 const duration = 5000;
+const spiralDuration = 1800;
+const mergeDuration = 900;
 const gravity = 1.8 * canvas.height;
 const cycleDuration = 1.25;
 const ballDelay = 0.3;
 const launchSpeed = 360;
+const reducedLoaderMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let startTime;
 let animationFrame;
-let finishTimer;
+let phaseStart;
 let finished = false;
 
 const balls = [
@@ -109,10 +105,61 @@ const balls = [
   { x: 325, y: 325, radius: 25, dy: 0, squash: 0, color: '#31a8ff' }
 ];
 
-function drawBalls() {
+function clearCanvas(floorOpacity = 0) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#555';
-  ctx.fillRect(0, canvas.height - 2, canvas.width, 2);
+  if (floorOpacity > 0) {
+    ctx.save();
+    ctx.globalAlpha = floorOpacity;
+    ctx.fillStyle = '#555';
+    ctx.fillRect(0, canvas.height - 2, canvas.width, 2);
+    ctx.restore();
+  }
+}
+
+function drawCanvasBall(x, y, radius, color, opacity = 1, scaleX = 1, scaleY = 1) {
+  ctx.save();
+  ctx.globalAlpha = opacity;
+  ctx.translate(x, y);
+  ctx.scale(scaleX, scaleY);
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.shadowColor = color;
+  ctx.shadowBlur = 16;
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawMergedBall(radius, opacity = 1) {
+  if (radius <= 0 || opacity <= 0) return;
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const gradient = ctx.createRadialGradient(
+    centerX - radius * .3,
+    centerY - radius * .35,
+    radius * .1,
+    centerX,
+    centerY,
+    radius
+  );
+  gradient.addColorStop(0, '#eaffff');
+  gradient.addColorStop(.3, '#0de8d4');
+  gradient.addColorStop(.68, '#8b48f2');
+  gradient.addColorStop(1, '#31a8ff');
+
+  ctx.save();
+  ctx.globalAlpha = opacity;
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+  ctx.fillStyle = gradient;
+  ctx.shadowColor = '#6f8fff';
+  ctx.shadowBlur = 20;
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawBalls() {
+  clearCanvas(1);
 
   balls.forEach((ball) => {
     const floor = canvas.height - ball.radius;
@@ -123,17 +170,18 @@ function drawBalls() {
     const scaleY = 1 + stretch - ball.squash * 0.22;
     const scaleX = 1 - stretch * 0.35 + ball.squash * 0.22;
 
-    ctx.save();
-    ctx.translate(ball.x, ball.y);
-    ctx.scale(scaleX, scaleY);
-    ctx.beginPath();
-    ctx.arc(0, 0, ball.radius, 0, Math.PI * 2);
-    ctx.fillStyle = ball.color;
-    ctx.shadowColor = ball.color;
-    ctx.shadowBlur = 16;
-    ctx.fill();
-    ctx.restore();
+    drawCanvasBall(ball.x, ball.y, ball.radius, ball.color, 1, scaleX, scaleY);
   });
+}
+
+function clamp(value, min = 0, max = 1) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function easeInOutCubic(value) {
+  return value < .5
+    ? 4 * value * value * value
+    : 1 - Math.pow(-2 * value + 2, 3) / 2;
 }
 
 function finishLoading() {
@@ -142,21 +190,85 @@ function finishLoading() {
   progress.textContent = '100%';
   loader.classList.add('hidden');
   cancelAnimationFrame(animationFrame);
-  clearTimeout(finishTimer);
+}
+
+function startMerge(now) {
+  phaseStart = now;
+  animationFrame = requestAnimationFrame(animateMerge);
+}
+
+function animateMerge(now) {
+  if (finished) return;
+  const phase = clamp((now - phaseStart) / mergeDuration);
+  let radius;
+  let opacity = 1;
+
+  if (phase < .32) {
+    const expansion = phase / .32;
+    const easedExpansion = 1 - Math.pow(1 - expansion, 3);
+    radius = 25 + 7 * easedExpansion;
+  } else {
+    const contraction = (phase - .32) / .68;
+    radius = 32 * (1 - contraction * contraction);
+    opacity = 1 - Math.pow(contraction, 1.6);
+  }
+
+  clearCanvas();
+  drawMergedBall(radius, opacity);
+
+  if (phase < 1) animationFrame = requestAnimationFrame(animateMerge);
+  else finishLoading();
+}
+
+function startSpiral(now) {
+  progress.textContent = '100%';
+  if (reducedLoaderMotion.matches) {
+    finishLoading();
+    return;
+  }
+
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  balls.forEach((ball) => {
+    ball.spiralRadius = Math.hypot(ball.x - centerX, ball.y - centerY);
+    ball.spiralAngle = Math.atan2(ball.y - centerY, ball.x - centerX);
+  });
+  phaseStart = now;
+  animationFrame = requestAnimationFrame(animateSpiral);
+}
+
+function animateSpiral(now) {
+  if (finished) return;
+  const phase = clamp((now - phaseStart) / spiralDuration);
+  const easedPhase = easeInOutCubic(phase);
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const mergeProgress = clamp((phase - .72) / .28);
+
+  clearCanvas(1 - phase);
+  drawMergedBall(25 * mergeProgress, mergeProgress);
+
+  balls.forEach((ball) => {
+    const radius = ball.spiralRadius * (1 - easedPhase);
+    const angle = ball.spiralAngle + Math.PI * 4 * easedPhase;
+    const x = centerX + Math.cos(angle) * radius;
+    const y = centerY + Math.sin(angle) * radius;
+    drawCanvasBall(x, y, ball.radius, ball.color, 1 - mergeProgress);
+  });
+
+  if (phase < 1) animationFrame = requestAnimationFrame(animateSpiral);
+  else startMerge(now);
 }
 
 function animateLoading(now) {
   if (finished) return;
   const elapsed = Math.max(0, now - startTime);
-  if (elapsed >= duration) {
-    finishLoading();
-    return;
-  }
+  const loadingElapsed = Math.min(elapsed, duration);
 
-  progress.textContent = `${Math.min(99, Math.round(elapsed / duration * 100))}%`;
+  progress.textContent = `${Math.min(99, Math.round(loadingElapsed / duration * 100))}%`;
   balls.forEach((ball, index) => {
     const floor = canvas.height - ball.radius;
-    const activeTime = elapsed / 1000 - index * ballDelay;
+    const activeTime = loadingElapsed / 1000 - index * ballDelay;
     if (activeTime < 0) {
       ball.y = floor;
       ball.dy = 0;
@@ -187,13 +299,13 @@ function animateLoading(now) {
   });
 
   drawBalls();
-  animationFrame = requestAnimationFrame(animateLoading);
+  if (elapsed >= duration) startSpiral(now);
+  else animationFrame = requestAnimationFrame(animateLoading);
 }
 
-function startLoading() {
-  startTime = 0;
+function startLoading(now) {
+  startTime = now;
   animationFrame = requestAnimationFrame(animateLoading);
-  finishTimer = setTimeout(finishLoading, Math.max(0, duration - performance.now()));
 }
 
 drawBalls();

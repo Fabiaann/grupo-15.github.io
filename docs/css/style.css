@@ -147,7 +147,7 @@ nav {
 }
 
 .ranking {
-  display: none;
+  display: block;
   background: linear-gradient(135deg, #13407d, #061b3d);
   border: 1px solid #8128ff;
   padding: 10px 18px;
@@ -181,7 +181,6 @@ nav {
   overflow: hidden;
   min-height: 185px;
   background: linear-gradient(#0000 45%, #d2ee6e 46%, #7da930 100%), url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=1000&q=85') center/cover;
-  box-shadow: 10px 15px 30px rgba(0, 217, 255, 0.9), 15px 25px 60px rgba(0, 217, 255, 0.6), 0 30px 100px rgba(138, 43, 226, 0.5);
 }
 
 .featured b {
@@ -634,10 +633,6 @@ nav {
   .hero-grid {
     grid-template-columns: 1fr
   }
-
-  .ranking {
-    display: none
-  }
 }
 
 @media(min-width:1300px) {
@@ -758,6 +753,7 @@ nav {
 
 .reward__button {
   position: relative;
+  isolation: isolate;
   display: block;
   width: 80%;
   height: 48px;
@@ -766,38 +762,43 @@ nav {
   overflow: visible;
   border: 0;
   border-radius: 20px;
-  background: #f2a017;
+  background: transparent;
   color: #173466;
-  box-shadow: 0 3px 0 #af6509;
   font: 800 1rem Nunito, Arial, sans-serif;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform .25s ease, background-color .25s ease;
+  transition: transform .25s ease;
+}
+
+.reward__button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: #f2a017;
+  box-shadow: 0 3px 0 #af6509;
+  transform: scale(1);
+  transform-origin: center;
+  transition: background-color .25s ease;
 }
 
 .reward__button:hover {
-  transform: scale(1.03);
+  transform: scale(1.03)
+}
+
+.reward__button:hover::before {
   background: #ffb42c
 }
+
 .reward__button:active {
-
-  background: #00000000;
-  box-shadow: none;
+  transform: scale(.99)
 }
 
-
-
-
-
- /*CAMBIOSSSSSSS REGALO*/
-.reward.is-claimed .reward__button{
-  margin-top: 30px;
-  background-color: #00183500;
-  box-shadow: none;
-  border: none;
-
+.reward.is-claimed .reward__button {
+  transform: none;
+  cursor: default
 }
-
 
 .reward__button:focus-visible {
   outline: 3px solid #fff;
@@ -805,6 +806,8 @@ nav {
 }
 
 .reward__button-label {
+  position: relative;
+  z-index: 1;
   display: block;
   opacity: 1;
   transform: translateX(14px);
@@ -825,6 +828,7 @@ nav {
   display: block;
   width: 34px;
   height: 34px;
+  z-index: 2;
   transform: translate(-50%, -50%) translateX(-52px);
   transition: transform .3s ease;
 }
@@ -832,16 +836,31 @@ nav {
 .reward:hover .reward__gift,
 .reward:focus-within .reward__gift,
 .reward.is-claimed .reward__gift {
-
-  transform:  translate(-50%, -50%);
-  transition: transform .5s ease-in-out;
+  transform: translate(-50%, -50%)
 }
 
-.reward.is-claimed .reward__gift{
- transform:  scale(2) translate(-50%, -50%);
-
-
+.reward.is-claimed .reward__button::before {
+  animation: reward-button-collapse .72s ease-in-out forwards
 }
+
+.reward.is-claimed .reward__gift {
+  animation: reward-gift-claim .72s ease-in-out forwards
+}
+
+@keyframes reward-button-collapse {
+  0% { opacity: 1; transform: scale(1) }
+  22% { opacity: 1; transform: scale(1.06, 1.08) }
+  65% { opacity: 1; transform: scale(.07, .62) }
+  82% { opacity: 1; transform: scale(.17, .76) }
+  100% { opacity: 0; transform: scale(.11, .68) }
+}
+
+@keyframes reward-gift-claim {
+  0%, 30% { transform: translate(-50%, -50%) scale(1) }
+  78% { transform: translate(-50%, -50%) scale(1.28) }
+  100% { transform: translate(-50%, -50%) scale(1.22) }
+}
+
 .reward__gift-box,
 .reward__gift-lid {
   position: absolute;
@@ -883,12 +902,7 @@ nav {
 }
 
 .reward.is-claimed .reward__gift-lid {
-  transform: translate(-50%, -12px) rotate(-28deg) scale(2)
-}
-
-
-.reward.is-claimed .reward__gift-box{
-  transform: scale(2) ;
+  transform: translate(-50%, -12px) rotate(-28deg)
 }
 
 
@@ -1001,5 +1015,16 @@ nav {
   .ranking__content,
   .ranking__position {
     transition: none
+  }
+
+  .reward.is-claimed .reward__button::before {
+    animation: none;
+    opacity: 0;
+    transform: scale(.11, .68)
+  }
+
+  .reward.is-claimed .reward__gift {
+    animation: none;
+    transform: translate(-50%, -50%) scale(1.22)
   }
 }
