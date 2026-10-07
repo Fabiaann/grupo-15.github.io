@@ -1,13 +1,9 @@
 
-
-
 const formulario = document.querySelector(".formulario");
 const loader = document.querySelector(".loader-overlay");
-
 const mail = document.querySelector("#mail");
 const password = document.querySelector("#password");
 const checkbox = document.querySelector("#mi-checkbox");
-
 const errorMail = document.querySelector("#error-mail");
 const errorPassword = document.querySelector("#error-password");
 
@@ -22,10 +18,7 @@ formulario.addEventListener("submit", function(event) {
 
     let formularioValido = true;
 
-
-
     if (mail.value.trim() === "") {
-
         errorMail.textContent = "El mail es obligatorio";
         formularioValido = false;
 
@@ -34,7 +27,6 @@ formulario.addEventListener("submit", function(event) {
         errorMail.textContent = "Ingresá un mail válido";
         formularioValido = false;
     }
-
 
  
     if (password.value.trim() === "") {

@@ -1,0 +1,53 @@
+.juego11{
+    width: 1000px;
+    height: 1000px;
+
+    display: grid;
+   grid-template-areas: 
+   "arriba-izquierda arriba-derecha"
+   "abajo-izquierda abajo-derecha";
+   grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.contenedor-foto{
+    width: 500px;
+    height: 500px;
+}
+
+.top-left{
+   
+    grid-area: arriba-izquierda;
+    transform: rotate(90deg);
+}
+
+.top-right{
+    grid-area: arriba-derecha;
+        transform: rotate(180deg);
+  
+}
+
+.bottom-left{
+    grid-area: abajo-izquierda;
+    transform: rotate(270deg);
+}
+.bottom-right{
+    grid-area: abajo-derecha;
+      transform: rotate(180deg);
+}
+
+
+
+.girar p {
+    font-size: 120px;
+}
+
+.time{
+    width: 500px;
+    height: 500px;
+    border: 10px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+}
+
