@@ -1,123 +1,84 @@
-const contenedorJuego = document.querySelector('.juego11');
+﻿const contenedorJuego = document.querySelector('.juego11');
+const piezas = [
+    { elemento: document.querySelector('.canvas-a'), gradosIniciales: 90 },
+    { elemento: document.querySelector('.canvas-b'), gradosIniciales: 180 },
+    { elemento: document.querySelector('.canvas-c'), gradosIniciales: 270 },
+    { elemento: document.querySelector('.canvas-d'), gradosIniciales: 180 }
+];
+let interval;
+let juegoIniciado = false;
+let juegoTerminado = false;
 
+const mostrarTiempo = document.querySelector('.mostrarTiempo');
+const inicio = document.querySelector('.inicio');
+const pausa = document.querySelector('.pausa');
+const restablecer = document.querySelector('.restablecer');
 
-
-
-
-contenedorJuego.addEventListener('mousedown', (event) => {
-    
-
-    const canvas = event.target.closest('canvas');
-
-    if (!canvas) return;
-  let grados = parseInt(canvas.dataset.grados || 0, 10);
-    
-    if (event.button === 0) {
-        grados += 90; 
-        canvas.style.transform = 'rotate(' + grados + 'deg)';
-      
-    }
-    
-   
-    else if (event.button === 2) {
-        event.preventDefault(); 
-        grados -= 90; 
-        
-      
-        canvas.style.transform = 'rotate(' + grados + 'deg)';
-      
-    }
-canvas.dataset.grados = grados;
-     let correcto = false;
-    if (grados % 360 === 0) {
-        correcto = true;
-    } else {
-        correcto = false;
-    }
-    
-  
-    canvas.dataset.correcto = correcto;
-
-
-    
+piezas.forEach(pieza => {
+    pieza.elemento.dataset.grados = pieza.gradosIniciales;
+    pieza.elemento.dataset.correcto = 'false';
 });
 
-// Esto evita que el menú del clic derecho moleste en los canvas
+contenedorJuego.addEventListener('mousedown', (event) => {
+    const canvasPieza = event.target.closest('canvas');
+    if (!canvasPieza || !juegoIniciado || juegoTerminado) return;
+
+    let grados = parseInt(canvasPieza.dataset.grados, 10);
+    if (event.button === 0) {
+        grados += 90;
+    } else if (event.button === 2) {
+        event.preventDefault();
+        grados -= 90;
+    } else {
+        return;
+    }
+
+    canvasPieza.dataset.grados = grados;
+    const pieza = piezas.find(pieza => pieza.elemento === canvasPieza);
+    canvasPieza.style.transform = 'rotate(' + (grados - pieza.gradosIniciales) + 'deg)';
+    canvasPieza.dataset.correcto = grados % 360 === 0;
+    verificarGano();
+});
+
+// Prevent the browser context menu on right-click.
 contenedorJuego.addEventListener('contextmenu', (event) => {
     event.preventDefault();
 });
 
 function verificarGano() {
-  
-    if (canvas.dataset.correcto === "true") {
-        alert("¡Ganaste!");
-        console.log(correcto);
+    if (!juegoTerminado && piezas.every(pieza => pieza.elemento.dataset.correcto === 'true')) {
+        juegoTerminado = true;
+        clearInterval(interval);
+        alert('Ganaste! Tiempo: ' + mostrarTiempo.innerHTML + ' segundos.');
     }
 }
 
-
-
-
-
-
-
-
-const arribaIizquierda = document.querySelector('.top-left');
-const arribaDerecha = document.querySelector('.top-right');
-const abajoIzquierda = document.querySelector('.bottom-left');
-const abajoDerecha = document.querySelector('.bottom-right');
-
-
-
-
-
-
-let arribaCorrectoIzq = false;
-let arribaCorrectoDer = false;
-
-
-let abajoCorrecto = false;
-let abajoCorrectoIzq = false;
-let abajoCorrectoDer = false;
-
-
-
-
-
-
-
-
-
-
-
-let mostrarTiempo = document.querySelector('.mostrarTiempo');
-
-const inicio = document.querySelector('.inicio');
-
 inicio.addEventListener('click', () => {
-
+    if (juegoIniciado || juegoTerminado) return;
+    juegoIniciado = true;
     let valor = parseFloat(mostrarTiempo.innerHTML);
-
     interval = setInterval(() => {
         valor += 0.1;
         mostrarTiempo.innerHTML = valor.toFixed(1);
-    }, 100)
+    }, 100);
+});
 
-})
-const pausa = document.querySelector('.pausa');
 pausa.addEventListener('click', () => {
-
     clearInterval(interval);
-})
+    juegoIniciado = false;
+});
 
-const restablecer = document.querySelector('.restablecer');
 restablecer.addEventListener('click', () => {
     clearInterval(interval);
     mostrarTiempo.innerHTML = '0';
-})
-
-
-
+    juegoIniciado = false;
+    juegoTerminado = false;
+    piezas.forEach(pieza => {
+        pieza.elemento.style.transform = 'rotate(0deg)';
+        pieza.elemento.dataset.grados = pieza.gradosIniciales;
+        pieza.elemento.dataset.correcto = 'false';
+    });
+});
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
