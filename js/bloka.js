@@ -363,10 +363,27 @@ function prepararJuego() {
 
 
 function configurarContenedor(ancho, alto) {
-
-    contenedorJuego.style.width = `${ancho}px`;
-    contenedorJuego.style.height = `${alto}px`;
+    width = ancho;
+    height = alto;
+    ajustarTamanoTablero();
 }
+
+function ajustarTamanoTablero() {
+    if (!width || !height) return;
+
+    // El iframe del juego aporta su propio viewport; limitar el tablero al 90 %
+    // evita desbordes sin deformar la imagen ni las piezas.
+    const escala = Math.min(1, (window.innerWidth * 0.9) / width, (window.innerHeight * 0.72) / height);
+    contenedorJuego.style.width = `${width * escala}px`;
+    contenedorJuego.style.height = `${height * escala}px`;
+
+    contenedorJuego.querySelectorAll("canvas:not(.imagen-original-final)").forEach((canvas) => {
+        canvas.style.width = `${canvas.width * escala}px`;
+        canvas.style.height = `${canvas.height * escala}px`;
+    });
+}
+
+window.addEventListener("resize", ajustarTamanoTablero);
 
 
 function crearCuadrados(
@@ -397,6 +414,9 @@ function crearCanvas(i, anchoCuadro, altoCuadro, columnas) {
 
     canvas.width = anchoCuadro;
     canvas.height = altoCuadro;
+    const escala = contenedorJuego.clientWidth / width;
+    canvas.style.width = `${anchoCuadro * escala}px`;
+    canvas.style.height = `${altoCuadro * escala}px`;
     canvas.dataset.grados = randomDeg;
     canvas.dataset.gradosCorrectos = 0;
     canvas.dataset.correcto = false;
