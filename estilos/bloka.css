@@ -77,6 +77,16 @@ body {
     color: #07182e;
 }
 
+.mostrarBotones button:disabled {
+    opacity: .55;
+    cursor: wait;
+}
+
+.mostrarBotones button:disabled:hover {
+    background-color: #7e3dc7;
+    color: white;
+}
+
 
 
 

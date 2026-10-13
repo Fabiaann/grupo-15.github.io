@@ -27,45 +27,63 @@ let width = 0;
 let height = 0;
 let imagenCargada = false;
 
-
-
 let bancoImagen = [
-    "../img/burns.jpg",
-    "../img/homero.jpg",
-    "../img/im1.jpg",
-    "../img/moe.jpg",
-    "../img/ned.jpg",
-    "../img/martin.jpg",
-     
-     
+    "../img/Juego1.jpg",
+    "../img/JuegoAventura1.jpg",
+    "../img/moto2.jpg",
+    "../img/tenis.jpg",
+    "../img/auto.jpg",
+    "../img/deporte2.jpg"
 ];
 
-let imgAleatoria = Math.round(Math.random() * 2);
+let imgAleatoria = Math.floor(Math.random() * bancoImagen.length);
 
 const gancho = document.querySelector(".gancho");
 const bancoImagenes = document.querySelector(".banco-imagenes");
 
 let imagenesCreadas = [];
+let image1;
+
+function actualizarDisponibilidadBotones() {
+    document.querySelectorAll(".mostrarBotones button").forEach((boton) => {
+        boton.disabled = !imagenCargada;
+    });
+}
+
+function prepararImagenSeleccionada() {
+    if (!image1 || imagenCargada) return;
+    try {
+        dimensionImagen(image1);
+        imagenCargada = true;
+        actualizarDisponibilidadBotones();
+    } catch (error) {
+        console.error("No se pudo preparar la imagen de Blocka", error);
+    }
+}
+
+actualizarDisponibilidadBotones();
 
 for (let ruta of bancoImagen) {
     let img = document.createElement("img");
     img.style.width = "200px";
     img.style.height = "200px";
-    img.src = ruta;
+    img.addEventListener("load", () => {
+        if (img === image1) prepararImagenSeleccionada();
+    });
+    img.addEventListener("error", () => {
+        if (img === image1) {
+            imagenCargada = false;
+            actualizarDisponibilidadBotones();
+            console.error("No se pudo cargar la imagen de Blocka:", ruta);
+        }
+    });
     bancoImagenes.appendChild(img);
-
     imagenesCreadas.push(img);
+    img.src = ruta;
 }
 
-let image1 = imagenesCreadas[imgAleatoria];
-
-image1.onload = function () {
-   
- 
-
-    dimensionImagen(this);
-    imagenCargada = true;
-};
+image1 = imagenesCreadas[imgAleatoria];
+if (image1.complete && image1.naturalWidth > 0) prepararImagenSeleccionada();
 
 
 
