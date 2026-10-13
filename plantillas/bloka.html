@@ -9,29 +9,49 @@
 </head>
 
 <body>
-
-    <div class="juego11">
-        <div class="top-left contenedor-foto girar "><canvas width="500px" height="500px" class="canvas-a"></canvas>
+ 
+<div class="contenedor">
+    <div class="banco-imagenes oculto">
+        <div class="gancho">
+            <img src="../svg/hand-agarre.svg">
         </div>
-        <div class="top-right contenedor-foto girar "> <canvas width="500px" height="500px" class="canvas-b"></canvas>
+    </div>
+    
+    
+    <div class="juego oculto">
+        <div class="header-juego">
+            <div class="ajuste-juego"><button class="sonidoOff">off</button>
+            <button class="sonidoOn oculto">onn</button></div>
+            <div class="time">
+                <p class="mostrarTiempo">00:00:00</p>
+            </div>
+            <div class="mostrarNivel">             </div>
+            <div class="pista-juego">
+                <button id="pista">Pista</button>
+            </div>
         </div>
-        <div class="bottom-left contenedor-foto girar "> <canvas width="500px" height="500px "
-                class="canvas-c"></canvas></div>
-        <div class="bottom-right contenedor-foto girar "> <canvas width="500px" height="500px "
-                class="canvas-d"></canvas> </div>
+        
+        <div class="juego11">
+            <button id="comenzar" class="comenzar">comenzar</button>      
+        </div>
+        <button class="siguienteNivel oculto">siguienteNivel</button>
     </div>
 
-    <div class="time">
-        <p class=" mostrarTiempo">0</p>
-        <button class="inicio">Comenzar</button>
-        <button class="pausa">pausa</button>
-        <button class="restablecer">Reiniciar</button>
+    <div class="mostrarBotones">
+        
+        <div>   <p>Selecciona la cantidad de subImagenes, para comenzar el juego</p></div>
+        <button id="btn4">4</button>
+        <button id="btn6">6</button>
+        <button id="btn8">8</button>
     </div>
+    
+    <canvas id="canvas" width="500px" height="500px" style="border: solid 1px red; " class="oculto"></canvas>
 
-    <canvas id="canvas" width="1000px" height="1000px" style="border: solid 1px red;"></canvas>
-
-
-
+    <div class="ganoElJuegoCompleto oculto"> 
+        <p>Felicidades pasastes todos los niveles</p>
+        <button onclick="location.reload()">volver al inicio</button>
+    </div>
+</div>
 
     <script src="../js/bloka.js" defer></script>
 </body>

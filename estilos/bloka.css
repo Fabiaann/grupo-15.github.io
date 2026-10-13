@@ -1,58 +1,397 @@
-.juego11{
-    width: 1000px;
-    height: 1000px;
 
-    display: grid;
-   grid-template-areas: 
-   "arriba-izquierda arriba-derecha"
-   "abajo-izquierda abajo-derecha";
-   grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+
+* {
+    box-sizing: border-box;
 }
 
-.contenedor-foto{
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #07182e;
+    color: white;
+}
+
+.contenedor {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+
+
+
+
+
+
+.mostrarBotones {
     width: 500px;
-    height: 500px;
+    min-height: 350px;
+    padding: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    background-image: url("../img/rompeCabezas.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border: 2px solid #12e4d8;
+    border-radius: 10px;
 }
 
-.top-left{
-   
-    grid-area: arriba-izquierda;
-    transform: rotate(90deg);
+.mostrarBotones div {
+    width: 100%;
+    text-align: center;
 }
 
-.top-right{
-    grid-area: arriba-derecha;
-        transform: rotate(180deg);
-  
+.mostrarBotones p {
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px black;
 }
 
-.bottom-left{
-    grid-area: abajo-izquierda;
-    transform: rotate(270deg);
+.mostrarBotones button {
+    min-width: 60px;
+    padding: 12px 20px;
+
+    background-color: #7e3dc7;
+    color: white;
+
+    border: 2px solid #12e4d8;
+    border-radius: 8px;
+
+    font-size: 20px;
+    cursor: pointer;
 }
-.bottom-right{
-    grid-area: abajo-derecha;
-      transform: rotate(180deg);
+
+.mostrarBotones button:hover {
+    background-color: #12e4d8;
+    color: #07182e;
 }
 
 
 
-.girar p {
-    font-size: 120px;
+
+.juego {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
-.time{
+
+
+.header-juego {
     width: 500px;
-    height: 500px;
-    border: 10px solid red;
+    max-width: 100%;
+    min-height: 55px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px 12px;
+
+    background-color: #0b2849;
+    border: 1px solid #12e4d8;
+    border-radius: 8px;
+}
+
+.ajuste-juego,
+.time,
+.pista-juego {
     display: flex;
     align-items: center;
-    justify-content: center ;
+    justify-content: center;
+}
+
+.time p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.pista-juego button,
+.ajuste-juego {
+    padding: 8px 12px;
+
+    background-color: #7e3dc7;
+    color: white;
+
+    border: 1px solid #12e4d8;
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.pista-juego button:hover,
+.ajuste-juego:hover {
+    background-color: #12e4d8;
+    color: #07182e;
 }
 
 
-#canvas {
-    display: none;
+
+
+.juego11 {
+    position: relative;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+
+    margin: 0 auto;
+    padding: 0;
+
+    background-color: #0b2444;
+
+    box-shadow: inset 0 0 0 1px #12e4d8;
 }
 
+.juego11 canvas {
+    display: block;
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    cursor: pointer;
+
+    box-shadow: inset 0 0 0 1px #12e4d8;
+}
+
+
+
+
+.juego11 > .comenzar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+
+    padding: 12px 25px;
+
+    background-color: #12e4d8;
+    color: #07182e;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+
+    cursor: pointer;
+}
+
+.juego11 > .comenzar:hover {
+    background-color: #7e3dc7;
+    color: white;
+}
+
+
+
+.juego > .siguienteNivel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+
+    padding: 12px 25px;
+
+    background-color: #ffd124;
+    color: #07182e;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+
+    cursor: pointer;
+}
+
+.juego > .siguienteNivel:hover {
+    background-color: #12e4d8;
+}
+
+
+.banco-imagenes {
+    position: relative;
+
+    width: max-content;
+    max-width: 100%;
+    min-height: 220px;
+
+    margin: 20px auto;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #0b2849;
+    border: 1px solid #12e4d8;
+    border-radius: 8px;
+
+    overflow-x: auto;
+}
+
+.banco-imagenes > img {
+    display: block;
+
+    flex: 0 0 200px;
+
+    width: 200px;
+    height: 200px;
+
+    object-fit: cover;
+}
+
+
+
+
+.gancho {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 10;
+    margin: 0;
+
+    pointer-events: none;
+}
+
+.gancho img {
+    display: block;
+    width: 100px;
+    height: auto;
+}
+
+.gancho p {
+    margin: 0;
+    color: red;
+    font-size: 25px;
+}
+
+
+
+.usarGancho {
+    animation: usarGancho 3.5s linear forwards;
+}
+
+@keyframes usarGancho {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(1000px) ;
+    }
+    100% {
+        transform: translateX(var(--posicion-x)) ;
+     
+    }
+
+}
+
+
+
+.meLLevoTdo {
+       
+    animation: meLLevoTdo 3.5s linear forwards;
+
+}
+.subirGancho{
+    animation: subirGancho 3.5s linear; }
+    @keyframes subirGancho {
+         0% { transform:  translateX(var(--posicion-x)) translateY(-5px); }
+          100% { transform:  translateX(var(--posicion-x)) translateY(-250px); }
+           100% { transform:  translateX(var(--posicion-x)) translateY(-500px); }
+        
+    }
+
+
+@keyframes meLLevoTdo {
+    0%   { transform:  translateY(-5px) scale(1.2) rotate(12deg); }
+    50%  { transform: translateY(-250px) scale(1.2) rotate(-12deg); }
+    100% { transform:   translateY(-500px) scale(1.2) rotate(12deg); }
+}
+
+
+
+
+
+
+
+
+
+
+
+.ganoElJuegoCompleto {
+    width: 500px;
+    max-width: 100%;
+
+    margin: 20px auto;
+    padding: 25px;
+
+    text-align: center;
+
+    background-color: #0b2849;
+    border: 2px solid #12e4d8;
+    border-radius: 10px;
+}
+
+.ganoElJuegoCompleto p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ganoElJuegoCompleto button {
+    padding: 10px 18px;
+
+    background-color: #7e3dc7;
+    color: white;
+
+    border: 1px solid #12e4d8;
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.ganoElJuegoCompleto button:hover {
+    background-color: #12e4d8;
+    color: #07182e;
+}
+
+
+
+
+#canvas.oculto {
+    display: none ;
+}
+
+
+
+.oculto {
+    
+    display: none ;
+}
