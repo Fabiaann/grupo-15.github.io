@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480">
+  <defs>
+    <radialGradient id="back">
+      <stop stop-color="#81300a"/>
+      <stop offset=".55" stop-color="#2f1c1e"/>
+      <stop offset="1" stop-color="#11152f"/>
+    </radialGradient>
+    <radialGradient id="gold" cx=".34" cy=".24" r=".8">
+      <stop stop-color="#fff3a4"/>
+      <stop offset=".32" stop-color="#ffd954"/>
+      <stop offset=".74" stop-color="#d78a0e"/>
+      <stop offset="1" stop-color="#874605"/>
+    </radialGradient>
+    <linearGradient id="edge" x2="0" y2="1">
+      <stop stop-color="#fff2a4"/>
+      <stop offset=".45" stop-color="#f4b829"/>
+      <stop offset="1" stop-color="#9a5408"/>
+    </linearGradient>
+    <g id="coin">
+      <circle r="72" fill="#6c3508"/>
+      <circle r="67" fill="url(#edge)"/>
+      <circle r="58" fill="url(#gold)" stroke="#fff0a0" stroke-width="3"/>
+      <circle r="47" fill="none" stroke="#bd770d" stroke-width="4"/>
+      <path d="M-17-21h34M-17 21h34M17-21c-35-16-42 7-13 19 31 12 24 38-21 23" fill="none" stroke="#a95e09" stroke-width="8" stroke-linecap="round"/>
+      <path d="M-28-34c14-17 36-18 52-8" fill="none" stroke="#fff7c5" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+    </g>
+    <filter id="glow"><feGaussianBlur stdDeviation="25"/></filter>
+  </defs>
+  <rect width="800" height="480" fill="url(#back)"/>
+  <ellipse cx="400" cy="270" rx="315" ry="135" fill="#ffb928" opacity=".32" filter="url(#glow)"/>
+  <ellipse cx="398" cy="448" rx="380" ry="74" fill="#100b17" opacity=".75"/>
+  <g opacity=".82">
+    <use href="#coin" transform="translate(89 99) rotate(-24) scale(.85)"/>
+    <use href="#coin" transform="translate(711 94) rotate(23) scale(.78)"/>
+    <use href="#coin" transform="translate(734 319) rotate(-17) scale(1.1)"/>
+    <use href="#coin" transform="translate(66 339) rotate(18) scale(1.05)"/>
+  </g>
+  <g>
+    <use href="#coin" transform="translate(196 302) rotate(-27) scale(1.15)"/>
+    <use href="#coin" transform="translate(608 290) rotate(29) scale(1.12)"/>
+    <use href="#coin" transform="translate(314 389) rotate(12) scale(1.2)"/>
+    <use href="#coin" transform="translate(502 395) rotate(-15) scale(1.2)"/>
+    <use href="#coin" transform="translate(395 192) rotate(9) scale(1.02)"/>
+  </g>
+  <g fill="#fff3ae">
+    <circle cx="144" cy="180" r="5"/><circle cx="659" cy="188" r="4"/>
+    <circle cx="564" cy="107" r="6"/><circle cx="245" cy="119" r="3"/>
+    <path d="m720 204 4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+    <path d="m109 222 3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+  </g>
+</svg>
