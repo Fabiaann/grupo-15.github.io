@@ -4,6 +4,7 @@
   const catalog = [
     {
       id: 'library', title: 'Biblioteca', variant: 'compact', library: true, games: [
+        ['Blocka Game', '../../img/Juego1.jpg', '', 'pages/blocka.html'],
         ['Counter-Strike 2', 'counter-strike.jpg', '10 días'], ['God of War', 'god-of-war.jpg', '4 días'],
         ['Grand Theft Auto V', 'gta-v.jpg', '1 día'], ['Portal 2', 'portal-2.jpg', '4 h'],
         ['Hollow Knight', 'hollow-knight.jpg', '30 min'], ['Rocket League', 'rocket-league.jpg', '10 min'],
@@ -37,7 +38,7 @@
         ['Path of Exile', 'path-of-exile.jpg'], ['Warframe', 'warframe.jpg'],
         ['Hollow Knight', 'hollow-knight.jpg'], ['The Walking Dead', 'walking-dead.jpg']]
     }
-  ].map((group) => ({ ...group, games: group.games.map(([title, image, remainingTime]) => ({ title, image: `img/${image}`, remainingTime })) }));
+  ].map((group) => ({ ...group, games: group.games.map(([title, image, remainingTime, href]) => ({ title, image: image.startsWith('../') ? image : `img/${image}`, remainingTime, href })) }));
 
   const root = document.querySelector('#local-game-catalog');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -88,7 +89,7 @@
         <div class="local-game-card__back" aria-hidden="true">
           <strong>${game.title}</strong>
           ${isLibrary ? `<div class="local-game-card__library-actions">
-              <a href="pages/game.html">Jugar</a><button type="button" data-extend>Extender</button>
+              <a href="${game.href || 'pages/game.html'}">Jugar</a><button type="button" data-extend>Extender</button>
             </div>
             <div class="local-game-card__extension" hidden>${rentalControls()}<button class="local-game-card__back-action" type="button" data-back-library>Cancelar</button></div>`
         : `<p class="local-game-card__prompt">¿Por cuánto tiempo querés alquilarlo?</p>
@@ -190,6 +191,26 @@
   }
 
   root.append(...catalog.map(sectionFor));
+
+  const libraryTrack = document.querySelector('#library .local-carousel__track');
+  const libraryViewport = document.querySelector('#library .local-carousel__viewport');
+  const blockaCard = libraryTrack?.querySelector('[data-game="Blocka Game"]');
+  if (libraryTrack && libraryViewport && blockaCard) {
+    const firstCard = libraryTrack.querySelector('.local-game-card');
+    const cardWidth = firstCard.getBoundingClientRect().width;
+    const styles = getComputedStyle(libraryTrack);
+    const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+    const transform = styles.transform;
+    const offsetX = transform === 'none' ? 0 : new DOMMatrixReadOnly(transform).m41;
+    const centerInTrack = libraryViewport.clientWidth / 2 - offsetX;
+    const targetIndex = Math.max(0, Math.min(
+      libraryTrack.children.length - 1,
+      Math.round((centerInTrack - cardWidth / 2) / (cardWidth + gap))
+    ));
+    blockaCard.remove();
+    libraryTrack.insertBefore(blockaCard, libraryTrack.children[targetIndex] || null);
+  }
+
   document.addEventListener('pointerdown', (event) => {
     const pinned = document.querySelector('.local-game-card.is-pinned');
     if (pinned && !pinned.contains(event.target)) closeCard(pinned);

@@ -177,6 +177,21 @@
     object-fit: contain
 }
 
+.game-stage__frame--blocka {
+    width: min(840px, 100%);
+    height: 650px;
+    aspect-ratio: auto;
+    background: #07182e;
+}
+
+.game-stage__frame--blocka iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #07182e;
+}
+
 .game-guide {
     background: #fff;
     color: #111
@@ -242,13 +257,22 @@
     margin: 0 0 16px
 }
 
+.game-controls__items {
+    display: flex;
+    align-items: flex-start;
+    gap: 44px;
+    flex-wrap: wrap;
+}
+
 .game-controls__item {
     display: grid;
-    justify-content: start;
+    justify-items: center;
     gap: 4px;
-    padding-left: 60px;
+    min-width: 145px;
+    padding-left: 0;
     color: #3d2929;
-    font-size: 20px
+    font-size: 18px;
+    text-align: center
 }
 
 .mouse-icon {
@@ -280,6 +304,16 @@
     height: 17px;
     border-radius: 50%;
     background: #8d24f0
+}
+
+.mouse-icon--left i {
+    left: 2px;
+    right: auto;
+}
+
+.mouse-icon--right i {
+    left: auto;
+    right: 2px;
 }
 
 .game-guide__aside h2 {
@@ -859,6 +893,11 @@
         aspect-ratio: 1402/1122
     }
 
+    .game-stage__frame--blocka {
+        height: 650px;
+        aspect-ratio: auto;
+    }
+
     .game-stage__frame img {
         height: auto
     }
@@ -922,7 +961,7 @@
     }
 
     .game-controls__item {
-        padding-left: 30px
+        padding-left: 0
     }
 
     .classics h2 {
