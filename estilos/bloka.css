@@ -1033,7 +1033,13 @@ body:has(.juego:not(.oculto)) {
     padding: 30px;
     border: 8px solid #d8bb49;
     border-radius: 34px;
-    background: linear-gradient(145deg, #fff0a3, #ffe58a 55%, #fff4b8);
+    background-color: #10264b;
+    background-image:
+        linear-gradient(180deg, #07152b22, #07152b55),
+        url("../docs/entrega3/img/blocka-cover.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     box-shadow: inset 0 0 0 4px #fffdf2, 0 5px 0 #9f842c, 0 12px 25px #0002;
 }
 

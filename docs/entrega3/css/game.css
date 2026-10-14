@@ -159,7 +159,7 @@
 
 .game-stage__frame {
     width: min(840px, 100%);
-    aspect-ratio: 840/525;
+    aspect-ratio: 1402/1122;
     margin: 0;
     display: flex;
     align-items: center;
