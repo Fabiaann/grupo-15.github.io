@@ -1,6 +1,6 @@
 .game-page {
     margin: 0;
-    background: #fff;
+   
     color: #111;
     font-family: Nunito, Arial, sans-serif
 }
@@ -159,7 +159,7 @@
 
 .game-stage__frame {
     width: min(840px, 100%);
-    aspect-ratio: 1402/1122;
+    aspect-ratio: 840/525;
     margin: 0;
     display: flex;
     align-items: center;

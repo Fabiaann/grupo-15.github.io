@@ -4,7 +4,7 @@
   const catalog = [
     {
       id: 'library', title: 'Biblioteca', variant: 'compact', library: true, games: [
-        ['Blocka Game', 'blocka-cover.png', '', 'pages/blocka.html'],
+        ['Blocka Game', 'logoJuego.jpg', '', 'pages/blocka.html'],
         ['Counter-Strike 2', 'counter-strike.jpg', '10 días'], ['God of War', 'god-of-war.jpg', '4 días'],
         ['Grand Theft Auto V', 'gta-v.jpg', '1 día'], ['Portal 2', 'portal-2.jpg', '4 h'],
         ['Hollow Knight', 'hollow-knight.jpg', '30 min'], ['Rocket League', 'rocket-league.jpg', '10 min'],
