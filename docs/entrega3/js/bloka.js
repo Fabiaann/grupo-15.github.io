@@ -99,28 +99,32 @@ function dimensionImagen(Image) {
 
 
 
-function dibujarImagen(posX, posY, ancho, alto, filtro) {
+function dibujarImagen(posX, posY, ancho, alto, filtro, opciones = {}) {
 
     const imageData = ctxRecortado.getImageData(posX, posY, ancho, alto);
     const data = imageData.data;
 
-    let width = ancho;
-    let height = alto;
+    const width = ancho;
+    const height = alto;
 
-    for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
+    if (filtro === blur) {
+        blur(data, width, height, opciones.radio, opciones.repeticiones);
+    } else {
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
 
-            const i = (x + y * width) * 4;
+                const i = (x + y * width) * 4;
 
-            let valor = filtro(
-                data[i],
-                data[i + 1],
-                data[i + 2]
-            );
+                let valor = filtro(
+                    data[i],
+                    data[i + 1],
+                    data[i + 2]
+                );
 
-            data[i] = valor;
-            data[i + 1] = valor;
-            data[i + 2] = valor;
+                data[i] = valor;
+                data[i + 1] = valor;
+                data[i + 2] = valor;
+            }
         }
     }
 
@@ -165,7 +169,41 @@ function negativo(r, g, b) {
     return y;
 }
 
+function blur(data, width, height, radio = 1, repeticiones = 1) {
+    for (let repeticion = 0; repeticion < repeticiones; repeticion++) {
 
+        const dataOriginal = new Uint8ClampedArray(data);
+
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                let sumaR = 0;
+                let sumaG = 0;
+                let sumaB = 0;
+                let contador = 0;
+
+                for (let dy = -radio; dy <= radio; dy++) {
+                    for (let dx = -radio; dx <= radio; dx++) {
+                        const nx = x + dx;
+                        const ny = y + dy;
+
+                        if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
+                            const iVecino = (nx + ny * width) * 4;
+                            sumaR += dataOriginal[iVecino];
+                            sumaG += dataOriginal[iVecino + 1];
+                            sumaB += dataOriginal[iVecino + 2];
+                            contador++;
+                        }
+                    }
+                }
+
+                const iActual = (x + y * width) * 4;
+                data[iActual] = sumaR / contador;
+                data[iActual + 1] = sumaG / contador;
+                data[iActual + 2] = sumaB / contador;
+            }
+        }
+    }
+}
 
 function recortarImagen(ancho, alto) {
 
@@ -246,7 +284,7 @@ function calcularCentro() {
     gancho.style.setProperty("--cy", (cy - gancho.offsetHeight / 2 - primera.offsetTop) + "px");
 }
 
-function comienzoJuego(filtro) {
+function comienzoJuego(filtro, opcionesFiltro = {}) {
 
 
 
@@ -266,7 +304,7 @@ function comienzoJuego(filtro) {
         dibujarImagen(0, 0, ancho, alto, BT601);
     }
     else {
-        dibujarImagen(0, 0, ancho, alto, filtro);
+        dibujarImagen(0, 0, ancho, alto, filtro, opcionesFiltro);
     }
     crearCuadrados(
         cantidadCuadros,
@@ -494,12 +532,12 @@ function comenzarSiguienteNivel() {
     if (contadorNivel === 1) {
         comienzoJuego(negativo);
     } else if (contadorNivel === 2) {
-        comienzoJuego(brillo);
+        comienzoJuego(blur, { radio: 1, repeticiones: 3 });
     } else if (contadorNivel === 3) {
           utlimoNivel.classList.remove("oculto");
     setTimeout(()=>{
     utlimoNivel.classList.add("oculto");
-        comienzoJuego(BT601);
+        comienzoJuego(blur, { radio: 1, repeticiones: 6 });
     },3500)
         
     }
