@@ -107,6 +107,7 @@ function dibujarImagen(posX, posY, ancho, alto, filtro) {
     let width = ancho;
     let height = alto;
 
+
     for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
 
@@ -163,6 +164,40 @@ function negativo(r, g, b) {
     y = r + g + b;
 
     return y;
+}
+
+function blur(data, width, height) {
+  
+    const dataOriginal = new Uint8ClampedArray(data);
+    const radio = 1; 
+
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            let sumaR = 0, sumaG = 0, sumaB = 0, contador = 0;
+
+         
+            for (let dy = -radio; dy <= radio; dy++) {
+                for (let dx = -radio; dx <= radio; dx++) {
+                    let nx = x + dx;
+                    let ny = y + dy;
+
+                    if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
+                        let iVecino = (nx + ny * width) * 4;
+                        sumaR += dataOriginal[iVecino];
+                        sumaG += dataOriginal[iVecino + 1];
+                        sumaB += dataOriginal[iVecino + 2];
+                        contador++;
+                    }
+                }
+            }
+
+            let iActual = (x + y * width) * 4;
+            data[iActual]     = sumaR / contador;
+            data[iActual + 1] = sumaG / contador;
+            data[iActual + 2] = sumaB / contador;
+            
+        }
+    }
 }
 
 
