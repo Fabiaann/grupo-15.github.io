@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ingresar | JuegosOnline</title>
+  <link rel="icon" type="image/png" href="../assets/logo-juegos-online.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=20260927">
+  <link rel="stylesheet" href="../css/footer.css?v=20260927">
+  <link rel="stylesheet" href="../css/header.css?v=20260928-2">
+  <link rel="stylesheet" href="../css/auth.css?v=20260927">
+</head>
+
+<body class="auth-page">
+
+  <main class="auth-main">
+    <section class="auth-card" aria-labelledby="auth-title">
+      <div class="auth-card__brand"><img src="../assets/logo-juegos-online.png" alt=""></div>
+      <p class="auth-card__eyebrow">JuegosOnline · acceso</p>
+      <h1 id="auth-title">Hola de nuevo</h1>
+     
+      <form id="login-form" class="auth-form" novalidate>
+        <div class="auth-field">
+          <label for="username">Usuario</label>
+          <input id="username" name="username" type="text" autocomplete="username" placeholder="Ingresá tu usuario"
+            aria-describedby="username-error" required>
+          <small class="auth-error" id="username-error" aria-live="polite"></small>
+        </div>
+        <div class="auth-field">
+          <label for="password">Contraseña</label>
+          <input id="password" name="password" type="password" autocomplete="current-password"
+            placeholder="Ingresá tu contraseña" aria-describedby="password-error" required>
+          <small class="auth-error" id="password-error" aria-live="polite"></small>
+        </div>
+
+
+        <div class="reCaptcha-enviar">
+
+          <label class="reCaptcha">
+
+            <div class="reCaptcha-contenido">
+
+              <input type="checkbox" id="mi-checkbox">
+
+              <div class="reCaptcha-boton"></div>
+
+              <span class="reCaptcha-texto">
+                No soy un robot
+              </span>
+
+            </div>
+
+
+            <div class="recaptcha-logo-container">
+
+              <img src="../svg/recaptcha.svg" alt="reCaptcha-logo" class="recaptcha-logo">
+
+            </div>
+
+          </label>
+
+
+
+        </div>
+
+        <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
+        <button class="auth-submit" type="submit">Ingresar</button>
+
+
+        <div class="inicio-redes">
+
+          <p class="p-o">o</p>
+
+
+
+
+          <a href="../index.html" class="iniciar-session-app ">
+            <div class="app-logo-container">
+              <img src="../svg/facebook.svg" alt="Facebook" class="facebook-logo">
+            </div>
+            <p>Continuar con Facebook</p>
+          </a>
+
+
+
+          <a href="../index.html" class="iniciar-session-app ">
+            <div class="app-logo-container">
+              <img src="../svg/google.svg" alt="google" class="google-logo">
+            </div>
+            <p>Continuar con Google</p>
+          </a>
+
+        </div>
+
+      </form>
+      <p class="auth-card__switch">¿No tenés cuenta? <a href="register.html">Registrate</a></p>
+    </section>
+  </main>
+
+  <script src="../js/auth.js?v=20260930-1"></script>
+</body>
+
+</html>
