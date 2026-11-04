@@ -348,7 +348,7 @@ function dibujarTablero() {
 
                 if (ficha) {
                     const fichaHTML = document.createElement("canvas");
-                    fichaHTML.classList.add("ficha", ficha.tipo); 
+                    fichaHTML.classList.add("ficha", ficha.tipo);
                     fichaHTML.width = 96;
                     fichaHTML.height = 96;
                     fichaHTML.setAttribute("role", "img");
@@ -357,7 +357,7 @@ function dibujarTablero() {
                     if (imagenHongo.complete) dibujarHongo(fichaHTML, ficha.tipo);
                     else imagenHongo.addEventListener("load", () => dibujarHongo(fichaHTML, ficha.tipo), { once: true });
 
-                  
+
                     fichaHTML.addEventListener("dragstart", e => {
                         seleccionarFicha(ficha);
                         document.body.classList.add("arrastrando");
@@ -365,13 +365,13 @@ function dibujarTablero() {
                         crearEsporas(fichaHTML.getBoundingClientRect());
                         e.dataTransfer.setDragImage(imagenTransparente, 0, 0);
                         e.dataTransfer.effectAllowed = "move";
-                       
+
                         mostrarHints(ficha);
-                      
+
                         setTimeout(() => fichaHTML.classList.add("efectoFichaSeleccionada"), 0);
                     });
 
-                 
+
                     fichaHTML.addEventListener("dragend", () => {
                         document.body.classList.remove("arrastrando");
                         eliminarHongoArrastrado();
@@ -410,14 +410,14 @@ function dibujarTablero() {
                 casilla.addEventListener("dragover", e => {
                     if (fichaSeleccionada && juego.esMovimientoValido(fichaSeleccionada, f, c)) {
                         e.preventDefault();
-                     
-    e.dataTransfer.dropEffect = "move";
+
+                        e.dataTransfer.dropEffect = "move";
                     }
                 });
 
                 casilla.addEventListener("drop", e => {
                     e.preventDefault();
-                    
+
                     if (!fichaSeleccionada) return;
 
                     const resultado = juego.mover(fichaSeleccionada, f, c);
