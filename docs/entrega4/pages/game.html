@@ -1,4 +1,4 @@
-﻿<!doctype html>
+﻿﻿<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
@@ -8,11 +8,11 @@
   <link rel="icon" type="image/png" href="../assets/logo-juegos-online.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Bowlby+One+SC&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Bowlby+One+SC&family=Nunito:wght@400;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css?v=20260927">
   <link rel="stylesheet" href="../css/footer.css?v=20261007-1">
   <link rel="stylesheet" href="../css/header.css?v=20261007-1">
-  <link rel="stylesheet" href="../css/game.css?v=20261021-1">
+  <link rel="stylesheet" href="../css/game.css?v=20261103-3">
 </head>
 <body class="game-page">
   <header class="site-header">
@@ -55,7 +55,88 @@
       </div>
     </section>
     <section class="game-stage" aria-label="Vista del juego">
-      <figure class="game-stage__frame game-stage__frame--peg"><figcaption class="sr-only">Tablero vacío de Peg Solitaire.</figcaption></figure>
+      <figure class="game-stage__frame game-stage__frame--peg" id="peg-stage">
+        <figcaption class="sr-only">Tablero de Fungi Solitaire.</figcaption>
+        <section class="fungi-main-menu" id="fungi-main-menu" aria-label="Menú principal de Fungi Solitaire">
+          <img class="fungi-main-menu__background" src="../img/Elementos/background-menu.png" alt="">
+          <img class="fungi-main-menu__animated-mushroom" src="../img/Elementos/animated-mush.webp" alt="">
+    <img class="fungi-main-menu__fireflies" src="../img/luciernagas_loop_transparente.webp" alt="">
+    <div class="fungi-menu-loading" id="fungi-menu-loading" aria-live="polite">
+      <img class="fungi-menu-loading__logo" src="../img/Elementos/logo.png" alt="Fungi Solitaire">
+      <span class="fungi-menu-loading__spinner" aria-hidden="true"></span>
+      <strong>Cargando bosque...</strong>
+    </div>
+          <nav class="fungi-main-menu__actions" aria-label="Opciones principales">
+      <img class="fungi-main-menu__logo" src="../img/Elementos/logo.png" alt="Fungi Solitaire">
+            <button class="fungi-menu-button fungi-menu-button--main" id="comenzar-juego" type="button"><img src="../img/Elementos/jugar.png" alt="Jugar"></button>
+            <button class="fungi-menu-button fungi-menu-button--main" id="boton-supervivencia" type="button"><img src="../img/Elementos/supervivencia.png" alt="Supervivencia"></button>
+            <button class="fungi-menu-button fungi-menu-button--main" type="button"><img src="../img/Elementos/otros%20juegos.png" alt="Otros juegos"></button>
+            <nav class="fungi-main-menu__small-actions" aria-label="Opciones adicionales">
+              <button class="fungi-menu-button fungi-menu-button--small" type="button"><img src="../img/Elementos/share-small.png" alt="Compartir"></button>
+              <button class="fungi-menu-button fungi-menu-button--small" type="button"><img src="../img/Elementos/trofeo-small.png" alt="Trofeos"></button>
+              <button class="fungi-menu-button fungi-menu-button--small" type="button"><img src="../img/Elementos/ranking-small.png" alt="Ranking"></button>
+              <button class="fungi-menu-button fungi-menu-button--small" id="abrir-config-menu" type="button"><img src="../img/Elementos/conf-small.png" alt="Configuración"></button>
+              <button class="fungi-menu-button fungi-menu-button--small" type="button"><img src="../img/Elementos/github-small.png" alt="GitHub"></button>
+            </nav>
+          </nav>
+          <div id="mensaje-supervivencia" class="mensaje-supervivencia" hidden role="status">
+            <img src="../img/Elementos/cartel2.png" alt="">
+            <p>Debes completar el Modo historia para desbloquear el Modo Supervivencia.</p>
+          </div>
+        </section>
+        <img class="fungi-animation" src="../img/hongos_loop_transparente.webp" alt="" aria-hidden="true">
+        <img class="fireflies-animation" src="../img/luciernagas_loop_transparente.webp" alt="" aria-hidden="true">
+        <img class="peg-game-logo" src="../img/Elementos/logo.png" alt="Fungi Solitaire">
+        <div class="peg-in-game-controls" aria-label="Controles de partida">
+          <button id="peg-volver-menu" class="peg-corner-button peg-corner-button--back" type="button" aria-label="Volver al menú principal">
+            <img src="../img/Elementos/back.png" alt="">
+          </button>
+          <button id="peg-abrir-config" class="peg-corner-button peg-corner-button--config" type="button" aria-label="Abrir configuración">
+            <img src="../img/Elementos/conf-jue.png" alt="">
+          </button>
+          <button id="peg-reiniciar-esquina" class="peg-corner-button peg-corner-button--restart" type="button" aria-label="Reiniciar partida">
+            <img src="../img/Elementos/reiniciar.png" alt="">
+          </button>
+        </div>
+        <div id="peg-config" class="peg-config" hidden role="dialog" aria-modal="true" aria-label="Configuración del juego">
+          <img class="peg-config__background" src="../img/Elementos/cartel.png" alt="">
+          <button id="peg-cerrar-config" class="peg-config__close" type="button" aria-label="Cerrar configuración">
+            <img src="../img/Elementos/salir.png" alt="Cerrar">
+          </button>
+          <h2 class="peg-config__title">Configuración:</h2>
+          <div class="peg-config__buttons">
+            <button id="peg-toggle-music" type="button" aria-label="Activar o desactivar música">
+              <img src="../img/Elementos/music-on.png" alt="Música activada">
+            </button>
+            <button id="peg-toggle-fx" type="button" aria-label="Activar o desactivar efectos">
+              <img src="../img/Elementos/fx-on.png" alt="Efectos activados">
+            </button>
+          </div>
+        </div>
+        <div class="peg-hud" aria-live="polite">
+          <div class="peg-level-card">
+            <img src="../img/Elementos/nivel-cartel.png" alt="">
+          </div>
+          <div class="peg-stats-card">
+            <img src="../img/Elementos/cartel2.png" alt="">
+            <div class="peg-stats-card__text">
+              <span>Movimientos: <strong id="peg-movimientos">0</strong></span>
+              <span>Hongos: <strong id="peg-fichas">32</strong></span>
+              <span>Tiempo: <strong id="peg-tiempo">05:00</strong></span>
+            </div>
+          </div>
+        </div>
+        <div id="tablero" aria-label="Tablero de Fungi Solitaire"></div>
+      </figure>
+      <div class="peg-game-status" aria-live="polite">
+      </div>
+      <div id="peg-fin" class="peg-fin" hidden role="dialog" aria-modal="true" aria-labelledby="peg-fin-titulo">
+        <div class="peg-fin__panel">
+          <h2 id="peg-fin-titulo">DERROTA.</h2>
+          <p id="peg-fin-mensaje">Te quedaste sin movimientos.</p>
+          <button id="peg-fin-reiniciar" type="button">Jugar de nuevo</button>
+        </div>
+      </div>
     </section>
     <section class="game-guide">
       <div class="game-guide__grid">
@@ -114,6 +195,7 @@
   </footer>
   <script src="../js/profile-menu.js?v=20260930-2"></script>
   <script src="../js/game.js?v=20261007-1"></script>
+  <script type="module" src="../js/juegoPeg.js"></script>
 </body>
 </html>
 

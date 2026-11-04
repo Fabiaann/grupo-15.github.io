@@ -153,7 +153,265 @@
 :root {
     --game-content-width: min(100%, 840px);
     --game-stage-padding: clamp(12px, 4vw, 34px);
-    --peg-board-image: url('../assets/peg-solitaire-board-empty.png');
+    --peg-board-image: url('../img/background.png');
+}
+
+/* Evita la selección y el arrastre nativo de elementos de la interfaz. */
+.game-page,
+.game-page img,
+.game-page button,
+.game-page a {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+.game-page.arrastrando,
+.game-page.arrastrando * {
+    cursor: grabbing !important;
+}
+
+.fungi-main-menu {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+    background: #172615;
+    transition: opacity .55s ease, visibility .55s ease;
+}
+
+.fungi-main-menu.is-leaving {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.fungi-menu-loading {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: #f7d3a9;
+    background: #172615;
+    font: 700 clamp(.9rem, 2vw, 1.3rem) Poppins, sans-serif;
+    transition: opacity .35s ease, visibility .35s ease;
+}
+
+.fungi-menu-loading__logo {
+    width: min(150px, 45%);
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+}
+
+.game-stage__frame--peg .fungi-menu-loading__logo {
+    width: min(150px, 45%);
+    height: auto;
+    min-height: 0;
+}
+
+.fungi-main-menu.is-ready .fungi-menu-loading {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.fungi-menu-loading__spinner {
+    width: 34px;
+    height: 34px;
+    border: 4px solid #f7d3a966;
+    border-top-color: #f7d3a9;
+    border-radius: 50%;
+    animation: fungi-loading-spin 1s linear infinite;
+}
+
+@keyframes fungi-loading-spin {
+    to { transform: rotate(360deg); }
+}
+
+.fungi-main-menu__background,
+.fungi-main-menu__mushrooms,
+.fungi-main-menu__animated-mushroom,
+.fungi-main-menu__fireflies {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.fungi-main-menu__background { z-index: 0; }
+.fungi-main-menu__animated-mushroom { z-index: 1; }
+.fungi-main-menu__fireflies { z-index: 2; }
+.fungi-main-menu__mushrooms {
+    z-index: 1;
+    animation: menu-mushrooms-breathe 7s ease-in-out infinite;
+}
+
+.fungi-main-menu__logo {
+    position: static;
+    z-index: auto;
+    width: min(80px, 22%);
+    height: auto;
+    align-self: center;
+    margin-bottom: 4px;
+}
+
+@keyframes menu-mushrooms-breathe {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-4px) scale(1.006); }
+}
+
+.fungi-main-menu__actions {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    z-index: 3;
+    display: flex;
+    width: clamp(150px, 40%, 270px);
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(7px, 1.2vh, 15px);
+    transform: translate(-50%, -50%);
+}
+
+.fungi-menu-button {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    transition: transform .18s ease, filter .18s ease;
+}
+
+.fungi-menu-button img { display: block; width: 100%; height: auto; }
+.fungi-menu-button--main { width: 100%; }
+.fungi-menu-button--small { width: clamp(32px, 18%, 55px); }
+.fungi-menu-button,
+.fungi-menu-button img {
+    opacity: 1;
+    filter: none;
+    transform: none;
+}
+.fungi-menu-button:hover,
+.fungi-menu-button:focus-visible {
+    transform: translateY(-4px) scale(1.025);
+    filter: brightness(1.08) drop-shadow(0 7px 7px #17220c66);
+}
+
+.fungi-menu-button:focus-visible { outline: 3px solid #fff4bc; outline-offset: 4px; }
+
+.mensaje-supervivencia[hidden] { display: none; }
+
+.mensaje-supervivencia {
+    position: absolute;
+    top: 50%;
+    left: 1.5%;
+    z-index: 4;
+    width: 31%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%);
+    transition: opacity .4s ease, visibility .4s ease, transform .4s ease;
+}
+
+.mensaje-supervivencia.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%);
+}
+
+.mensaje-supervivencia.is-hiding {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) translateX(-8px);
+}
+
+.mensaje-supervivencia img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.mensaje-supervivencia p {
+    position: absolute;
+    inset: 30% 12% 30%;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    color: #f7d3a9;
+    font: 700 clamp(.45rem, .85vw, .78rem)/1.35 Poppins, sans-serif;
+    text-align: center;
+    text-shadow: 1px 1px 0 #160b06;
+}
+
+.fungi-main-menu__small-actions {
+    position: static;
+    z-index: auto;
+    display: flex;
+    align-items: end;
+    width: 150%;
+    justify-content: center;
+    gap: clamp(3px, 1vw, 8px);
+}
+
+@media (min-width: 761px) {
+    .fungi-main-menu__small-actions {
+        width: 150%;
+        margin-left: -7.5%;
+    }
+
+    .fungi-menu-button--small {
+        width: 19%;
+    }
+}
+
+@media (max-width: 760px) {
+    .fungi-main-menu__actions {
+        top: 48%;
+        width: min(190px, 52%);
+        gap: 4px;
+    }
+
+    .game-stage__frame--peg .fungi-main-menu__logo {
+        width: min(105px, 58%);
+    }
+
+    .fungi-main-menu__small-actions { gap: 4px; }
+
+    .mensaje-supervivencia {
+        left: 2%;
+        width: 28%;
+    }
+}
+
+@media (max-width: 420px) {
+    .fungi-main-menu__actions {
+        top: 47%;
+        width: 50%;
+        gap: 2px;
+    }
+
+    .game-stage__frame--peg .fungi-main-menu__logo {
+        width: 52%;
+    }
+
+    .fungi-main-menu__small-actions { gap: 2px; }
+}
+
+.peg-level {
+    flex-basis: 100%;
+    color: #ffe9a8;
+    font: 800 1.15rem/1.2 Poppins, sans-serif;
+    text-align: center;
 }
 
 .game-stage {
@@ -177,7 +435,538 @@
 }
 
 .game-stage__frame--peg {
+    position: relative;
     background: var(--peg-board-image) center / cover no-repeat;
+}
+
+.game-stage__frame--peg .fungi-animation {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.game-stage__frame--peg .fireflies-animation {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.peg-game-logo {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 3;
+    width: 20%;
+    height: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+}
+
+/* Evita que la regla general de imágenes del tablero lo estire a pantalla completa. */
+.game-stage__frame--peg .peg-game-logo {
+    width: 10%;
+    height: auto;
+    object-fit: contain;
+}
+
+.game-stage__frame--peg.partida-iniciada .peg-game-logo {
+    opacity: 1;
+}
+
+.game-stage__frame--peg #tablero {
+    position: absolute;
+    z-index: 2;
+    top: 19%;
+    left: 28.3%;
+    width: 49%;
+    height: 61.5%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: 50;
+}
+
+.peg-in-game-controls {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+}
+
+.game-stage__frame--peg.partida-iniciada .peg-in-game-controls {
+    opacity: 1;
+    pointer-events: none;
+}
+
+.peg-corner-button {
+    position: absolute;
+    bottom: 3%;
+    width: clamp(42px, 8%, 78px);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform .18s ease, filter .18s ease;
+}
+
+.peg-corner-button img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.peg-corner-button--back { left: 3%; }
+.peg-corner-button--config { right: 3%; }
+.peg-corner-button--restart {
+    top: 3%;
+    right: 3%;
+    bottom: auto;
+}
+
+.peg-corner-button:hover,
+.peg-corner-button:focus-visible {
+    transform: scale(1.08);
+    filter: brightness(1.12) drop-shadow(0 4px 5px #0008);
+}
+
+.peg-config[hidden] { display: none; }
+
+.peg-config {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 110;
+    width: min(42%, 330px);
+    transform: translate(-50%, -50%);
+}
+
+.peg-config__background {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.peg-config__close {
+    position: absolute;
+    top: 13%;
+    right: 12%;
+    z-index: 2;
+    width: 14%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    transition: transform .18s ease, filter .18s ease;
+}
+
+.peg-config__close img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.peg-config__close:hover,
+.peg-config__close:focus-visible {
+    transform: scale(1.08);
+    filter: brightness(1.12);
+}
+
+.peg-config__title {
+    position: absolute;
+    top: 27%;
+    left: 50%;
+    z-index: 1;
+    margin: 0;
+    color: #f7d3a9;
+    font: 700 clamp(.8rem, 2vw, 1.35rem)/1.1 Poppins, sans-serif;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.peg-config__buttons {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 62%;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(10px, 1.4vw, 20px);
+    transform: translateX(-50%);
+}
+
+.peg-config__buttons button {
+    width: 40%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    transition: transform .18s ease;
+}
+
+.peg-config__buttons button:hover,
+.peg-config__buttons button:focus-visible {
+    transform: scale(1.08);
+}
+
+.peg-config__buttons img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.peg-hud {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+}
+
+.game-stage__frame--peg.partida-iniciada .peg-hud {
+    opacity: 1;
+}
+
+.peg-level-card,
+.peg-stats-card {
+    position: absolute;
+    width: 22%;
+}
+
+.peg-level-card {
+    top: 35%;
+    left: 1.5%;
+}
+
+.peg-stats-card {
+    top: 28%;
+    right: 1.5%;
+}
+
+.peg-level-card > img,
+.peg-stats-card > img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.peg-stats-card > img {
+    filter: brightness(.82) saturate(.92);
+}
+
+.peg-level-card__text,
+.peg-stats-card__text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #f7d3a9;
+    font: 700 clamp(.45rem, 1vw, .85rem)/1.3 Poppins, sans-serif;
+    text-align: center;
+    text-shadow: -1px -1px 0 #160b06,
+                  1px -1px 0 #160b06,
+                 -1px  1px 0 #160b06,
+                  1px  1px 0 #160b06;
+}
+
+.peg-level-card__text strong {
+    font-size: 1.25em;
+}
+
+.peg-stats-card__text {
+    gap: 5px;
+    padding: 12% 9%;
+    font-size: clamp(.36rem, .78vw, .7rem);
+}
+
+.peg-stats-card__text span {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 3px;
+}
+
+.peg-stats-card__text strong {
+    color: #ffe6ae;
+}
+
+.game-stage__frame--peg .casilla {
+    min-width: 0;
+    min-height: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+}
+
+.game-stage__frame--peg .casilla.invalida {
+    pointer-events: none;
+}
+
+/* La ilustración tiene una perspectiva leve: cada grupo de filas necesita
+   un ajuste propio para que el hongo quede centrado en su agujero. */
+.game-stage__frame--peg .casilla[data-fila="2"],
+.game-stage__frame--peg .casilla[data-fila="3"],
+.game-stage__frame--peg .casilla[data-fila="4"] {
+    transform: translate(-40%, 0);
+}
+
+.game-stage__frame--peg .casilla[data-fila="0"][data-col="2"],
+.game-stage__frame--peg .casilla[data-fila="1"][data-col="2"],
+.game-stage__frame--peg .casilla[data-fila="5"][data-col="2"],
+.game-stage__frame--peg .casilla[data-fila="6"][data-col="2"] {
+    transform: translate(-40%, 0);
+}
+
+.game-stage__frame--peg .casilla[data-fila="0"][data-col="3"],
+.game-stage__frame--peg .casilla[data-fila="1"][data-col="3"],
+.game-stage__frame--peg .casilla[data-fila="5"][data-col="3"],
+.game-stage__frame--peg .casilla[data-fila="6"][data-col="3"] {
+    transform: translateX(-40%);
+}
+
+.game-stage__frame--peg .casilla[data-fila="0"][data-col="4"],
+.game-stage__frame--peg .casilla[data-fila="1"][data-col="4"],
+.game-stage__frame--peg .casilla[data-fila="5"][data-col="4"],
+.game-stage__frame--peg .casilla[data-fila="6"][data-col="4"] {
+    transform: translate(-40%, 0);
+}
+
+.game-stage__frame--peg .casilla[data-fila="5"][data-col="2"],
+.game-stage__frame--peg .casilla[data-fila="6"][data-col="2"] { transform: translate(-40%, 0); }
+.game-stage__frame--peg .casilla[data-fila="5"][data-col="3"],
+.game-stage__frame--peg .casilla[data-fila="6"][data-col="3"] { transform: translateX(-40%); }
+.game-stage__frame--peg .casilla[data-fila="5"][data-col="4"],
+.game-stage__frame--peg .casilla[data-fila="6"][data-col="4"] { transform: translate(-40%, 0); }
+
+
+.game-stage__frame--peg .ficha {
+    width: 65%;
+    height: 65%;
+    position: relative;
+    z-index: 2;
+    object-fit: contain;
+    cursor: grab;
+    touch-action: none;
+    filter: drop-shadow(0 4px 3px #24100699);
+    transition: transform .16s ease, filter .16s ease;
+}
+
+.game-stage__frame--peg .ficha:active,
+.game-stage__frame--peg .efectoFichaSeleccionada {
+    cursor: grabbing;
+}
+
+.ficha-drag-ghost {
+    position: fixed;
+    z-index: 1000;
+    width: 56px;
+    height: 56px;
+    pointer-events: none;
+    transform: translate(-50%, -18%) rotate(var(--drag-angle, 0deg));
+    transform-origin: 50% 10%;
+    filter: drop-shadow(0 9px 5px #24100688);
+    transition: transform .08s ease-out;
+}
+
+.hongo-espora {
+    position: fixed;
+    z-index: 999;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: #fffce8;
+    box-shadow: 0 0 4px #fff;
+    animation: espora-disperse .7s ease-out forwards;
+}
+
+@keyframes espora-disperse {
+    0% {
+        opacity: .95;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--espora-x), var(--espora-y)) scale(.25);
+    }
+}
+
+.hongo-polvo {
+    position: fixed;
+    z-index: 1;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: #c18a56;
+    box-shadow: 0 0 3px #f4d29b;
+    animation: polvo-saltar .65s ease-out forwards;
+}
+
+@keyframes polvo-saltar {
+    0% {
+        opacity: .9;
+        transform: translate(0, 0) scale(.7);
+    }
+    45% {
+        opacity: .75;
+        transform: translate(var(--polvo-x), var(--polvo-y)) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--polvo-x) * 1.35), 5px) scale(.2);
+    }
+}
+
+.game-stage__frame--peg .ficha:hover,
+.game-stage__frame--peg .ficha:focus-visible {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 7px #ffe49c) drop-shadow(0 4px 3px #24100699);
+}
+
+.game-stage__frame--peg .ficha.tipoB {
+    filter: sepia(1) saturate(2.5) hue-rotate(345deg) brightness(.72) contrast(1.2) drop-shadow(0 4px 3px #24100699);
+}
+
+.game-stage__frame--peg .ficha.tipoB:hover,
+.game-stage__frame--peg .ficha.tipoB:focus-visible {
+    filter: sepia(1) saturate(2.5) hue-rotate(345deg) brightness(.82) contrast(1.2)
+            drop-shadow(0 0 7px #ffe49c)
+            drop-shadow(0 4px 3px #24100699);
+}
+
+.ficha-drag-ghost.tipoB {
+    filter: sepia(1) saturate(2.5) hue-rotate(345deg) brightness(.72) contrast(1.2) drop-shadow(0 9px 5px #24100688);
+}
+q
+.game-stage__frame--peg .ficha.tipoC {
+    filter: hue-rotate(285deg) saturate(1.05) drop-shadow(0 4px 3px #24100699);
+}
+
+.game-stage__frame--peg .efectoFichaSeleccionada {
+    opacity: .55;
+    transform: scale(1.13);
+}
+
+.game-stage__frame--peg .ficha-levantada {
+    opacity: 0;
+}
+
+.game-stage__frame--peg .movimientoValido {
+    background: radial-gradient(circle, #ffdb75aa 0 28%, transparent 30% 100%);
+    animation: fungi-hint-pulse 1s ease-in-out infinite;
+}
+
+.peg-game-status {
+    width: var(--game-content-width);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px 24px;
+    margin-top: 14px;
+    color: #ffe9bb;
+    font: 700 1rem/1.2 Nunito, sans-serif;
+}
+
+.peg-game-status button {
+    border: 1px solid #d79b48;
+    border-radius: 999px;
+    padding: 8px 17px;
+    color: #321708;
+    background: #f2b45d;
+    font: inherit;
+    cursor: pointer;
+}
+
+.peg-game-status button:hover,
+.peg-game-status button:focus-visible {
+    background: #ffd27d;
+}
+
+.peg-fin[hidden] {
+    display: none;
+}
+
+.peg-fin {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: #100817aa;
+    transition: opacity .45s ease, visibility .45s ease;
+}
+
+.peg-fin.is-closing {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.game-stage__frame--peg.juego-transicionando #tablero {
+    animation: tablero-reingreso .55s ease both;
+}
+
+@keyframes tablero-reingreso {
+    0% { opacity: .15; transform: scale(.96); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.peg-fin__panel {
+    width: min(390px, 100%);
+    padding: 30px 26px 26px;
+    border: 3px solid #d7984c;
+    border-radius: 18px;
+    color: #fff0c9;
+    background: linear-gradient(145deg, #4d2415, #24120d);
+    box-shadow: 0 16px 45px #000b;
+    text-align: center;
+}
+
+.peg-fin__panel h2 {
+    margin: 0 0 12px;
+    color: #ffd477;
+    font: 800 2.1rem/1 Barlow Condensed, sans-serif;
+    letter-spacing: .08em;
+}
+
+.peg-fin__panel p {
+    margin: 0 0 22px;
+    font: 700 1.1rem/1.4 Nunito, sans-serif;
+}
+
+.peg-fin__panel button {
+    border: 0;
+    border-radius: 999px;
+    padding: 10px 20px;
+    color: #321708;
+    background: #f2b45d;
+    font: 800 1rem Nunito, sans-serif;
+    cursor: pointer;
+}
+
+@keyframes fungi-hint-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 #ffdb7588; opacity: .65; }
+    50% { box-shadow: 0 0 0 7px #ffdb7500; opacity: 1; }
 }
 
 .game-stage__frame img {
@@ -186,6 +975,28 @@
     height: 100%;
     min-height: 0;
     object-fit: contain
+}
+
+/* El logo del menú es pequeño y no debe heredar el tamaño completo del tablero. */
+.game-stage__frame--peg .fungi-main-menu__logo {
+    width: min(180px, 65%);
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+}
+
+.game-stage__frame--peg .fungi-menu-button img {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+}
+
+.game-stage__frame--peg .peg-config__close img {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
 }
 
 .game-stage__frame--blocka {
