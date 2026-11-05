@@ -14,6 +14,9 @@ document.addEventListener("dragstart", (evento) => {
 let fichaSeleccionada = null;
 let fichaArrastrada = null;
 let ultimoPuntoArrastre = null;
+let limitesArrastre = null;
+let ultimoEventoArrastre = null;
+let frameArrastre = null;
 let arrastrePointerActivo = false;
 let arrastrePointerMovio = false;
 let suprimirSiguienteClick = false;
@@ -209,8 +212,7 @@ function seleccionarFicha(ficha) {
 
 function actualizarHongoArrastrado(x, y) {
     if (!fichaArrastrada) return;
-    const etapa = document.getElementById("peg-stage");
-    const limites = etapa?.getBoundingClientRect();
+    const limites = limitesArrastre;
     const ancho = fichaArrastrada.offsetWidth || 56;
     const alto = fichaArrastrada.offsetHeight || 56;
 
@@ -226,8 +228,10 @@ function actualizarHongoArrastrado(x, y) {
 
     const anterior = ultimoPuntoArrastre || { x, y };
     const inclinacion = Math.max(-12, Math.min(12, (x - anterior.x) * 0.35));
-    fichaArrastrada.style.left = `${x}px`;
-    fichaArrastrada.style.top = `${y}px`;
+    const posicionX = limites ? x - limites.left : x;
+    const posicionY = limites ? y - limites.top : y;
+    fichaArrastrada.style.left = `${posicionX}px`;
+    fichaArrastrada.style.top = `${posicionY}px`;
     fichaArrastrada.style.setProperty("--drag-angle", `${inclinacion}deg`);
     ultimoPuntoArrastre = { x, y };
 }
@@ -238,7 +242,7 @@ function crearHongoArrastrado(fichaHTML, ficha) {
     fichaArrastrada.width = 96;
     fichaArrastrada.height = 96;
     dibujarHongo(fichaArrastrada, ficha.tipo);
-    document.body.appendChild(fichaArrastrada);
+    document.getElementById("peg-stage")?.appendChild(fichaArrastrada);
 
     const imagenTransparente = document.createElement("canvas");
     imagenTransparente.width = 1;
@@ -286,6 +290,12 @@ function eliminarHongoArrastrado() {
     fichaArrastrada?.remove();
     fichaArrastrada = null;
     ultimoPuntoArrastre = null;
+    limitesArrastre = null;
+    ultimoEventoArrastre = null;
+    if (frameArrastre !== null) {
+        cancelAnimationFrame(frameArrastre);
+        frameArrastre = null;
+    }
 }
 
 function terminarArrastrePointer() {
@@ -301,7 +311,15 @@ document.addEventListener("pointermove", (evento) => {
     if (Math.abs(evento.movementX) > 0 || Math.abs(evento.movementY) > 0) {
         arrastrePointerMovio = true;
     }
-    actualizarHongoArrastrado(evento.clientX, evento.clientY);
+    ultimoEventoArrastre = { x: evento.clientX, y: evento.clientY };
+    if (frameArrastre === null) {
+        frameArrastre = requestAnimationFrame(() => {
+            frameArrastre = null;
+            if (ultimoEventoArrastre) {
+                actualizarHongoArrastrado(ultimoEventoArrastre.x, ultimoEventoArrastre.y);
+            }
+        });
+    }
 });
 
 document.addEventListener("pointerup", (evento) => {
@@ -412,6 +430,7 @@ function dibujarTablero() {
                         arrastrePointerActivo = true;
                         arrastrePointerMovio = false;
                         elementoFichaArrastrada = fichaHTML;
+                        limitesArrastre = document.getElementById("peg-stage")?.getBoundingClientRect() || null;
                         fichaHTML.classList.add("ficha-levantada");
                         document.body.classList.add("arrastrando");
                         crearHongoArrastrado(fichaHTML, ficha);

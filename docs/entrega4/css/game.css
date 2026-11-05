@@ -801,7 +801,7 @@
 }
 
 .ficha-drag-ghost {
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     width: 56px;
     height: 56px;
@@ -809,7 +809,7 @@
     transform: translate(-50%, -18%) rotate(var(--drag-angle, 0deg));
     transform-origin: 50% 10%;
     filter: drop-shadow(0 9px 5px #24100688);
-    transition: transform .08s ease-out;
+    transition: none;
 }
 
 .hongo-espora {
@@ -900,6 +900,10 @@
 
 .game-stage__frame--peg .ficha.tipoC {
     filter: hue-rotate(285deg) saturate(1.05) drop-shadow(0 4px 3px #24100699);
+}
+
+.ficha-drag-ghost.tipoC {
+    filter: hue-rotate(285deg) saturate(1.05) drop-shadow(0 9px 5px #24100688);
 }
 
 .game-stage__frame--peg .efectoFichaSeleccionada {
