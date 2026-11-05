@@ -842,6 +842,21 @@
     filter: drop-shadow(0 0 7px #ffe49c) drop-shadow(0 4px 3px #24100699);
 }
 
+/* Evita repintados bruscos mientras otro hongo sigue al puntero. */
+.game-page.arrastrando .game-stage__frame--peg .ficha,
+.game-page.arrastrando .game-stage__frame--peg .ficha:hover,
+.game-page.arrastrando .game-stage__frame--peg .ficha:focus-visible {
+    transform: none;
+    transition: none;
+}
+
+.game-page.arrastrando .game-stage__frame--peg .ficha.tipoB,
+.game-page.arrastrando .game-stage__frame--peg .ficha.tipoB:hover,
+.game-page.arrastrando .game-stage__frame--peg .ficha.tipoB:focus-visible {
+    filter: sepia(1) saturate(2.5) hue-rotate(345deg) brightness(.72) contrast(1.2)
+        drop-shadow(0 4px 3px #24100699);
+}
+
 .game-stage__frame--peg .ficha.tipoB {
     filter: sepia(1) saturate(2.5) hue-rotate(345deg) brightness(.72) contrast(1.2) drop-shadow(0 4px 3px #24100699);
 }
@@ -856,7 +871,7 @@
 .ficha-drag-ghost.tipoB {
     filter: sepia(1) saturate(2.5) hue-rotate(345deg) brightness(.72) contrast(1.2) drop-shadow(0 9px 5px #24100688);
 }
-q
+
 .game-stage__frame--peg .ficha.tipoC {
     filter: hue-rotate(285deg) saturate(1.05) drop-shadow(0 4px 3px #24100699);
 }
@@ -1279,12 +1294,12 @@ q
 
 /* Revela la card; cambia .35s, .45s o 12px. */
 .classic-card {
-    flex: 0 0 240px;
+    flex: 0 0 clamp(190px, 22vw, 260px);
     min-width: 0;
     scroll-snap-align: start;
-    opacity: .72;
-    transform: scale(.95);
-    transition: opacity .35s, transform .35s
+    opacity: .82;
+    transform: scale(.96);
+    transition: opacity .3s ease, transform .3s ease
 }
 
 .classic-card.is-visible {
@@ -1296,30 +1311,76 @@ q
     animation: classic-reveal .45s ease-out
 }
 
+.classic-card__button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 19px;
+    background: #081a38;
+    box-shadow: 0 7px 14px #07152b44;
+    cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+
+.classic-card__button:hover,
+.classic-card__button:focus-visible {
+    transform: translateY(-8px) scale(1.035);
+    box-shadow: 0 14px 24px #07152b66;
+    filter: brightness(1.12) saturate(1.08);
+    outline: none;
+}
+
+.classic-card__button:focus-visible {
+    outline: 3px solid #f4cc09;
+    outline-offset: 4px;
+}
+
+.classic-card__button:active {
+    transform: translateY(-2px) scale(.97);
+}
+
+.classic-card__button.is-clicked {
+    animation: classic-card-click .36s ease-out;
+}
+
 .classic-card img {
     display: block;
     width: 100%;
-    height: 91px;
+    height: 146px;
     object-fit: cover;
     border-radius: 19px 19px 0 0
 }
 
 .classic-card h3 {
     margin: 0;
-    padding: 3px 6px 4px;
+    min-height: 43px;
+    display: grid;
+    place-items: center;
+    padding: 5px 8px;
     border-radius: 0 0 15px 15px;
     background: linear-gradient(#174888, #081a38);
     color: #fff;
     text-align: center;
     font: 18px/1.1 Arial, sans-serif;
-    white-space: nowrap
+    white-space: normal
+}
+
+.classics__loading {
+    width: 100%;
+    margin: 20px;
+    color: #174888;
+    text-align: center;
+    font-weight: 700;
 }
 
 /* Agranda la flecha; cambia .2s o scale. */
 .classics__arrow {
     position: absolute;
     z-index: 2;
-    top: 29px;
+    top: 50%;
+    transform: translateY(-50%);
     display: grid;
     place-items: center;
     width: 30px;
@@ -1336,7 +1397,7 @@ q
 
 .classics__arrow:hover {
     background: #671de7;
-    transform: scale(1.1)
+    transform: translateY(-50%) scale(1.1)
 }
 
 .classics__arrow--previous {
@@ -1345,6 +1406,23 @@ q
 
 .classics__arrow--next {
     right: 0
+}
+
+.tutorials__video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #071a38;
+    box-shadow: 0 5px 14px #07152b33;
+}
+
+.tutorials__video iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 @keyframes classic-reveal {
@@ -1357,6 +1435,12 @@ q
         opacity: 1;
         transform: translateY(0) scale(1)
     }
+}
+
+@keyframes classic-card-click {
+    0% { transform: translateY(-8px) scale(1.035); }
+    45% { transform: translateY(-2px) scale(.97); }
+    100% { transform: translateY(-8px) scale(1.035); }
 }
 
 .community {
@@ -1576,65 +1660,6 @@ q
     color: #7f7f7f
 }
 
-.tutorials .promo-poster {
-    margin: 0 0 44px;
-    min-height: 211px;
-    border-color: #fff
-}
-
-.promo-poster--minecraft {
-    background: linear-gradient(140deg, #38bef5 0 48%, #398b3d 49% 75%, #64412a 76%)
-}
-
-.promo-poster--minecraft::before {
-    width: 210px;
-    height: 120px;
-    left: -30px;
-    bottom: 10px;
-    border-radius: 0;
-    background: #61ba50;
-    transform: rotate(14deg)
-}
-
-.promo-poster--minecraft::after {
-    width: 110px;
-    height: 110px;
-    right: 20px;
-    bottom: 14px;
-    border-radius: 0;
-    background: #16672f;
-    transform: rotate(-17deg)
-}
-
-.promo-poster--minecraft .promo-poster__title {
-    font-size: 49px;
-    text-shadow: 4px 4px #152c17
-}
-
-.promo-poster--challenge {
-    background: linear-gradient(125deg, #cf4b31 0 38%, #f9b935 39% 72%, #6135ae 73%)
-}
-
-.promo-poster--challenge::before {
-    width: 130px;
-    height: 130px;
-    left: 7px;
-    bottom: -20px;
-    background: #e34776
-}
-
-.promo-poster--challenge::after {
-    width: 150px;
-    height: 150px;
-    right: -18px;
-    top: -40px;
-    background: #ef753c
-}
-
-.promo-poster--challenge .promo-poster__title {
-    font-size: 52px
-}
-
 .game-page :is(button, a, textarea):focus-visible {
     outline: 3px solid #0de8d4;
     outline-offset: 3px
@@ -1830,9 +1855,6 @@ q
         font-size: 16px
     }
 
-    .tutorials .promo-poster {
-        margin-bottom: 24px
-    }
 }
 
 @media(prefers-reduced-motion:reduce) {

@@ -1,4 +1,4 @@
-﻿﻿<!doctype html>
+﻿<!doctype html>
 <html lang="es">
 
 <head>
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../css/style.css?v=20260927">
   <link rel="stylesheet" href="../css/footer.css?v=20261007-1">
   <link rel="stylesheet" href="../css/header.css?v=20261007-1">
-  <link rel="stylesheet" href="../css/game.css?v=20261103-3">
+  <link rel="stylesheet" href="../css/game.css?v=20261104-2">
 </head>
 
 <body class="game-page">
@@ -267,24 +267,7 @@ Mantén presionado el botón izquierdo sobre una ficha y arrástrala hasta un es
       <div class="classics__carousel"><button class="classics__arrow classics__arrow--previous" type="button"
           aria-label="Ver juegos anteriores">‹</button>
         <div class="classics__track" id="classics-track">
-          <article class="classic-card"><img src="../assets/classic-pacman.svg" alt="" loading="lazy">
-            <h3>Pac-Man</h3>
-          </article>
-          <article class="classic-card"><img src="../assets/classic-mario.svg" alt="" loading="lazy">
-            <h3>Super Mario Bros</h3>
-          </article>
-          <article class="classic-card"><img src="../assets/classic-street-fighter.svg" alt="" loading="lazy">
-            <h3>Street Fighter 2</h3>
-          </article>
-          <article class="classic-card"><img src="../assets/classic-contra.svg" alt="" loading="lazy">
-            <h3>Contra</h3>
-          </article>
-          <article class="classic-card"><img src="../assets/classic-metal-slug.svg" alt="" loading="lazy">
-            <h3>Metal Slug X</h3>
-          </article>
-          <article class="classic-card"><img src="../assets/classic-crash.svg" alt="" loading="lazy">
-            <h3>Crash Bandicoot</h3>
-          </article>
+          <p class="classics__loading">Cargando juegos...</p>
         </div><button class="classics__arrow classics__arrow--next" type="button"
           aria-label="Ver más juegos clásicos">›</button>
       </div>
@@ -338,12 +321,11 @@ Mantén presionado el botón izquierdo sobre una ficha y arrástrala hasta un es
         </div>
         <aside class="tutorials" aria-label="Tutoriales">
           <h2><span class="info-icon" aria-hidden="true">i</span> Tutoriales</h2>
-          <div class="promo-poster promo-poster--minecraft"><span
-              class="promo-poster__title">MINECRAFT<br>GUÍA</span><span class="promo-poster__play"
-              aria-hidden="true">▶</span></div>
-          <div class="promo-poster promo-poster--challenge"><span
-              class="promo-poster__title">NUEVOS<br>RETOS</span><span class="promo-poster__play"
-              aria-hidden="true">▶</span></div>
+          <div class="tutorials__video">
+            <iframe src="https://www.youtube.com/embed/N6f30RVHOVw" title="Tutorial de Fungi Solitaire"
+              loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
         </aside>
       </div>
     </section>
@@ -384,7 +366,8 @@ Mantén presionado el botón izquierdo sobre una ficha y arrástrala hasta un es
     </div>
   </footer>
   <script src="../js/profile-menu.js?v=20260930-2"></script>
-  <script src="../js/game.js?v=20261007-1"></script>
+  <script src="../js/catalog-fallback.js?v=20261104-1"></script>
+  <script src="../js/game.js?v=20261104-2"></script>
   <script type="module" src="../js/juegoPeg.js"></script>
 </body>
 
