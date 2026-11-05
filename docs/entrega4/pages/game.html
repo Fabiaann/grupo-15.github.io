@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../css/style.css?v=20260927">
   <link rel="stylesheet" href="../css/footer.css?v=20261007-1">
   <link rel="stylesheet" href="../css/header.css?v=20261007-1">
-  <link rel="stylesheet" href="../css/game.css?v=20261104-2">
+  <link rel="stylesheet" href="../css/game.css?v=20261104-7">
 </head>
 
 <body class="game-page">
@@ -188,9 +188,26 @@
           <div class="peg-stats-card">
             <img src="../img/Elementos/cartel2.png" alt="">
             <div class="peg-stats-card__text">
-              <span>Movimientos: <strong id="peg-movimientos">0</strong></span>
-              <span>Hongos: <strong id="peg-fichas">32</strong></span>
-              <span>Tiempo: <strong id="peg-tiempo">05:00</strong></span>
+              <span>
+                <svg class="peg-stat-icon" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M3 10h13m-5-5 5 5-5 5" />
+                </svg>
+                <span>Movimientos: <strong id="peg-movimientos">0</strong></span>
+              </span>
+              <span>
+                <svg class="peg-stat-icon" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M3 9.5C3 6.5 6.1 4 10 4s7 2.5 7 5.5H3Z" />
+                  <path d="M7.5 9.5h5v6h-5z" />
+                </svg>
+                <span>Hongos: <strong id="peg-fichas">32</strong></span>
+              </span>
+              <span>
+                <svg class="peg-stat-icon" viewBox="0 0 20 20" aria-hidden="true">
+                  <circle cx="10" cy="10" r="7" />
+                  <path d="M10 6v4l3 2" />
+                </svg>
+                <span>Tiempo: <strong id="peg-tiempo">05:00</strong></span>
+              </span>
             </div>
           </div>
         </div>
@@ -211,21 +228,32 @@
         <article class="game-guide__copy">
 
                <div class="carrusel">
-  <button onclick="galeria.scrollBy(-200, 0)">‹</button>
+  <button id="galeria-anterior" type="button" aria-label="Imagen anterior">‹</button>
 
   <div class="contenedorImagenes" id="galeria">
-  
- 
-  
-    <img src="../img/pegFoto3.png">
-    <img src="../img/pegFoto4.png">
-   <img src="../img/pegFoto1.png">
-    <img src="../img/pegFoto6.png">
-    
+    <div class="galeria__track" id="galeria-track">
+      <img src="../img/pegFoto3.png" alt="Tablero de Peg Solitaire">
+      <img src="../img/nivel3.png" alt="Nivel 3 de Fungi Solitaire, valle maldito">
+      <img src="../img/pegFoto4.png" alt="Partida de Fungi Solitaire">
+      <img src="../img/img.png" alt="Captura de Fungi Solitaire">
+      <img src="../img/Fungi%20Solitaire.png" alt="Fungi Solitaire">
+      <img src="../img/nivel%202.png" alt="Nivel 2 de Fungi Solitaire, páramo congelado">
+    </div>
   </div>
 
-  <button onclick="galeria.scrollBy(200, 0)">›</button>
+  <button id="galeria-siguiente" type="button" aria-label="Imagen siguiente">›</button>
 </div>
+          <div class="galeria-lightbox" id="galeria-lightbox" hidden role="dialog" aria-modal="true"
+            aria-label="Visor de imágenes de Fungi Solitaire">
+            <button class="galeria-lightbox__close" id="galeria-cerrar" type="button" aria-label="Cerrar imagen">×</button>
+            <button class="galeria-lightbox__arrow galeria-lightbox__arrow--previous" id="galeria-ampliada-anterior"
+              type="button" aria-label="Imagen anterior">‹</button>
+            <figure class="galeria-lightbox__figure">
+              <img id="galeria-ampliada" src="" alt="">
+            </figure>
+            <button class="galeria-lightbox__arrow galeria-lightbox__arrow--next" id="galeria-ampliada-siguiente"
+              type="button" aria-label="Imagen siguiente">›</button>
+          </div>
           <h2><span class="info-icon" aria-hidden="true">i</span>¿Cómo jugar: Fungi Solitaire?</h2>
           <div class="game-guide__text">
       <p>¡Pon a prueba tu inteligencia con Fungi Solitaire!<br>
@@ -252,13 +280,13 @@ Mantén presionado el botón izquierdo sobre una ficha y arrástrala hasta un es
                 aria-hidden="true"><i></i></span></div>
           </div>
         </article>
-        <aside class="game-guide__aside" aria-label="Publicidad">
-          <h2>Publicidad</h2>
-          <div class="promo-poster promo-poster--peak"><span class="promo-poster__title">PEAK</span><span
-              class="promo-poster__play" aria-hidden="true">▶</span><span class="promo-poster__tag">OFFICIAL
-              TRAILER</span></div>
-          <p class="game-guide__promo-note"><span aria-hidden="true">🏆</span> ¡Participá en torneos, chateá y haz
-            amigos!</p>
+        <aside class="game-guide__aside" aria-label="Tutorial de Fungi Solitaire">
+          <h2><span class="info-icon" aria-hidden="true">i</span> Tutoriales</h2>
+          <div class="tutorials__video">
+            <iframe src="https://www.youtube.com/embed/N6f30RVHOVw" title="Tutorial de Fungi Solitaire"
+              loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
         </aside>
       </div>
     </section>
@@ -289,44 +317,32 @@ Mantén presionado el botón izquierdo sobre una ficha y arrástrala hasta un es
               destacados</button><button type="button" role="tab" aria-selected="true" data-comments-tab="latest"><span
                 aria-hidden="true">◷</span> Últimos comentarios</button></div>
           <div class="comment-list" id="comment-list">
-            <article class="comment-card" data-date="2020-10-14" data-likes="3">
-              <div class="comment-card__head"><span class="avatar avatar--ana" aria-hidden="true">AP</span><strong>Ana
-                  Paula <small>15</small></strong><button type="button" class="comment-like" aria-pressed="false"
-                  aria-label="Me gusta el comentario de Ana Paula"><span>3 me gusta</span> ♡</button></div>
-              <div class="comment-card__body">
-                <p>Me acuerdo de que en la primaria nos la pasábamos jugando en la sala de computación D:</p><time
-                  datetime="2020-10-14">14 de octubre de 2020</time>
-              </div>
+            <article class="comment-card" data-date="2026-10-29" data-likes="18">
+              <div class="comment-card__head"><span class="avatar avatar--ana" aria-hidden="true">LM</span><strong>LunaMora <small>17</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de LunaMora"><span>18 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>La ambientación del bosque quedó hermosa y el sonido de los hongos le da mucha personalidad.</p><time datetime="2026-10-29">29 de octubre de 2026</time></div>
             </article>
-            <article class="comment-card" data-date="2020-10-02" data-likes="11">
-              <div class="comment-card__head"><span class="avatar avatar--yameli"
-                  aria-hidden="true">YA</span><strong>yameli123 <small>15</small></strong><button type="button"
-                  class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de yameli123"><span>11 me
-                    gusta</span> ♡</button></div>
-              <div class="comment-card__body">
-                <p>este juego me gusta</p><time datetime="2020-10-02">2 de octubre de 2020</time>
-              </div>
+            <article class="comment-card" data-date="2026-10-27" data-likes="12">
+              <div class="comment-card__head"><span class="avatar avatar--yameli" aria-hidden="true">TG</span><strong>TomásG <small>19</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de TomásG"><span>12 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Está bueno que las fichas sean honguitos y que se pueda ver el tiempo mientras jugás.</p><time datetime="2026-10-27">27 de octubre de 2026</time></div>
             </article>
-            <article class="comment-card" data-date="2020-10-02" data-likes="11">
-              <div class="comment-card__head"><span class="avatar avatar--chiwa"
-                  aria-hidden="true">CH</span><strong>chiwa <small>15</small></strong><button type="button"
-                  class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de chiwa"><span>11 me
-                    gusta</span> ♡</button></div>
-              <div class="comment-card__body">
-                <p>Qué fácil que es el juego, me gané el 1, el 2 y el 3 yo solo.</p><time datetime="2020-10-02">2 de
-                  octubre de 2020</time>
-              </div>
+            <article class="comment-card" data-date="2026-10-24" data-likes="9">
+              <div class="comment-card__head"><span class="avatar avatar--chiwa" aria-hidden="true">VA</span><strong>ValeArcade <small>16</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de ValeArcade"><span>9 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Al principio parece fácil, pero después de varias jugadas hay que pensar bastante. Muy entretenido.</p><time datetime="2026-10-24">24 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-20" data-likes="7">
+              <div class="comment-card__head"><span class="avatar avatar--self" aria-hidden="true">NF</span><strong>NicoFungi <small>18</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de NicoFungi"><span>7 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Me gustó poder arrastrar los hongos y ver las pistas sobre los lugares posibles.</p><time datetime="2026-10-20">20 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-16" data-likes="5">
+              <div class="comment-card__head"><span class="avatar avatar--ana" aria-hidden="true">PS</span><strong>PixelSofi <small>20</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de PixelSofi"><span>5 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Los carteles de nivel y estadísticas ayudan mucho a seguir la partida sin distraerse.</p><time datetime="2026-10-16">16 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-11" data-likes="4">
+              <div class="comment-card__head"><span class="avatar avatar--yameli" aria-hidden="true">RC</span><strong>RamiC <small>17</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de RamiC"><span>4 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Muy linda versión del clásico. La música de fondo combina perfecto con el estilo del juego.</p><time datetime="2026-10-11">11 de octubre de 2026</time></div>
             </article>
           </div>
         </div>
-        <aside class="tutorials" aria-label="Tutoriales">
-          <h2><span class="info-icon" aria-hidden="true">i</span> Tutoriales</h2>
-          <div class="tutorials__video">
-            <iframe src="https://www.youtube.com/embed/N6f30RVHOVw" title="Tutorial de Fungi Solitaire"
-              loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-          </div>
-        </aside>
       </div>
     </section>
   </main>
@@ -367,7 +383,7 @@ Mantén presionado el botón izquierdo sobre una ficha y arrástrala hasta un es
   </footer>
   <script src="../js/profile-menu.js?v=20260930-2"></script>
   <script src="../js/catalog-fallback.js?v=20261104-1"></script>
-  <script src="../js/game.js?v=20261104-2"></script>
+  <script src="../js/game.js?v=20261104-3"></script>
   <script type="module" src="../js/juegoPeg.js"></script>
 </body>
 

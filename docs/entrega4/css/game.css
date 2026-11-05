@@ -475,7 +475,7 @@
 
 /* Evita que la regla general de imágenes del tablero lo estire a pantalla completa. */
 .game-stage__frame--peg .peg-game-logo {
-    width: 10%;
+    width: 16%;
     height: auto;
     object-fit: contain;
 }
@@ -692,16 +692,42 @@
 }
 
 .peg-stats-card__text {
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    width: max-content;
+    max-width: 84%;
+    padding: 0;
     gap: 5px;
-    padding: 12% 9%;
     font-size: clamp(.36rem, .78vw, .7rem);
+    align-items: flex-start;
+    transform: translate(-50%, -50%);
 }
 
 .peg-stats-card__text span {
     display: flex;
     width: 100%;
-    justify-content: center;
-    gap: 3px;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    text-align: left;
+}
+
+.peg-stats-card__text span > span {
+    width: auto;
+    display: inline;
+}
+
+.peg-stat-icon {
+    flex: 0 0 1.15em;
+    width: 1.15em;
+    height: 1.15em;
+    fill: none;
+    stroke: #f7d3a9;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .peg-stats-card__text strong {
@@ -1453,12 +1479,12 @@
     max-width: 1195px;
     margin: auto;
     display: grid;
-    grid-template-columns: minmax(0, 720px) minmax(250px, 355px);
+    grid-template-columns: minmax(0, 720px);
+    justify-content: center;
     gap: 68px
 }
 
-.comments h2,
-.tutorials h2 {
+.comments h2 {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -1470,17 +1496,6 @@
 .comments h2 span {
     color: #c9e943;
     font-size: 32px
-}
-
-.tutorials h2 {
-    text-transform: none
-}
-
-.tutorials h2 .info-icon {
-    flex-basis: 28px;
-    width: 28px;
-    height: 28px;
-    font-size: 19px
 }
 
 .comment-form {
@@ -1660,6 +1675,150 @@
     color: #7f7f7f
 }
 
+/* Galería de capturas de Fungi Solitaire. */
+.carrusel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin: 0 auto 24px;
+}
+
+.carrusel > button {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #0865b6;
+    color: #fff;
+    cursor: pointer;
+    font: 28px/1 Arial, sans-serif;
+    transition: background-color .2s ease, transform .2s ease;
+}
+
+.carrusel > button:hover {
+    background: #671de7;
+    transform: scale(1.08);
+}
+
+.contenedorImagenes {
+    width: min(604px, calc(100% - 100px));
+    overflow: hidden;
+}
+
+.galeria__track {
+    display: flex;
+    gap: 4px;
+    width: max-content;
+    transform: translateX(0);
+    transition: transform .35s ease;
+}
+
+.contenedorImagenes img {
+    flex: 0 0 200px;
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: zoom-in;
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.contenedorImagenes img:hover,
+.contenedorImagenes img:focus-visible {
+    transform: scale(.97);
+    filter: brightness(1.12);
+    outline: 3px solid #0de8d4;
+    outline-offset: -3px;
+}
+
+.galeria-lightbox {
+    position: fixed;
+    z-index: 3000;
+    inset: 0;
+    display: grid;
+    grid-template-columns: minmax(40px, 1fr) minmax(0, 860px) minmax(40px, 1fr);
+    align-items: center;
+    gap: 14px;
+    padding: 6vh 4vw;
+    background: rgb(3 10 24 / 82%);
+}
+
+.galeria-lightbox[hidden] {
+    display: none;
+}
+
+.game-page:has(.galeria-lightbox:not([hidden])) {
+    overflow: hidden;
+}
+
+.galeria-lightbox__figure {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 860px;
+    max-height: 82vh;
+    margin: 0;
+}
+
+.galeria-lightbox__figure img {
+    display: block;
+    max-width: min(82vw, 860px);
+    max-height: 82vh;
+    width: auto;
+    height: auto;
+    border: 4px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 18px 45px #000b;
+}
+
+.galeria-lightbox__close,
+.galeria-lightbox__arrow {
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    text-shadow: 0 2px 5px #000;
+    transition: color .2s ease, transform .2s ease, background-color .2s ease;
+}
+
+.galeria-lightbox__close {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    z-index: 1;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    background: rgb(8 61 102 / 85%);
+    font: 28px/32px Arial, sans-serif;
+}
+
+.galeria-lightbox__close:hover,
+.galeria-lightbox__arrow:hover {
+    background: #671de7;
+    color: #fff;
+    transform: scale(1.08);
+}
+
+.galeria-lightbox__arrow {
+    justify-self: center;
+    width: 42px;
+    height: 52px;
+    padding: 0;
+    border-radius: 9px;
+    background: rgb(8 61 102 / 85%);
+    font: 42px/1 Arial, sans-serif;
+}
+
+.game-page.gallery-open {
+    overflow: hidden;
+}
+
 .game-page :is(button, a, textarea):focus-visible {
     outline: 3px solid #0de8d4;
     outline-offset: 3px
@@ -1726,8 +1885,7 @@
         grid-template-columns: 1fr
     }
 
-    .game-guide__aside,
-    .tutorials {
+    .game-guide__aside {
         max-width: 420px
     }
 
