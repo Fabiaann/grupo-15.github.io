@@ -475,7 +475,7 @@
 
 /* Evita que la regla general de imágenes del tablero lo estire a pantalla completa. */
 .game-stage__frame--peg .peg-game-logo {
-    width: 10%;
+    width: 16%;
     height: auto;
     object-fit: contain;
 }
@@ -692,16 +692,42 @@
 }
 
 .peg-stats-card__text {
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    width: max-content;
+    max-width: 84%;
+    padding: 0;
     gap: 5px;
-    padding: 12% 9%;
     font-size: clamp(.36rem, .78vw, .7rem);
+    align-items: flex-start;
+    transform: translate(-50%, -50%);
 }
 
 .peg-stats-card__text span {
     display: flex;
     width: 100%;
-    justify-content: center;
-    gap: 3px;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    text-align: left;
+}
+
+.peg-stats-card__text span > span {
+    width: auto;
+    display: inline;
+}
+
+.peg-stat-icon {
+    flex: 0 0 1.15em;
+    width: 1.15em;
+    height: 1.15em;
+    fill: none;
+    stroke: #f7d3a9;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .peg-stats-card__text strong {
@@ -775,7 +801,7 @@
 }
 
 .ficha-drag-ghost {
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     width: 56px;
     height: 56px;
@@ -783,7 +809,7 @@
     transform: translate(-50%, -18%) rotate(var(--drag-angle, 0deg));
     transform-origin: 50% 10%;
     filter: drop-shadow(0 9px 5px #24100688);
-    transition: transform .08s ease-out;
+    transition: none;
 }
 
 .hongo-espora {
@@ -842,6 +868,21 @@
     filter: drop-shadow(0 0 7px #ffe49c) drop-shadow(0 4px 3px #24100699);
 }
 
+/* Evita repintados bruscos mientras otro hongo sigue al puntero. */
+.game-page.arrastrando .game-stage__frame--peg .ficha,
+.game-page.arrastrando .game-stage__frame--peg .ficha:hover,
+.game-page.arrastrando .game-stage__frame--peg .ficha:focus-visible {
+    transform: none;
+    transition: none;
+}
+
+.game-page.arrastrando .game-stage__frame--peg .ficha.tipoB,
+.game-page.arrastrando .game-stage__frame--peg .ficha.tipoB:hover,
+.game-page.arrastrando .game-stage__frame--peg .ficha.tipoB:focus-visible {
+    filter: sepia(1) saturate(2.5) hue-rotate(345deg) brightness(.72) contrast(1.2)
+        drop-shadow(0 4px 3px #24100699);
+}
+
 .game-stage__frame--peg .ficha.tipoB {
     filter: sepia(1) saturate(2.5) hue-rotate(345deg) brightness(.72) contrast(1.2) drop-shadow(0 4px 3px #24100699);
 }
@@ -856,9 +897,13 @@
 .ficha-drag-ghost.tipoB {
     filter: sepia(1) saturate(2.5) hue-rotate(345deg) brightness(.72) contrast(1.2) drop-shadow(0 9px 5px #24100688);
 }
-q
+
 .game-stage__frame--peg .ficha.tipoC {
     filter: hue-rotate(285deg) saturate(1.05) drop-shadow(0 4px 3px #24100699);
+}
+
+.ficha-drag-ghost.tipoC {
+    filter: hue-rotate(285deg) saturate(1.05) drop-shadow(0 9px 5px #24100688);
 }
 
 .game-stage__frame--peg .efectoFichaSeleccionada {
@@ -1279,12 +1324,12 @@ q
 
 /* Revela la card; cambia .35s, .45s o 12px. */
 .classic-card {
-    flex: 0 0 240px;
+    flex: 0 0 clamp(190px, 22vw, 260px);
     min-width: 0;
     scroll-snap-align: start;
-    opacity: .72;
-    transform: scale(.95);
-    transition: opacity .35s, transform .35s
+    opacity: .82;
+    transform: scale(.96);
+    transition: opacity .3s ease, transform .3s ease
 }
 
 .classic-card.is-visible {
@@ -1296,30 +1341,76 @@ q
     animation: classic-reveal .45s ease-out
 }
 
+.classic-card__button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 19px;
+    background: #081a38;
+    box-shadow: 0 7px 14px #07152b44;
+    cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+
+.classic-card__button:hover,
+.classic-card__button:focus-visible {
+    transform: translateY(-8px) scale(1.035);
+    box-shadow: 0 14px 24px #07152b66;
+    filter: brightness(1.12) saturate(1.08);
+    outline: none;
+}
+
+.classic-card__button:focus-visible {
+    outline: 3px solid #f4cc09;
+    outline-offset: 4px;
+}
+
+.classic-card__button:active {
+    transform: translateY(-2px) scale(.97);
+}
+
+.classic-card__button.is-clicked {
+    animation: classic-card-click .36s ease-out;
+}
+
 .classic-card img {
     display: block;
     width: 100%;
-    height: 91px;
+    height: 146px;
     object-fit: cover;
     border-radius: 19px 19px 0 0
 }
 
 .classic-card h3 {
     margin: 0;
-    padding: 3px 6px 4px;
+    min-height: 43px;
+    display: grid;
+    place-items: center;
+    padding: 5px 8px;
     border-radius: 0 0 15px 15px;
     background: linear-gradient(#174888, #081a38);
     color: #fff;
     text-align: center;
     font: 18px/1.1 Arial, sans-serif;
-    white-space: nowrap
+    white-space: normal
+}
+
+.classics__loading {
+    width: 100%;
+    margin: 20px;
+    color: #174888;
+    text-align: center;
+    font-weight: 700;
 }
 
 /* Agranda la flecha; cambia .2s o scale. */
 .classics__arrow {
     position: absolute;
     z-index: 2;
-    top: 29px;
+    top: 50%;
+    transform: translateY(-50%);
     display: grid;
     place-items: center;
     width: 30px;
@@ -1336,7 +1427,7 @@ q
 
 .classics__arrow:hover {
     background: #671de7;
-    transform: scale(1.1)
+    transform: translateY(-50%) scale(1.1)
 }
 
 .classics__arrow--previous {
@@ -1345,6 +1436,23 @@ q
 
 .classics__arrow--next {
     right: 0
+}
+
+.tutorials__video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #071a38;
+    box-shadow: 0 5px 14px #07152b33;
+}
+
+.tutorials__video iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 @keyframes classic-reveal {
@@ -1359,6 +1467,12 @@ q
     }
 }
 
+@keyframes classic-card-click {
+    0% { transform: translateY(-8px) scale(1.035); }
+    45% { transform: translateY(-2px) scale(.97); }
+    100% { transform: translateY(-8px) scale(1.035); }
+}
+
 .community {
     padding: 54px 20px 76px;
     background: #061324;
@@ -1369,12 +1483,12 @@ q
     max-width: 1195px;
     margin: auto;
     display: grid;
-    grid-template-columns: minmax(0, 720px) minmax(250px, 355px);
+    grid-template-columns: minmax(0, 720px);
+    justify-content: center;
     gap: 68px
 }
 
-.comments h2,
-.tutorials h2 {
+.comments h2 {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -1386,17 +1500,6 @@ q
 .comments h2 span {
     color: #c9e943;
     font-size: 32px
-}
-
-.tutorials h2 {
-    text-transform: none
-}
-
-.tutorials h2 .info-icon {
-    flex-basis: 28px;
-    width: 28px;
-    height: 28px;
-    font-size: 19px
 }
 
 .comment-form {
@@ -1576,63 +1679,148 @@ q
     color: #7f7f7f
 }
 
-.tutorials .promo-poster {
-    margin: 0 0 44px;
-    min-height: 211px;
-    border-color: #fff
+/* Galería de capturas de Fungi Solitaire. */
+.carrusel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin: 0 auto 24px;
 }
 
-.promo-poster--minecraft {
-    background: linear-gradient(140deg, #38bef5 0 48%, #398b3d 49% 75%, #64412a 76%)
+.carrusel > button {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #0865b6;
+    color: #fff;
+    cursor: pointer;
+    font: 28px/1 Arial, sans-serif;
+    transition: background-color .2s ease, transform .2s ease;
 }
 
-.promo-poster--minecraft::before {
-    width: 210px;
-    height: 120px;
-    left: -30px;
-    bottom: 10px;
-    border-radius: 0;
-    background: #61ba50;
-    transform: rotate(14deg)
+.carrusel > button:hover {
+    background: #671de7;
+    transform: scale(1.08);
 }
 
-.promo-poster--minecraft::after {
-    width: 110px;
-    height: 110px;
-    right: 20px;
-    bottom: 14px;
-    border-radius: 0;
-    background: #16672f;
-    transform: rotate(-17deg)
+.contenedorImagenes {
+    width: min(604px, calc(100% - 100px));
+    overflow: hidden;
 }
 
-.promo-poster--minecraft .promo-poster__title {
-    font-size: 49px;
-    text-shadow: 4px 4px #152c17
+.galeria__track {
+    display: flex;
+    gap: 4px;
+    width: max-content;
+    transform: translateX(0);
+    transition: transform .35s ease;
 }
 
-.promo-poster--challenge {
-    background: linear-gradient(125deg, #cf4b31 0 38%, #f9b935 39% 72%, #6135ae 73%)
+.contenedorImagenes img {
+    flex: 0 0 200px;
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: zoom-in;
+    transition: transform .2s ease, filter .2s ease;
 }
 
-.promo-poster--challenge::before {
-    width: 130px;
-    height: 130px;
-    left: 7px;
-    bottom: -20px;
-    background: #e34776
+.contenedorImagenes img:hover,
+.contenedorImagenes img:focus-visible {
+    transform: scale(.97);
+    filter: brightness(1.12);
+    outline: 3px solid #0de8d4;
+    outline-offset: -3px;
 }
 
-.promo-poster--challenge::after {
-    width: 150px;
-    height: 150px;
-    right: -18px;
-    top: -40px;
-    background: #ef753c
+.galeria-lightbox {
+    position: fixed;
+    z-index: 3000;
+    inset: 0;
+    display: grid;
+    grid-template-columns: minmax(40px, 1fr) minmax(0, 860px) minmax(40px, 1fr);
+    align-items: center;
+    gap: 14px;
+    padding: 6vh 4vw;
+    background: rgb(3 10 24 / 82%);
 }
 
-.promo-poster--challenge .promo-poster__title {
-    font-size: 52px
+.galeria-lightbox[hidden] {
+    display: none;
+}
+
+.game-page:has(.galeria-lightbox:not([hidden])) {
+    overflow: hidden;
+}
+
+.galeria-lightbox__figure {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 860px;
+    max-height: 82vh;
+    margin: 0;
+}
+
+.galeria-lightbox__figure img {
+    display: block;
+    max-width: min(82vw, 860px);
+    max-height: 82vh;
+    width: auto;
+    height: auto;
+    border: 4px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 18px 45px #000b;
+}
+
+.galeria-lightbox__close,
+.galeria-lightbox__arrow {
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    text-shadow: 0 2px 5px #000;
+    transition: color .2s ease, transform .2s ease, background-color .2s ease;
+}
+
+.galeria-lightbox__close {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    z-index: 1;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    background: rgb(8 61 102 / 85%);
+    font: 28px/32px Arial, sans-serif;
+}
+
+.galeria-lightbox__close:hover,
+.galeria-lightbox__arrow:hover {
+    background: #671de7;
+    color: #fff;
+    transform: scale(1.08);
+}
+
+.galeria-lightbox__arrow {
+    justify-self: center;
+    width: 42px;
+    height: 52px;
+    padding: 0;
+    border-radius: 9px;
+    background: rgb(8 61 102 / 85%);
+    font: 42px/1 Arial, sans-serif;
+}
+
+.game-page.gallery-open {
+    overflow: hidden;
 }
 
 .game-page :is(button, a, textarea):focus-visible {
@@ -1701,8 +1889,7 @@ q
         grid-template-columns: 1fr
     }
 
-    .game-guide__aside,
-    .tutorials {
+    .game-guide__aside {
         max-width: 420px
     }
 
@@ -1830,9 +2017,6 @@ q
         font-size: 16px
     }
 
-    .tutorials .promo-poster {
-        margin-bottom: 24px
-    }
 }
 
 @media(prefers-reduced-motion:reduce) {
