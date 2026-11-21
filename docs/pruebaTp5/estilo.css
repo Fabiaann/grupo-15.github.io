@@ -1,0 +1,121 @@
+#sprite {
+  width: 132px;
+  height: 134px;
+  background-image: url("img/image.jpg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+
+}
+
+#sprite {
+  width: 132px;
+  height: 132px;
+  background: url("img/sprite.png") 0 0 no-repeat;
+  animation: caminar 0.8s steps(8) infinite;
+2
+
+}
+
+@keyframes caminar {
+  0%   { background-position: 0 0; }
+  100% { background-position: -1056px 0; }
+}
+
+.Salto{
+  animation: salto 0.8s steps(8) infinite;
+
+}
+@keyframes Salto {
+
+    0%   { background-position: 0 100px ; }
+  100% { background-position: -1056px 0; }
+}
+
+
+#personaje {
+  position: absolute;
+  left: 100px;
+  top:290px;
+}
+
+@keyframes salto {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-100px); }
+  100% { transform: translateY(0); }
+}
+
+#personaje.Salto {
+  animation: salto 0.6s ease-out;
+}
+
+#personaje.agachado{
+  animation: agachado 0.4s ease-out;
+}
+
+@keyframes agachado {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(150px); }
+  100% { transform: translateY(0); }
+}
+
+
+
+.suelo{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:120px;
+  background: url("img/piso.png") repeat-x;
+  background-size: 462px 100%;
+  animation: scroll-ground 2.32s linear infinite;   /* 464px en 2.32s = 200 px/s */
+  animation-play-state: paused;
+}
+
+@keyframes scroll-ground{
+  to{ background-position-x: -462px; }   /* mismo número que el ancho de la imagen */
+}
+
+.stage.moving .suelo,
+.stage.moving .cielo,
+.stage.moving .obstaculo{
+  animation-play-state: running;
+}
+
+
+
+.cielo{
+position: absolute;
+left: 0;
+right: 0;
+bottom: 240px;
+
+height: 200px;
+width: 1100px;
+background: url("img/nube.jpg") repeat-x;
+  background-size: 600px 100%;
+
+animation: scroll-grounds 2.32s linear infinite;
+  animation-play-state: paused;
+
+
+}
+
+@keyframes scroll-grounds{
+  to{ background-position-x: -200px; }   /* mismo número que el ancho de la imagen */
+}
+
+.obstaculo{
+  position:absolute;
+  left:100%;                         /* arranca justo afuera, a la derecha */
+  bottom:0px;                      /* igual al alto del suelo */
+  width:90px;
+  height:110px;
+  background:url("img/obsta.jpg") no-repeat center / contain;
+  animation: mover-obstaculo 5.5s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes mover-obstaculo{
+  to{ transform: translateX(-1200px); }   /* ancho del stage (1000) + ancho del obstáculo (100) */
+}
