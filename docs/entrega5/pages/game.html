@@ -1,0 +1,425 @@
+﻿<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fungi Solitaire: cómo jugar, juegos clásicos y comentarios en JuegosOnline.">
+  <title>Fungi Solitaire | JuegosOnline</title>
+  <link rel="icon" type="image/png" href="../assets/logo-juegos-online.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Bowlby+One+SC&family=Nunito:wght@400;600;700;800&family=Poppins:wght@700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=20260927">
+  <link rel="stylesheet" href="../css/footer.css?v=20261007-1">
+  <link rel="stylesheet" href="../css/header.css?v=20261007-1">
+  <link rel="stylesheet" href="../css/game.css?v=20261104-9">
+</head>
+
+<body class="game-page">
+  <header class="site-header">
+    <div class="site-header__left">
+      <button class="site-header__menu-button" type="button" aria-label="Abrir menú" aria-expanded="false"
+        aria-controls="site-menu"><svg viewBox="0 0 40 32" aria-hidden="true">
+          <path d="M2 5h31M2 15h31M2 25h31" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+          <path class="site-header__arrow-right" d="M32 10 40 15 32 20Z" fill="currentColor" />
+          <path class="site-header__arrow-left" d="M40 10 32 15 40 20Z" fill="currentColor" />
+        </svg></button>
+      <a class="site-header__logo" href="../index.html" aria-label="JuegosOnline, volver al inicio"><img
+          src="../assets/logo-juegos-online.png" alt=""></a>
+    </div>
+    <div class="site-header__balance"><span class="site-header__currency" aria-hidden="true">$</span><strong>10
+        coins</strong><a href="../index.html#reward">Recargar</a></div>
+    <div class="site-header__profile-wrap"><button class="site-header__profile" type="button" aria-label="Abrir perfil"
+        aria-expanded="false" aria-controls="profile-menu"><svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="9" r="6" fill="currentColor" />
+          <path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor" />
+        </svg></button>
+      <div class="profile-menu" id="profile-menu" aria-label="Panel de perfil" hidden></div>
+    </div>
+    <nav class="site-menu" id="site-menu" aria-label="Menú principal" hidden>
+      <a href="../index.html"><svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8" />
+        </svg><span>Inicio</span></a>
+      <a href="../index.html#library"><svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M3 4h5l2 2h7v11H3z" />
+        </svg><span>Biblioteca</span></a>
+      <a href="../index.html#novedades"><svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M17 6V2m0 0h-4m4 0-3 3M10 3a7 7 0 1 0 7 7M10 6v4l3 2" />
+        </svg><span>Novedades</span></a>
+      <a href="../index.html#popular"><svg class="site-menu__fire" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M10 2c1 3-1 4 1 6 1-1 2-2 2-4 4 4 5 8 3 11a6 6 0 0 1-12-1c0-3 2-5 4-7 0 3 0 4 1 5 2-2 1-6 1-10z" />
+        </svg><span>Populares</span></a>
+      <div class="site-menu__divider"></div>
+      <h2 class="site-menu__categories">Categorías</h2>
+      <div class="site-menu__sublist" id="site-categories">
+        <a href="../index.html#game-survival"><svg class="site-menu__category-icon" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path d="M12 2 20 6v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z" />
+          </svg><span>Survival</span></a>
+        <a href="../index.html#game-action"><svg class="site-menu__category-icon site-menu__category-icon--swords"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 3l13 13m5-13L8 16M3 3l5 1-4 4zm18 0-5 1 4 4zM8 16l-5 5m13-5 5 5M5 15l4 4m6 0 4-4" />
+          </svg><span>Pelea</span></a>
+        <a href="../index.html#game-adventure"><svg class="site-menu__category-icon" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path d="M3 1h2v22H3zM5 2h16l-3.5 5L21 12H5z" />
+          </svg><span>Aventura</span></a>
+        <a href="../index.html#game-classics"><svg class="site-menu__category-icon site-menu__category-icon--classic"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 1 0 8.7 14.9L12 12l8.7-4.9A10 10 0 0 0 12 2z" />
+          </svg><span>Clásicos</span></a>
+        <a href="../index.html#game-minecraft"><svg class="site-menu__category-icon site-menu__category-icon--minecraft"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path class="site-menu__minecraft-face" d="M2 2h20v20H2z" />
+            <path class="site-menu__minecraft-detail"
+              d="M5 7h5v5H5zm9 0h5v5h-5zm-4 6h4v3h-4zm-3 3h3v4H7zm7 0h3v4h-3z" />
+          </svg><span>Minecraft</span></a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="game-summary" aria-label="Ficha de Fungi Solitaire">
+      <div class="game-summary__inner">
+        <a class="game-summary__back" href="../index.html" aria-label="Volver al inicio"><svg viewBox="0 0 32 32"
+            aria-hidden="true" focusable="false">
+            <path d="M27 16H5m0 0 9-9m-9 9 9 9" />
+          </svg></a>
+        <img class="game-summary__thumb" src="../assets/peg-solitaire-board-empty.png" alt="">
+        <div class="game-summary__identity">
+          <h1>Fungi Solitaire</h1>
+          <nav class="breadcrumbs" aria-label="Ruta de navegación"><a href="../index.html">Home</a><span
+              aria-hidden="true">›</span><a href="../index.html#popular">Populares</a><span
+              aria-hidden="true">›</span><span aria-current="page">Fungi Solitaire</span></nav>
+        </div>
+        <div class="game-summary__rating" aria-label="Valoración 3,2 de 5, 67 mil votos">
+          <button class="reaction" type="button" data-reaction="like" aria-label="Me gusta Fungi Solitaire"
+            aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M1 21h4V9H1zm22-11c0-1.1-.9-2-2-2h-6.3l.95-4.6.03-.3c0-.4-.17-.8-.44-1.06L14.17 1 7.6 7.6C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73z" />
+            </svg></button>
+          <div><span class="game-summary__stars" aria-hidden="true">★★★☆☆</span><span class="game-summary__votes">3.2 -
+              67K votos</span></div>
+          <button class="reaction" type="button" data-reaction="dislike" aria-label="No me gusta Fungi Solitaire"
+            aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M1 21h4V9H1zm22-11c0-1.1-.9-2-2-2h-6.3l.95-4.6.03-.3c0-.4-.17-.8-.44-1.06L14.17 1 7.6 7.6C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73z" />
+            </svg></button>
+        </div>
+      </div>
+    </section>
+    <section class="game-stage" aria-label="Vista del juego">
+      <figure class="game-stage__frame game-stage__frame--peg" id="peg-stage">
+        <figcaption class="sr-only">Tablero de Fungi Solitaire.</figcaption>
+        <section class="fungi-main-menu" id="fungi-main-menu" aria-label="Menú principal de Fungi Solitaire">
+          <img class="fungi-main-menu__background" src="../img/Elementos/background-menu.png" alt="">
+          <img class="fungi-main-menu__animated-mushroom" src="../img/Elementos/animated-mush.webp" alt="">
+          <img class="fungi-main-menu__fireflies" src="../img/luciernagas_loop_transparente.webp" alt="">
+          <div class="fungi-menu-loading" id="fungi-menu-loading" aria-live="polite">
+            <img class="fungi-menu-loading__logo" src="../img/Elementos/logo.png" alt="Fungi Solitaire">
+            <span class="fungi-menu-loading__spinner" aria-hidden="true"></span>
+            <strong>Cargando bosque...</strong>
+          </div>
+          <nav class="fungi-main-menu__actions" aria-label="Opciones principales">
+            <img class="fungi-main-menu__logo" src="../img/Elementos/logo.png" alt="Fungi Solitaire">
+            <button class="fungi-menu-button fungi-menu-button--main" id="comenzar-juego" type="button"><img
+                src="../img/Elementos/jugar.png" alt="Jugar"></button>
+            <button class="fungi-menu-button fungi-menu-button--main" id="boton-supervivencia" type="button"><img
+                src="../img/Elementos/supervivencia.png" alt="Supervivencia"></button>
+            <button class="fungi-menu-button fungi-menu-button--main" type="button"><img
+                src="../img/Elementos/otros%20juegos.png" alt="Otros juegos"></button>
+            <nav class="fungi-main-menu__small-actions" aria-label="Opciones adicionales">
+              <button class="fungi-menu-button fungi-menu-button--small" type="button"><img
+                  src="../img/Elementos/share-small.png" alt="Compartir"></button>
+              <button class="fungi-menu-button fungi-menu-button--small" type="button"><img
+                  src="../img/Elementos/trofeo-small.png" alt="Trofeos"></button>
+              <button class="fungi-menu-button fungi-menu-button--small" type="button"><img
+                  src="../img/Elementos/ranking-small.png" alt="Ranking"></button>
+              <button class="fungi-menu-button fungi-menu-button--small" id="abrir-config-menu" type="button"><img
+                  src="../img/Elementos/conf-small.png" alt="Configuración"></button>
+              <button class="fungi-menu-button fungi-menu-button--small" type="button"><img
+                  src="../img/Elementos/github-small.png" alt="GitHub"></button>
+            </nav>
+          </nav>
+          <div id="mensaje-supervivencia" class="mensaje-supervivencia" hidden role="status">
+            <img src="../img/Elementos/cartel2.png" alt="">
+            <p>Debes completar el Modo historia para desbloquear el Modo Supervivencia.</p>
+          </div>
+        </section>
+        <img class="fungi-animation" src="../img/hongos_loop_transparente.webp" alt="" aria-hidden="true">
+        <img class="fireflies-animation" src="../img/luciernagas_loop_transparente.webp" alt="" aria-hidden="true">
+        <img class="peg-game-logo" src="../img/Elementos/logo.png" alt="Fungi Solitaire">
+        <div class="peg-in-game-controls" aria-label="Controles de partida">
+          <button id="peg-volver-menu" class="peg-corner-button peg-corner-button--back" type="button"
+            aria-label="Volver al menú principal">
+            <img src="../img/Elementos/back.png" alt="">
+          </button>
+          <button id="peg-abrir-config" class="peg-corner-button peg-corner-button--config" type="button"
+            aria-label="Abrir configuración">
+            <img src="../img/Elementos/conf-jue.png" alt="">
+          </button>
+          <button id="peg-reiniciar-esquina" class="peg-corner-button peg-corner-button--restart" type="button"
+            aria-label="Reiniciar partida">
+            <img src="../img/Elementos/reiniciar.png" alt="">
+          </button>
+        </div>
+        <div id="peg-config" class="peg-config" hidden role="dialog" aria-modal="true"
+          aria-label="Configuración del juego">
+          <img class="peg-config__background" src="../img/Elementos/cartel.png" alt="">
+          <button id="peg-cerrar-config" class="peg-config__close" type="button" aria-label="Cerrar configuración">
+            <img src="../img/Elementos/salir.png" alt="Cerrar">
+          </button>
+          <h2 class="peg-config__title">Configuración:</h2>
+          <div class="peg-config__buttons">
+            <button id="peg-toggle-music" type="button" aria-label="Activar o desactivar música">
+              <img src="../img/Elementos/music-on.png" alt="Música activada">
+            </button>
+            <button id="peg-toggle-fx" type="button" aria-label="Activar o desactivar efectos">
+              <img src="../img/Elementos/fx-on.png" alt="Efectos activados">
+            </button>
+          </div>
+        </div>
+        <div class="peg-hud" aria-live="polite">
+          <div class="peg-level-card">
+            <img src="../img/Elementos/nivel-cartel.png" alt="">
+          </div>
+          <div class="peg-stats-card">
+            <img src="../img/Elementos/cartel2.png" alt="">
+            <div class="peg-stats-card__text">
+              <span>
+                <svg class="peg-stat-icon" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M3 10h13m-5-5 5 5-5 5" />
+                </svg>
+                <span>Movimientos: <strong id="peg-movimientos">0</strong></span>
+              </span>
+              <span>
+                <svg class="peg-stat-icon" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M3 9.5C3 6.5 6.1 4 10 4s7 2.5 7 5.5H3Z" />
+                  <path d="M7.5 9.5h5v6h-5z" />
+                </svg>
+                <span>Hongos: <strong id="peg-fichas">32</strong></span>
+              </span>
+              <span>
+                <svg class="peg-stat-icon" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M10 2.5 12.3 7l5 .7-3.6 3.5.9 5-4.6-2.4-4.6 2.4.9-5-3.6-3.5 5-.7L10 2.5Z" />
+                </svg>
+                <span>Para terminar: <strong id="peg-fichas-faltantes">31</strong></span>
+              </span>
+              <span>
+                <svg class="peg-stat-icon" viewBox="0 0 20 20" aria-hidden="true">
+                  <circle cx="10" cy="10" r="7" />
+                  <path d="M10 6v4l3 2" />
+                </svg>
+                <span>Tiempo: <strong id="peg-tiempo">05:00</strong></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div id="tablero" aria-label="Tablero de Fungi Solitaire"></div>
+      </figure>
+      <div class="peg-game-status" aria-live="polite">
+      </div>
+      <div id="peg-fin" class="peg-fin" hidden role="dialog" aria-modal="true" aria-labelledby="peg-fin-titulo">
+        <div class="peg-fin__panel">
+          <h2 id="peg-fin-titulo">DERROTA.</h2>
+          <p id="peg-fin-mensaje">Te quedaste sin movimientos.</p>
+          <button id="peg-fin-reiniciar" type="button">Jugar de nuevo</button>
+        </div>
+      </div>
+    </section>
+    <section class="game-guide">
+      <div class="game-guide__grid">
+        <article class="game-guide__copy">
+
+<<<<<<< HEAD
+          <div class="carrusel">
+            <button onclick="galeria.scrollBy(-200, 0)">‹</button>
+
+            <div class="contenedorImagenes" id="galeria">
+
+
+
+              <img src="../img/pegFoto3.png">
+              <img src="../img/pegFoto4.png">
+              <img src="../img/pegFoto1.png">
+              <img src="../img/pegFoto6.png">
+
+            </div>
+
+            <button onclick="galeria.scrollBy(200, 0)">›</button>
+=======
+               <div class="carrusel">
+  <button id="galeria-anterior" type="button" aria-label="Imagen anterior">‹</button>
+
+  <div class="contenedorImagenes" id="galeria">
+    <div class="galeria__track" id="galeria-track">
+      <img src="../img/pegFoto3.png" alt="Tablero de Peg Solitaire">
+      <img src="../img/nivel3.png" alt="Nivel 3 de Fungi Solitaire, valle maldito">
+      <img src="../img/pegFoto4.png" alt="Partida de Fungi Solitaire">
+      <img src="../img/img.png" alt="Captura de Fungi Solitaire">
+      <img src="../img/Fungi%20Solitaire.png" alt="Fungi Solitaire">
+      <img src="../img/nivel%202.png" alt="Nivel 2 de Fungi Solitaire, páramo congelado">
+    </div>
+  </div>
+
+  <button id="galeria-siguiente" type="button" aria-label="Imagen siguiente">›</button>
+</div>
+          <div class="galeria-lightbox" id="galeria-lightbox" hidden role="dialog" aria-modal="true"
+            aria-label="Visor de imágenes de Fungi Solitaire">
+            <button class="galeria-lightbox__close" id="galeria-cerrar" type="button" aria-label="Cerrar imagen">×</button>
+            <button class="galeria-lightbox__arrow galeria-lightbox__arrow--previous" id="galeria-ampliada-anterior"
+              type="button" aria-label="Imagen anterior">‹</button>
+            <figure class="galeria-lightbox__figure">
+              <img id="galeria-ampliada" src="" alt="">
+            </figure>
+            <button class="galeria-lightbox__arrow galeria-lightbox__arrow--next" id="galeria-ampliada-siguiente"
+              type="button" aria-label="Imagen siguiente">›</button>
+          </div>
+          <div class="game-guide__story">
+            <h2>🍄 EL ÚLTIMO HONGO</h2>
+            <p>Durante siglos, una antigua red de micelio mantuvo vivo el bosque, conectando a todos los hongos bajo la tierra y compartiendo su energía. Pero una misteriosa corrupción se extendió por sus raíces, rompiendo el vínculo y dejando al bosque al borde de desaparecer.</p>
+            <p>¡Ayuda a restaurar el orden del micelio en este puzzle lleno de misterios!</p>
+>>>>>>> a954ee0f8106a2dee4ff785b5fc306f061c36e6f
+          </div>
+          <h2><span class="info-icon" aria-hidden="true">i</span>¿Cómo jugar: Fungi Solitaire?</h2>
+          <div class="game-guide__text">
+            <p>¡Pon a prueba tu inteligencia con Fungi Solitaire!<br>
+              El objetivo es eliminar todas las fichas del tablero hasta conseguir dejar solamente una.</p>
+
+            <p><strong>¿Cómo jugar?</strong><br>
+              Mantén presionado el botón izquierdo sobre una ficha y arrástrala hasta un espacio vacío para hacerla
+              saltar sobre otra ficha. La ficha saltada desaparecerá del tablero.</p>
+
+            <p><strong>Condiciones de partida:</strong></p>
+            <ul>
+              <li><strong>¡Cuidado con el tiempo y los movimientos!</strong> Si el cronómetro llega a cero o te quedas
+                sin movimientos válidos posibles antes de dejar una sola ficha, la partida se dará por perdida.</li>
+              <li><strong>Sistema de pistas:</strong> Visualiza en tiempo real los espacios válidos mientras arrastras
+                la ficha para planificar mejor tus jugadas y evitar quedarte sin salida.</li>
+              <li><strong>Control fluido:</strong> Utiliza el ratón arrastrando y soltando para mover las fichas de
+                forma intuitiva.</li>
+            </ul>
+
+            <p>¡Piensa bien cada estrategia, vigila el reloj y encuentra la forma perfecta de completar el tablero!</p>
+
+            <h3>¿Quién creó Peg Solitaire?</h3>
+            <p>Peg Solitaire es un clásico juego de ingenio y estrategia con siglos de historia, popularizado en todo el
+              mundo. Esta versión moderna para PC te permite disfrutar de toda la experiencia clásica directamente desde
+              la comodidad de tu navegador web.</p>
+          </div>
+          <div class="game-controls">
+            <h3>Controles:</h3>
+            <div class="game-controls__item"><strong>Seleccionar</strong><span class="mouse-icon"
+                aria-hidden="true"><i></i></span></div>
+          </div>
+        </article>
+        <aside class="game-guide__aside" aria-label="Tutorial de Fungi Solitaire">
+          <h2><span class="info-icon" aria-hidden="true">i</span> Tutoriales</h2>
+          <div class="tutorials__video">
+            <iframe src="https://www.youtube.com/embed/N6f30RVHOVw" title="Tutorial de Fungi Solitaire"
+              loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <section class="classics" aria-labelledby="classics-title">
+      <h2 id="classics-title"><span aria-hidden="true">◕</span> Más juegos clásicos:</h2>
+      <div class="classics__carousel"><button class="classics__arrow classics__arrow--previous" type="button"
+          aria-label="Ver juegos anteriores">‹</button>
+        <div class="classics__track" id="classics-track">
+          <p class="classics__loading">Cargando juegos...</p>
+        </div><button class="classics__arrow classics__arrow--next" type="button"
+          aria-label="Ver más juegos clásicos">›</button>
+      </div>
+    </section>
+    <section class="community" aria-labelledby="comments-title">
+      <div class="community__grid">
+        <div class="comments">
+          <h2 id="comments-title"><span aria-hidden="true">▣</span> Comentarios</h2>
+          <form class="comment-form" id="comment-form">
+            <div class="comment-form__user"><span class="avatar avatar--self" aria-hidden="true"></span><span>Tú</span>
+            </div><label class="sr-only" for="comment-text">¿Qué piensas de este juego?</label><textarea
+              id="comment-text" name="comment" maxlength="500" placeholder="¿Qué piensas de este juego?.."
+              required></textarea>
+            <div class="comment-form__actions"><span id="comment-feedback" role="status"
+                aria-live="polite"></span><button type="submit">Publicar comentario</button></div>
+          </form>
+          <div class="comment-tabs" role="tablist" aria-label="Orden de comentarios"><button type="button" role="tab"
+              aria-selected="false" data-comments-tab="featured"><span aria-hidden="true">✦</span> Comentarios
+              destacados</button><button type="button" role="tab" aria-selected="true" data-comments-tab="latest"><span
+                aria-hidden="true">◷</span> Últimos comentarios</button></div>
+          <div class="comment-list" id="comment-list">
+            <article class="comment-card" data-date="2026-10-29" data-likes="18">
+              <div class="comment-card__head"><span class="avatar avatar--ana" aria-hidden="true">LM</span><strong>LunaMora <small>17</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de LunaMora"><span>18 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>La ambientación del bosque quedó hermosa y el sonido de los hongos le da mucha personalidad.</p><time datetime="2026-10-29">29 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-27" data-likes="12">
+              <div class="comment-card__head"><span class="avatar avatar--yameli" aria-hidden="true">TG</span><strong>TomásG <small>19</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de TomásG"><span>12 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Está bueno que las fichas sean honguitos y que se pueda ver el tiempo mientras jugás.</p><time datetime="2026-10-27">27 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-24" data-likes="9">
+              <div class="comment-card__head"><span class="avatar avatar--chiwa" aria-hidden="true">VA</span><strong>ValeArcade <small>16</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de ValeArcade"><span>9 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Al principio parece fácil, pero después de varias jugadas hay que pensar bastante. Muy entretenido.</p><time datetime="2026-10-24">24 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-20" data-likes="7">
+              <div class="comment-card__head"><span class="avatar avatar--self" aria-hidden="true">NF</span><strong>NicoFungi <small>18</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de NicoFungi"><span>7 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Me gustó poder arrastrar los hongos y ver las pistas sobre los lugares posibles.</p><time datetime="2026-10-20">20 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-16" data-likes="5">
+              <div class="comment-card__head"><span class="avatar avatar--ana" aria-hidden="true">PS</span><strong>PixelSofi <small>20</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de PixelSofi"><span>5 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Los carteles de nivel y estadísticas ayudan mucho a seguir la partida sin distraerse.</p><time datetime="2026-10-16">16 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-11" data-likes="4">
+              <div class="comment-card__head"><span class="avatar avatar--yameli" aria-hidden="true">RC</span><strong>RamiC <small>17</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de RamiC"><span>4 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Muy linda versión del clásico. La música de fondo combina perfecto con el estilo del juego.</p><time datetime="2026-10-11">11 de octubre de 2026</time></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer__content">
+      <a class="site-footer__brand" href="../index.html" aria-label="JuegosOnline, inicio"><img
+          src="../assets/logo-juegos-online.png" alt=""><span>Juegos<em>Online</em></span></a>
+      <div class="site-footer__navigation">
+        <div class="site-footer__columns">
+          <section class="site-footer__column">
+            <h2>Empresa:</h2><a href="../index.html#">Quiénes somos</a><a href="../index.html#">Accesibilidad</a><a
+              href="../index.html#">Sponsors</a><a href="../index.html#">Términos</a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Comunidad:</h2><a href="../index.html#">Foros</a><a href="../index.html#">Eventos</a><a
+              href="../index.html#">Desarrolladores</a><a href="../index.html#">Open Source</a>
+          </section>
+          <section class="site-footer__column site-footer__social">
+            <h2>Nuestras redes</h2><a href="../index.html#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"
+                aria-hidden="true"></i></a><a href="../index.html#" aria-label="TikTok"><i class="fa-brands fa-tiktok"
+                aria-hidden="true"></i></a><a href="../index.html#" aria-label="Instagram"><i
+                class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="../index.html#"
+              aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Legal y privacidad:</h2><a href="../index.html#">Política de privacidad</a><a
+              href="../index.html#">Términos y condiciones</a><a href="../index.html#">Cookies</a><a
+              href="../index.html#">Seguridad</a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Recursos:</h2><a href="../index.html#">Centro de ayuda</a><a href="../index.html#">Tutoriales</a><a
+              href="../index.html#">Blog</a><a href="../index.html#">Guias</a><a href="../index.html#">Documentacion</a>
+          </section>
+        </div>
+        <div class="site-footer__legal">Legal © 2026 Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/profile-menu.js?v=20260930-2"></script>
+  <script src="../js/catalog-fallback.js?v=20261104-1"></script>
+  <script src="../js/game.js?v=20261104-3"></script>
+  <script type="module" src="../js/juegoPeg.js?v=20261104-1"></script>
+</body>
+
+</html>

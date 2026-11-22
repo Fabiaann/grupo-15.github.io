@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Delivery Rush: horizontal scroller de un repartidor que corre por la calle. Cómo jugar, personajes y comentarios en JuegosOnline.">
+  <title>Delivery Rush | JuegosOnline</title>
+  <link rel="icon" type="image/png" href="../assets/logo-juegos-online.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Bowlby+One+SC&family=Nunito:wght@400;600;700;800&family=Poppins:wght@700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=20260927">
+  <link rel="stylesheet" href="../css/footer.css?v=20261007-1">
+  <link rel="stylesheet" href="../css/header.css?v=20261007-1">
+  <link rel="stylesheet" href="../css/game.css?v=20261104-9">
+  <link rel="stylesheet" href="../pruebaTp5/css/delivery.css?v=20261121-6">
+</head>
+
+<body class="game-page">
+  <header class="site-header">
+    <div class="site-header__left">
+      <button class="site-header__menu-button" type="button" aria-label="Abrir menú" aria-expanded="false"
+        aria-controls="site-menu"><svg viewBox="0 0 40 32" aria-hidden="true">
+          <path d="M2 5h31M2 15h31M2 25h31" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+          <path class="site-header__arrow-right" d="M32 10 40 15 32 20Z" fill="currentColor" />
+          <path class="site-header__arrow-left" d="M40 10 32 15 40 20Z" fill="currentColor" />
+        </svg></button>
+      <a class="site-header__logo" href="../index.html" aria-label="JuegosOnline, volver al inicio"><img
+          src="../assets/logo-juegos-online.png" alt=""></a>
+    </div>
+    <div class="site-header__balance"><span class="site-header__currency" aria-hidden="true">$</span><strong>10
+        coins</strong><a href="../index.html#reward">Recargar</a></div>
+    <div class="site-header__profile-wrap"><button class="site-header__profile" type="button" aria-label="Abrir perfil"
+        aria-expanded="false" aria-controls="profile-menu"><svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="9" r="6" fill="currentColor" />
+          <path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor" />
+        </svg></button>
+      <div class="profile-menu" id="profile-menu" aria-label="Panel de perfil" hidden></div>
+    </div>
+    <nav class="site-menu" id="site-menu" aria-label="Menú principal" hidden>
+      <a href="../index.html"><svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8" />
+        </svg><span>Inicio</span></a>
+      <a href="../index.html#library"><svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M3 4h5l2 2h7v11H3z" />
+        </svg><span>Biblioteca</span></a>
+      <a href="../index.html#novedades"><svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M17 6V2m0 0h-4m4 0-3 3M10 3a7 7 0 1 0 7 7M10 6v4l3 2" />
+        </svg><span>Novedades</span></a>
+      <a href="../index.html#popular"><svg class="site-menu__fire" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M10 2c1 3-1 4 1 6 1-1 2-2 2-4 4 4 5 8 3 11a6 6 0 0 1-12-1c0-3 2-5 4-7 0 3 0 4 1 5 2-2 1-6 1-10z" />
+        </svg><span>Populares</span></a>
+      <div class="site-menu__divider"></div>
+      <h2 class="site-menu__categories">Categorías</h2>
+      <div class="site-menu__sublist" id="site-categories">
+        <a href="../index.html#game-survival"><svg class="site-menu__category-icon" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path d="M12 2 20 6v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z" />
+          </svg><span>Survival</span></a>
+        <a href="../index.html#game-action"><svg class="site-menu__category-icon site-menu__category-icon--swords"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 3l13 13m5-13L8 16M3 3l5 1-4 4zm18 0-5 1 4 4zM8 16l-5 5m13-5 5 5M5 15l4 4m6 0 4-4" />
+          </svg><span>Pelea</span></a>
+        <a href="../index.html#game-adventure"><svg class="site-menu__category-icon" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path d="M3 1h2v22H3zM5 2h16l-3.5 5L21 12H5z" />
+          </svg><span>Aventura</span></a>
+        <a href="../index.html#game-classics"><svg class="site-menu__category-icon site-menu__category-icon--classic"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 1 0 8.7 14.9L12 12l8.7-4.9A10 10 0 0 0 12 2z" />
+          </svg><span>Clásicos</span></a>
+        <a href="../index.html#game-minecraft"><svg class="site-menu__category-icon site-menu__category-icon--minecraft"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path class="site-menu__minecraft-face" d="M2 2h20v20H2z" />
+            <path class="site-menu__minecraft-detail"
+              d="M5 7h5v5H5zm9 0h5v5h-5zm-4 6h4v3h-4zm-3 3h3v4H7zm7 0h3v4h-3z" />
+          </svg><span>Minecraft</span></a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="game-summary" aria-label="Ficha de Delivery Rush">
+      <div class="game-summary__inner">
+        <a class="game-summary__back" href="../index.html" aria-label="Volver al inicio"><svg viewBox="0 0 32 32"
+            aria-hidden="true" focusable="false">
+            <path d="M27 16H5m0 0 9-9m-9 9 9 9" />
+          </svg></a>
+        <img class="game-summary__thumb" src="../pruebaTp5/img/portada.webp" alt="">
+        <div class="game-summary__identity">
+          <h1>Delivery Rush</h1>
+          <nav class="breadcrumbs" aria-label="Ruta de navegación"><a href="../index.html">Home</a><span
+              aria-hidden="true">›</span><a href="../index.html#novedades">Novedades</a><span
+              aria-hidden="true">›</span><span aria-current="page">Delivery Rush</span></nav>
+        </div>
+        <div class="game-summary__rating" aria-label="Valoración 4,6 de 5, 12 mil votos">
+          <button class="reaction" type="button" data-reaction="like" aria-label="Me gusta Delivery Rush"
+            aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M1 21h4V9H1zm22-11c0-1.1-.9-2-2-2h-6.3l.95-4.6.03-.3c0-.4-.17-.8-.44-1.06L14.17 1 7.6 7.6C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73z" />
+            </svg></button>
+          <div><span class="game-summary__stars" aria-hidden="true">★★★★★</span><span class="game-summary__votes">4.6 -
+              12K votos</span></div>
+          <button class="reaction" type="button" data-reaction="dislike" aria-label="No me gusta Delivery Rush"
+            aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M1 21h4V9H1zm22-11c0-1.1-.9-2-2-2h-6.3l.95-4.6.03-.3c0-.4-.17-.8-.44-1.06L14.17 1 7.6 7.6C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73z" />
+            </svg></button>
+        </div>
+      </div>
+    </section>
+    <section class="game-stage" aria-label="Vista del juego">
+      <figure class="game-stage__frame game-stage__frame--delivery" id="delivery-frame" tabindex="-1">
+        <figcaption class="sr-only">Delivery Rush: corré por la calle, saltá obstáculos y pasá bajo los andamios para entregar pedidos.</figcaption>
+        <div class="dr-world" id="dr-world">
+          <div class="dr-sky"><div class="dr-sun"></div></div>
+          <div class="dr-layer dr-layer--nubes"></div>
+          <div class="dr-layer dr-layer--lejana"></div>
+          <div class="dr-layer dr-layer--media"></div>
+          <div class="dr-layer dr-layer--cercana"></div>
+          <div class="dr-obstacles" id="dr-obstacles"></div>
+          <div class="dr-entities" id="dr-entities"></div>
+          <div class="dr-player is-idle" id="dr-player">
+            <div class="dr-player__tilt"><div class="dr-player__sprite"></div></div>
+            <div class="dr-player__boom"></div>
+          </div>
+          <div class="dr-layer dr-layer--calle"></div>
+
+          <div class="dr-hud" aria-live="polite">
+            <div class="dr-hud__card">
+              <div class="dr-hud__label"><span id="dr-order-name">🍕 Pizza</span><span>Pedido <strong id="dr-order-count">1/5</strong></span></div>
+              <div class="dr-bar"><div class="dr-bar__fill" id="dr-progress"></div></div>
+              <div class="dr-hud__label"><span>Destino en</span><strong id="dr-meters">0 m</strong></div>
+            </div>
+            <div class="dr-hud__card" id="dr-integrity-card">
+              <div class="dr-hud__label"><span>📦 Vida del pedido</span><strong id="dr-integrity-text">100%</strong></div>
+              <div class="dr-bar dr-bar--integrity"><div class="dr-bar__fill" id="dr-integrity"></div></div>
+              <div class="dr-hud__money"><span id="dr-money">$0</span><small>ganancias</small></div>
+            </div>
+            <div class="dr-hud__buttons">
+              <button class="dr-icon-button" id="dr-sound" type="button" aria-label="Silenciar sonido">♪</button>
+              <button class="dr-icon-button" id="dr-pause-btn" type="button" aria-label="Pausar">II</button>
+            </div>
+          </div>
+          <div class="dr-toast" id="dr-toast" role="status"></div>
+
+          <div class="dr-screen" id="dr-menu">
+            <div class="dr-panel">
+              <h2 class="dr-title">Delivery<br>Rush</h2>
+              <p class="dr-subtitle">Corré por la vereda con tu mochila térmica, saltá todo lo que se cruce y entregá 5 pedidos antes de que se arruinen.</p>
+              <div class="dr-menu-items">
+                <span><i class="dr-mini-coin"></i>Propina +$25</span>
+                <span><i class="dr-mini-dog"></i>Daña el pedido</span>
+                <span><i class="dr-mini-pipe"></i>¡No chocar!</span>
+              </div>
+              <div class="dr-actions">
+                <button class="dr-button" id="dr-play" type="button">Jugar</button>
+                <button class="dr-button dr-button--alt" id="dr-open-help" type="button">Cómo jugar</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dr-screen" id="dr-help" hidden>
+            <div class="dr-panel">
+              <h2>Cómo jugar</h2>
+              <div class="dr-help">
+                <span><kbd>Espacio</kbd> <kbd>↑</kbd></span><span>Saltar. En el aire, otra vez: doble salto (también clic).</span>
+                <span><kbd>↓</kbd></span><span>Deslizarse por el piso. En el aire: bajar rápido.</span>
+                <span><kbd>P</kbd> <kbd>Esc</kbd></span><span>Pausa.</span>
+                <span>🪙</span><span>Las monedas son propinas: +$25 cada una.</span>
+                <span>🐕</span><span>Caé encima de un perro para sacarlo del medio. De frente te muerde: te frena y le saca 15% al pedido.</span>
+                <span>🧱</span><span>Podés caer parado arriba de los obstáculos; chocarlos de frente daña el pedido (-20%).</span>
+                <span>📦</span><span>Cada golpe daña el pedido. Llegues como llegues, se entrega: cuanto mejor esté, más cobrás.</span>
+              </div>
+              <div class="dr-actions">
+                <button class="dr-button" id="dr-help-play" type="button">Jugar</button>
+                <button class="dr-button dr-button--alt" id="dr-help-back" type="button">Volver</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dr-screen" id="dr-pause" hidden>
+            <div class="dr-panel">
+              <h2>Pausa</h2>
+              <p>El pedido te espera calentito en la mochila.</p>
+              <div class="dr-actions" style="margin-top:16px">
+                <button class="dr-button" id="dr-resume" type="button">Seguir</button>
+                <button class="dr-button dr-button--alt" id="dr-pause-menu" type="button">Menú</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dr-screen" id="dr-end" hidden>
+            <div class="dr-panel">
+              <h2 id="dr-end-title">¡Jornada completa!</h2>
+              <p id="dr-end-text"></p>
+              <div class="dr-stats">
+                <div>Ganancias<strong id="dr-end-money">$0</strong></div>
+                <div>Estado promedio<strong id="dr-end-delivered">100%</strong></div>
+                <div>Recorrido<strong id="dr-end-meters">0 m</strong></div>
+                <div>Mejor marca<strong id="dr-end-best">$0</strong></div>
+              </div>
+              <div class="dr-actions">
+                <button class="dr-button" id="dr-retry" type="button">Jugar de nuevo</button>
+                <button class="dr-button dr-button--alt" id="dr-end-menu" type="button">Menú</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </figure>
+    </section>
+    <section class="game-guide">
+      <div class="game-guide__grid">
+        <article class="game-guide__copy">
+          <div class="carrusel">
+            <button id="galeria-anterior" type="button" aria-label="Imagen anterior">‹</button>
+            <div class="contenedorImagenes" id="galeria">
+              <div class="galeria__track" id="galeria-track">
+                <img src="../pruebaTp5/img/portada.webp" alt="Portada de Delivery Rush: el repartidor escapa de dos perros">
+                <img src="../pruebaTp5/img/capturas/captura-1.png" alt="Menú principal de Delivery Rush">
+                <img src="../pruebaTp5/img/capturas/captura-2.png" alt="El repartidor saltando entre un obstáculo y un andamio">
+                <img src="../pruebaTp5/img/capturas/captura-3.png" alt="Monedas de propina y un perro en la vereda">
+                <img src="../pruebaTp5/img/capturas/captura-4.png" alt="Pantalla de fin de jornada con las ganancias">
+              </div>
+            </div>
+            <button id="galeria-siguiente" type="button" aria-label="Imagen siguiente">›</button>
+          </div>
+          <div class="galeria-lightbox" id="galeria-lightbox" hidden role="dialog" aria-modal="true"
+            aria-label="Visor de imágenes de Delivery Rush">
+            <button class="galeria-lightbox__close" id="galeria-cerrar" type="button" aria-label="Cerrar imagen">×</button>
+            <button class="galeria-lightbox__arrow galeria-lightbox__arrow--previous" id="galeria-ampliada-anterior"
+              type="button" aria-label="Imagen anterior">‹</button>
+            <figure class="galeria-lightbox__figure">
+              <img id="galeria-ampliada" src="" alt="">
+            </figure>
+            <button class="galeria-lightbox__arrow galeria-lightbox__arrow--next" id="galeria-ampliada-siguiente"
+              type="button" aria-label="Imagen siguiente">›</button>
+          </div>
+          <div class="game-guide__story">
+            <h2>🛵 EL ÚLTIMO PEDIDO DEL DÍA</h2>
+            <p>El tráfico colapsó la ciudad y la moto quedó atrapada en el embotellamiento. Los clientes siguen con
+              hambre, así que agarrás la mochila térmica y salís corriendo por la vereda, entre conos, tachos, vallas
+              de obra, andamios y perros que no te dejan en paz.</p>
+            <p>¡Llevá cada pedido intacto a destino, juntá propinas y terminá la jornada con la billetera llena!</p>
+          </div>
+          <h2><span class="info-icon" aria-hidden="true">i</span>¿Cómo jugar: Delivery Rush?</h2>
+          <div class="game-guide__text">
+            <p>Delivery Rush es un <strong>horizontal scroller</strong>: el repartidor corre solo y a velocidad
+              constante. Vos controlás los saltos para pasar por el hueco que queda entre el obstáculo del piso y el
+              andamio de obra que cuelga arriba: si saltás de menos chocás abajo, si saltás de más chocás arriba.</p>
+
+            <p><strong>Objetivo:</strong><br>
+              Completar una jornada de <strong>5 pedidos</strong> (pizza, hamburguesa, sushi, helado y torta). Cada
+              pedido tiene un destino a una distancia fija que se ve en la barra superior. Cuando llegás, el cliente te
+              espera en la vereda: le das el paquete, cobrás y arranca el siguiente, más lejos y más rápido.</p>
+
+            <p><strong>Cómo se calcula la plata:</strong></p>
+            <ul>
+              <li><strong>Pago del pedido:</strong> se cobra según el estado en que llega. Un pedido al 100% cobra
+                todo el pago; uno al 40% cobra solo el 40%. Por más golpeado que esté, nunca baja del 10%: siempre
+                se entrega.</li>
+              <li><strong>Propina por rapidez:</strong> si llegás sin que nada te frene, el cliente suma un extra.</li>
+              <li><strong>Monedas:</strong> cada moneda dorada es una propina de <strong>+$25</strong>.</li>
+            </ul>
+
+            <p><strong>Elementos de la ciudad:</strong></p>
+            <ul>
+              <li><strong>Obstáculos y andamios:</strong> cada cruce tiene algo en el piso (cono, tacho, valla, contenedor
+                o pila de cajas) y un andamio colgando arriba. La altura del hueco cambia según el obstáculo, la
+                distancia entre cruces varía y el hueco se achica a medida que avanzás. Podés caer parado arriba del
+                obstáculo del piso sin lastimarte, pero chocarlo de frente o tocar el andamio sí duele: el repartidor
+                se pone rojo, salta el impacto y el pedido pierde un <strong>20%</strong> de su estado.</li>
+              <li><strong>Carteles “¡Agachate!”:</strong> cuelgan casi hasta el piso. No se pueden saltar: deslizate
+                por abajo.</li>
+              <li><strong>Perros:</strong> corren hacia vos y, como no pueden atravesar los obstáculos, rebotan y se
+                dan vuelta. Si caés encima de uno, desaparece. Si te muerde de frente, recibís daño (te frena un momento)
+                y el pedido pierde un <strong>15%</strong> de su estado.</li>
+              <li><strong>Clientes:</strong> al llegar al destino aparece la persona que hizo el pedido saludándote.
+                Le alcanzás el paquete y reacciona según cómo llegó: feliz si está perfecto, o quejándose si llegó
+                aplastado.</li>
+              <li><strong>Monedas:</strong> giran en el hueco de cada cruce. Agarralas para sumar propina.</li>
+            </ul>
+
+            <p>El repartidor nunca muere: la partida termina al completar los 5 pedidos, y el objetivo es terminar
+              con la mayor cantidad de plata posible. Tu mejor marca queda
+              guardada en el navegador.</p>
+
+            <h3>¿En qué se inspira?</h3>
+            <p>Delivery Rush toma el formato de los clásicos de un solo toque (avanzar solo, impulsarse hacia arriba y
+              pasar por huecos) y lo lleva a la vida de un repartidor que corre por una ciudad al atardecer, con fondo parallax de
+              varias capas y animaciones hechas con CSS3.</p>
+          </div>
+          <div class="game-controls">
+            <h3>Controles:</h3>
+            <div class="game-controls__item"><strong>Saltar / doble salto</strong><span><kbd class="dr-kbd">Espacio</kbd> <kbd class="dr-kbd">↑</kbd> o clic</span></div>
+            <div class="game-controls__item"><strong>Deslizarse</strong><span><kbd class="dr-kbd">↓</kbd></span></div>
+            <div class="game-controls__item"><strong>Pausa</strong><span><kbd class="dr-kbd">P</kbd> <kbd class="dr-kbd">Esc</kbd></span></div>
+          </div>
+        </article>
+        <aside class="game-guide__aside" aria-label="Elementos de Delivery Rush">
+          <h2><span class="info-icon" aria-hidden="true">i</span> Personajes</h2>
+          <ul class="dr-cast">
+            <li><span class="dr-cast__img dr-cast__img--rider"></span><div><strong>El repartidor</strong>Corre, salta, hace doble salto con voltereta, se desliza y festeja cada entrega. Cuando se golpea se pone rojo y el pedido se daña.</div></li>
+            <li><span class="dr-cast__img dr-cast__img--dog"></span><div><strong>Perros</strong>Rebotan contra los obstáculos. Pisalos para sacarlos; de frente te muerden y dañan el pedido.</div></li>
+            <li><span class="dr-cast__img dr-cast__img--npc"></span><div><strong>Clientes</strong>Te esperan en el destino para recibir el pedido.</div></li>
+            <li><span class="dr-cast__img dr-cast__img--coin"></span><div><strong>Propinas</strong>Cada moneda suma $25 a tus ganancias.</div></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+    <section class="classics" aria-labelledby="classics-title">
+      <h2 id="classics-title"><span aria-hidden="true">◕</span> Más juegos clásicos:</h2>
+      <div class="classics__carousel"><button class="classics__arrow classics__arrow--previous" type="button"
+          aria-label="Ver juegos anteriores">‹</button>
+        <div class="classics__track" id="classics-track">
+          <p class="classics__loading">Cargando juegos...</p>
+        </div><button class="classics__arrow classics__arrow--next" type="button"
+          aria-label="Ver más juegos clásicos">›</button>
+      </div>
+    </section>
+    <section class="community" aria-labelledby="comments-title">
+      <div class="community__grid">
+        <div class="comments">
+          <h2 id="comments-title"><span aria-hidden="true">▣</span> Comentarios</h2>
+          <form class="comment-form" id="comment-form">
+            <div class="comment-form__user"><span class="avatar avatar--self" aria-hidden="true"></span><span>Tú</span>
+            </div><label class="sr-only" for="comment-text">¿Qué piensas de este juego?</label><textarea
+              id="comment-text" name="comment" maxlength="500" placeholder="¿Qué piensas de este juego?.."
+              required></textarea>
+            <div class="comment-form__actions"><span id="comment-feedback" role="status"
+                aria-live="polite"></span><button type="submit">Publicar comentario</button></div>
+          </form>
+          <div class="comment-tabs" role="tablist" aria-label="Orden de comentarios"><button type="button" role="tab"
+              aria-selected="false" data-comments-tab="featured"><span aria-hidden="true">✦</span> Comentarios
+              destacados</button><button type="button" role="tab" aria-selected="true" data-comments-tab="latest"><span
+                aria-hidden="true">◷</span> Últimos comentarios</button></div>
+          <div class="comment-list" id="comment-list">
+            <article class="comment-card" data-date="2026-10-29" data-likes="18">
+              <div class="comment-card__head"><span class="avatar avatar--ana" aria-hidden="true">LM</span><strong>LunaMora <small>17</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de LunaMora"><span>18 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>La ambientación del bosque quedó hermosa y el sonido de los hongos le da mucha personalidad.</p><time datetime="2026-10-29">29 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-27" data-likes="12">
+              <div class="comment-card__head"><span class="avatar avatar--yameli" aria-hidden="true">TG</span><strong>TomásG <small>19</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de TomásG"><span>12 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Está bueno que las fichas sean honguitos y que se pueda ver el tiempo mientras jugás.</p><time datetime="2026-10-27">27 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-24" data-likes="9">
+              <div class="comment-card__head"><span class="avatar avatar--chiwa" aria-hidden="true">VA</span><strong>ValeArcade <small>16</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de ValeArcade"><span>9 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Al principio parece fácil, pero después de varias jugadas hay que pensar bastante. Muy entretenido.</p><time datetime="2026-10-24">24 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-20" data-likes="7">
+              <div class="comment-card__head"><span class="avatar avatar--self" aria-hidden="true">NF</span><strong>NicoFungi <small>18</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de NicoFungi"><span>7 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Me gustó poder arrastrar los hongos y ver las pistas sobre los lugares posibles.</p><time datetime="2026-10-20">20 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-16" data-likes="5">
+              <div class="comment-card__head"><span class="avatar avatar--ana" aria-hidden="true">PS</span><strong>PixelSofi <small>20</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de PixelSofi"><span>5 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Los carteles de nivel y estadísticas ayudan mucho a seguir la partida sin distraerse.</p><time datetime="2026-10-16">16 de octubre de 2026</time></div>
+            </article>
+            <article class="comment-card" data-date="2026-10-11" data-likes="4">
+              <div class="comment-card__head"><span class="avatar avatar--yameli" aria-hidden="true">RC</span><strong>RamiC <small>17</small></strong><button type="button" class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de RamiC"><span>4 me gusta</span> ♡</button></div>
+              <div class="comment-card__body"><p>Muy linda versión del clásico. La música de fondo combina perfecto con el estilo del juego.</p><time datetime="2026-10-11">11 de octubre de 2026</time></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer__content">
+      <a class="site-footer__brand" href="../index.html" aria-label="JuegosOnline, inicio"><img
+          src="../assets/logo-juegos-online.png" alt=""><span>Juegos<em>Online</em></span></a>
+      <div class="site-footer__navigation">
+        <div class="site-footer__columns">
+          <section class="site-footer__column">
+            <h2>Empresa:</h2><a href="../index.html#">Quiénes somos</a><a href="../index.html#">Accesibilidad</a><a
+              href="../index.html#">Sponsors</a><a href="../index.html#">Términos</a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Comunidad:</h2><a href="../index.html#">Foros</a><a href="../index.html#">Eventos</a><a
+              href="../index.html#">Desarrolladores</a><a href="../index.html#">Open Source</a>
+          </section>
+          <section class="site-footer__column site-footer__social">
+            <h2>Nuestras redes</h2><a href="../index.html#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"
+                aria-hidden="true"></i></a><a href="../index.html#" aria-label="TikTok"><i class="fa-brands fa-tiktok"
+                aria-hidden="true"></i></a><a href="../index.html#" aria-label="Instagram"><i
+                class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="../index.html#"
+              aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Legal y privacidad:</h2><a href="../index.html#">Política de privacidad</a><a
+              href="../index.html#">Términos y condiciones</a><a href="../index.html#">Cookies</a><a
+              href="../index.html#">Seguridad</a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Recursos:</h2><a href="../index.html#">Centro de ayuda</a><a href="../index.html#">Tutoriales</a><a
+              href="../index.html#">Blog</a><a href="../index.html#">Guias</a><a href="../index.html#">Documentacion</a>
+          </section>
+        </div>
+        <div class="site-footer__legal">Legal © 2026 Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/profile-menu.js?v=20260930-2"></script>
+  <script src="../js/catalog-fallback.js?v=20261104-1"></script>
+  <script src="../js/game.js?v=20261104-3"></script>
+  <script src="../pruebaTp5/js/delivery.js?v=20261121-6"></script>
+</body>
+
+</html>

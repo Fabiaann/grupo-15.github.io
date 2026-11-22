@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Blocka Game: cómo jugar, juegos clásicos y comentarios en JuegosOnline.">
+  <title>Blocka Game | JuegosOnline</title>
+  <link rel="icon" type="image/png" href="../assets/logo-juegos-online.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Bowlby+One+SC&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=20260927">
+  <link rel="stylesheet" href="../css/footer.css?v=20261007-1">
+  <link rel="stylesheet" href="../css/header.css?v=20261007-1">
+  <link rel="stylesheet" href="../css/game.css?v=20261013-4">
+  <link rel="stylesheet" href="../css/bloka.css?v=20261014-1">
+</head>
+
+<body class="game-page">
+  <header class="site-header">
+    <div class="site-header__left">
+      <button class="site-header__menu-button" type="button" aria-label="Abrir menú" aria-expanded="false"
+        aria-controls="site-menu"><svg viewBox="0 0 40 32" aria-hidden="true">
+          <path d="M2 5h31M2 15h31M2 25h31" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" />
+          <path class="site-header__arrow-right" d="M32 10 40 15 32 20Z" fill="currentColor" />
+          <path class="site-header__arrow-left" d="M40 10 32 15 40 20Z" fill="currentColor" />
+        </svg></button>
+      <a class="site-header__logo" href="../index.html" aria-label="JuegosOnline, volver al inicio"><img
+          src="../assets/logo-juegos-online.png" alt=""></a>
+    </div>
+    <div class="site-header__balance"><span class="site-header__currency" aria-hidden="true">$</span><strong>10
+        coins</strong><a href="../index.html#reward">Recargar</a></div>
+    <div class="site-header__profile-wrap"><button class="site-header__profile" type="button" aria-label="Abrir perfil"
+        aria-expanded="false" aria-controls="profile-menu"><svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="9" r="6" fill="currentColor" />
+          <path d="M3 29c0-7 5.8-11 13-11s13 4 13 11" fill="currentColor" />
+        </svg></button>
+      <div class="profile-menu" id="profile-menu" aria-label="Panel de perfil" hidden></div>
+    </div>
+    <nav class="site-menu" id="site-menu" aria-label="Menú principal" hidden>
+      <a href="../index.html"><svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="m2 9 8-7 8 7M4 8v10h5v-6h3v6h5V8" />
+        </svg><span>Inicio</span></a>
+      <a href="../index.html#library"><svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M3 4h5l2 2h7v11H3z" />
+        </svg><span>Biblioteca</span></a>
+      <a href="../index.html#novedades"><svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M17 6V2m0 0h-4m4 0-3 3M10 3a7 7 0 1 0 7 7M10 6v4l3 2" />
+        </svg><span>Novedades</span></a>
+      <a href="../index.html#popular"><svg class="site-menu__fire" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M10 2c1 3-1 4 1 6 1-1 2-2 2-4 4 4 5 8 3 11a6 6 0 0 1-12-1c0-3 2-5 4-7 0 3 0 4 1 5 2-2 1-6 1-10z" />
+        </svg><span>Populares</span></a>
+      <div class="site-menu__divider"></div>
+      <h2 class="site-menu__categories">Categorías</h2>
+      <div class="site-menu__sublist" id="site-categories">
+        <a href="../index.html#game-survival"><svg class="site-menu__category-icon" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path d="M12 2 20 6v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z" />
+          </svg><span>Survival</span></a>
+        <a href="../index.html#game-action"><svg class="site-menu__category-icon site-menu__category-icon--swords"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 3l13 13m5-13L8 16M3 3l5 1-4 4zm18 0-5 1 4 4zM8 16l-5 5m13-5 5 5M5 15l4 4m6 0 4-4" />
+          </svg><span>Pelea</span></a>
+        <a href="../index.html#game-adventure"><svg class="site-menu__category-icon" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path d="M3 1h2v22H3zM5 2h16l-3.5 5L21 12H5z" />
+          </svg><span>Aventura</span></a>
+        <a href="../index.html#game-classics"><svg class="site-menu__category-icon site-menu__category-icon--classic"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 1 0 8.7 14.9L12 12l8.7-4.9A10 10 0 0 0 12 2z" />
+          </svg><span>Clásicos</span></a>
+        <a href="../index.html#game-minecraft"><svg class="site-menu__category-icon site-menu__category-icon--minecraft"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path class="site-menu__minecraft-face" d="M2 2h20v20H2z" />
+            <path class="site-menu__minecraft-detail"
+              d="M5 7h5v5H5zm9 0h5v5h-5zm-4 6h4v3h-4zm-3 3h3v4H7zm7 0h3v4h-3z" />
+          </svg><span>Minecraft</span></a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="game-summary" aria-label="Ficha de Blocka Game">
+      <div class="game-summary__inner">
+        <a class="game-summary__back" href="../index.html" aria-label="Volver al inicio"><svg viewBox="0 0 32 32"
+            aria-hidden="true" focusable="false">
+            <path d="M27 16H5m0 0 9-9m-9 9 9 9" />
+          </svg></a>
+        <img class="game-summary__thumb" src="../img/logoJuego.jpg" alt="">
+        <div class="game-summary__identity">
+          <h1>Blocka Game</h1>
+          <nav class="breadcrumbs" aria-label="Ruta de navegación"><a href="../index.html">Home</a><span
+              aria-hidden="true">›</span><a href="../index.html#popular">Populares</a><span
+              aria-hidden="true">›</span><span aria-current="page">Blocka Game</span></nav>
+        </div>
+        <div class="game-summary__rating" aria-label="Valoración 3,2 de 5, 67 mil votos">
+          <button class="reaction" type="button" data-reaction="like" aria-label="Me gusta Blocka Game"
+            aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M1 21h4V9H1zm22-11c0-1.1-.9-2-2-2h-6.3l.95-4.6.03-.3c0-.4-.17-.8-.44-1.06L14.17 1 7.6 7.6C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73z" />
+            </svg></button>
+          <div><span class="game-summary__stars" aria-hidden="true">★★★☆☆</span><span class="game-summary__votes">3.2 -
+              67K votos</span></div>
+          <button class="reaction" type="button" data-reaction="dislike" aria-label="No me gusta Blocka Game"
+            aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M1 21h4V9H1zm22-11c0-1.1-.9-2-2-2h-6.3l.95-4.6.03-.3c0-.4-.17-.8-.44-1.06L14.17 1 7.6 7.6C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73z" />
+            </svg></button>
+        </div>
+      </div>
+    </section>
+    <div class="contenedor">
+      <div class="banco-imagenes oculto">
+        <div class="gancho">
+
+        </div>
+      </div>
+
+
+      <div class="juego oculto">
+        <div class="header-juego">
+          <div class="ajuste-juego">
+            <button class="sonidoOff btnSonido"><img src="../svg/soundOn.svg" class="imgSonido"></button>
+            <button class="sonidoOn oculto btnSonido"><img src="../svg/soundOff.svg" class="imgSonido"></button>
+          </div>
+          <div class="hud-centro">
+            <div class="hud-estrellas" aria-label="Tres estrellas">★ <span>★</span> ★</div>
+            <div class="time"><span>Tiempo</span>
+              <p class="mostrarTiempo">00:00:00</p>
+            </div>
+            
+            <div class="mostrarNivel time"></div>
+          </div>
+          <div class="mostrarNivel"> </div>
+          <div class="pista-juego">
+            <button class="hud-ayuda" id="pista" type="button" aria-label="Usar pista" title="Ayuda disponible: 5">
+              <i class="fa-regular fa-lightbulb" aria-hidden="true"></i><span class="hud-ayuda__contador"
+                id="contadorAyudas">5</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="juego11">
+          <button id="comenzar" class="comenzar">comenzar</button>
+          
+        </div>
+        <button class="siguienteNivel oculto">siguienteNivel</button>
+     
+      </div>
+
+      <div class="mostrarBotones">
+ 
+        <div>
+          <p>Selecciona la cantidad de subImagenes, para comenzar el juego</p>
+      <p class="mostrarInstruccion">Se recomienda leer las instrucciones. <a class="instruccion" href="#instrucciones">Ver instrucciones</a></p>
+        </div>
+        <button id="btn4">4</button>
+        <button id="btn6">6</button>
+        <button id="btn8">8</button>
+            
+      </div>
+
+      <canvas id="canvas" width="500px" height="500px"  class="oculto"></canvas>
+          <div class="modal-nivel oculto" id="modalNivel" role="dialog" aria-modal="true" aria-labelledby="tituloNivelCompletado">
+        <div class="modal-nivel__tarjeta">
+        
+            <div class="modal-nivel__estrellas" aria-label="Tres estrellas">
+                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <h2 id="tituloNivelCompletado">&#161;Nivel completado!</h2>
+            <p class="modal-nivel__descripcion" id="descripcionNivel">Imagen completada.</p>
+           <div class="time"><span>Tiempo</span>
+              <p class="mostrarTiempo">00:00:00</p>
+            </div>
+            <button class="modal-nivel__siguiente" id="siguienteNivel" type="button">Siguiente nivel</button>
+            
+              <button  class="volverInicio"onclick="location.reload(true);">volver al inicio</button>
+        </div>
+    </div>
+
+
+          <div class="modal-nivel oculto" id="ultimoNivel" role="dialog" aria-modal="true" aria-labelledby="tituloNivelCompletado">
+        <div class="modal-nivel__tarjeta alertaUltimoNivel">
+        
+           
+            
+            <p class="modal-nivel__descripcion p-ultimoNivel" >Estas en el ultimo nivel!!!, recuerda que  solo tendras 30 segundos para resolverlo</p>
+      
+           
+          
+             
+        </div>
+    </div>
+
+         <div class="modal-nivel oculto" id="gameOver" role="dialog" aria-modal="true" aria-labelledby="tituloNivelCompletado">
+        <div class="modal-nivel__tarjeta">
+        
+           
+            
+            <p class="modal-nivel__descripcion gameOver" >!!!!Game Over!!!!</p>
+            <p>Lo siento haz superado el limite permitido</p>
+        <button  class="volverInicio"onclick="location.reload(true);">volver al inicio</button>
+           
+          
+             
+        </div>
+    </div>
+
+    
+
+      <div class="ganoElJuegoCompleto oculto">
+        <p>Felicidades pasastes todos los niveles</p>
+        <button onclick="location.reload(true);">volver al inicio</button>
+      </div>
+    </div>
+    <section class="game-guide" id="instrucciones">
+      <div class="game-guide__grid">
+        <article class="game-guide__copy">
+          <div class="carrusel">
+  <button onclick="galeria.scrollBy(-200, 0)">‹</button>
+
+  <div class="contenedorImagenes" id="galeria">
+  
+    <img src="../img/fotoJuego2.png">
+    <img src="../img/fotoJuego3.png">
+  
+    <img src="../img/fotoJuego5.png">
+    <img src="../img/fotoJuego6.png">
+    <img src="../img/fotoJuego7.png">
+    
+  </div>
+
+  <button onclick="galeria.scrollBy(200, 0)">›</button>
+</div>
+      
+          <h2><span class="info-icon" aria-hidden="true">i</span>¿Cómo jugar: Blocka Game?</h2>
+          <div class="game-guide__text"   >
+        
+            <p>En Blocka tenés que reconstruir la imagen girando sus piezas.</p>
+            <p>Podés configurar la dificultad seleccionando 4, 6 o 8 subimágenes para armar el Blocka.</p>
+            <p>Elegí comenzar y seleccioná la cantidad de subimágenes. Durante la partida, usá el botón izquierdo para
+              girar una pieza hacia la izquierda y el botón derecho para girarla hacia la derecha. Completá la imagen
+              para avanzar.</p>
+            <p>¡La dificultad aumenta en cada nivel con nuevos filtros! Pero cuidado con el último: el TIEMPO es tu mayor enemigo y solo tendrás 15 segundos para completarlo.</p>
+            <p>Tendrás 5 ayudas que colocarán correctamente la imagen. Ten cuidado: solo son 5 por cada partida y te aumentan 15 SEGUNDOS , así que si usas todas en los primeros niveles, no te quedarán vidas para el último nivel.</p>
+            <h3>Controles:</h3>
+            <p>Ratón: clic izquierdo o derecho sobre una pieza para rotarla. Usá «Pista» si necesitás ayuda y «Siguiente
+              nivel» para continuar.</p>
+          </div>
+          <div class="game-controls">
+            <h3>Controles:</h3>
+            <div class="game-controls__items">
+              <div class="game-controls__item"><strong>Rotar izquierda</strong><span class="mouse-icon mouse-icon--left"
+                  aria-hidden="true"><i></i></span></div>
+              <div class="game-controls__item"><strong>Rotar derecha</strong><span class="mouse-icon mouse-icon--right"
+                  aria-hidden="true"><i></i></span></div>
+            </div>
+          </div>
+        </article>
+        <aside class="game-guide__aside" aria-label="Publicidad">
+          <h2>Publicidad</h2>
+          <div class="promo-poster promo-poster--peak"><span class="promo-poster__title">PEAK</span><span
+              class="promo-poster__play" aria-hidden="true">▶</span><span class="promo-poster__tag">OFFICIAL
+              TRAILER</span></div>
+          <p class="game-guide__promo-note"><span aria-hidden="true">🏆</span> ¡Participá en torneos, chateá y haz
+            amigos!</p>
+        </aside>
+      </div>
+    </section>
+    <section class="classics" aria-labelledby="classics-title">
+      <h2 id="classics-title"><span aria-hidden="true">◕</span> Más juegos clásicos:</h2>
+      <div class="classics__carousel"><button class="classics__arrow classics__arrow--previous" type="button"
+          aria-label="Ver juegos anteriores">‹</button>
+        <div class="classics__track" id="classics-track">
+          <article class="classic-card"><img src="../assets/classic-pacman.svg" alt="" loading="lazy">
+            <h3>Pac-Man</h3>
+          </article>
+          <article class="classic-card"><img src="../assets/classic-mario.svg" alt="" loading="lazy">
+            <h3>Super Mario Bros</h3>
+          </article>
+          <article class="classic-card"><img src="../assets/classic-street-fighter.svg" alt="" loading="lazy">
+            <h3>Street Fighter 2</h3>
+          </article>
+          <article class="classic-card"><img src="../assets/classic-contra.svg" alt="" loading="lazy">
+            <h3>Contra</h3>
+          </article>
+          <article class="classic-card"><img src="../assets/classic-metal-slug.svg" alt="" loading="lazy">
+            <h3>Metal Slug X</h3>
+          </article>
+          <article class="classic-card"><img src="../assets/classic-crash.svg" alt="" loading="lazy">
+            <h3>Crash Bandicoot</h3>
+          </article>
+        </div><button class="classics__arrow classics__arrow--next" type="button"
+          aria-label="Ver más juegos clásicos">›</button>
+      </div>
+    </section>
+    <section class="community" aria-labelledby="comments-title">
+      <div class="community__grid">
+        <div class="comments">
+          <h2 id="comments-title"><span aria-hidden="true">▣</span> Comentarios</h2>
+          <form class="comment-form" id="comment-form">
+            <div class="comment-form__user"><span class="avatar avatar--self" aria-hidden="true"></span><span>Tú</span>
+            </div><label class="sr-only" for="comment-text">¿Qué piensas de este juego?</label><textarea
+              id="comment-text" name="comment" maxlength="500" placeholder="¿Qué piensas de este juego?.."
+              required></textarea>
+            <div class="comment-form__actions"><span id="comment-feedback" role="status"
+                aria-live="polite"></span><button type="submit">Publicar comentario</button></div>
+          </form>
+          <div class="comment-tabs" role="tablist" aria-label="Orden de comentarios"><button type="button" role="tab"
+              aria-selected="false" data-comments-tab="featured"><span aria-hidden="true">✦</span> Comentarios
+              destacados</button><button type="button" role="tab" aria-selected="true" data-comments-tab="latest"><span
+                aria-hidden="true">◷</span> Últimos comentarios</button></div>
+          <div class="comment-list" id="comment-list">
+            <article class="comment-card" data-date="2020-10-14" data-likes="3">
+              <div class="comment-card__head"><span class="avatar avatar--ana" aria-hidden="true">AP</span><strong>Ana
+                  Paula <small>15</small></strong><button type="button" class="comment-like" aria-pressed="false"
+                  aria-label="Me gusta el comentario de Ana Paula"><span>3 me gusta</span> ♡</button></div>
+              <div class="comment-card__body">
+                <p>Me acuerdo de que en la primaria nos la pasábamos jugando en la sala de computación D:</p><time
+                  datetime="2020-10-14">14 de octubre de 2020</time>
+              </div>
+            </article>
+            <article class="comment-card" data-date="2020-10-02" data-likes="11">
+              <div class="comment-card__head"><span class="avatar avatar--yameli"
+                  aria-hidden="true">YA</span><strong>yameli123 <small>15</small></strong><button type="button"
+                  class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de yameli123"><span>11 me
+                    gusta</span> ♡</button></div>
+              <div class="comment-card__body">
+                <p>este juego me gusta</p><time datetime="2020-10-02">2 de octubre de 2020</time>
+              </div>
+            </article>
+            <article class="comment-card" data-date="2020-10-02" data-likes="11">
+              <div class="comment-card__head"><span class="avatar avatar--chiwa"
+                  aria-hidden="true">CH</span><strong>chiwa <small>15</small></strong><button type="button"
+                  class="comment-like" aria-pressed="false" aria-label="Me gusta el comentario de chiwa"><span>11 me
+                    gusta</span> ♡</button></div>
+              <div class="comment-card__body">
+                <p>Qué fácil que es el juego, me gané el 1, el 2 y el 3 yo solo.</p><time datetime="2020-10-02">2 de
+                  octubre de 2020</time>
+              </div>
+            </article>
+          </div>
+        </div>
+        <aside class="tutorials" aria-label="Tutoriales">
+          <h2><span class="info-icon" aria-hidden="true">i</span> Tutoriales</h2>
+          <div class="promo-poster promo-poster--minecraft"><span
+              class="promo-poster__title">MINECRAFT<br>GUÍA</span><span class="promo-poster__play"
+              aria-hidden="true">▶</span></div>
+          <div class="promo-poster promo-poster--challenge"><span
+              class="promo-poster__title">NUEVOS<br>RETOS</span><span class="promo-poster__play"
+              aria-hidden="true">▶</span></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer__content">
+      <a class="site-footer__brand" href="../index.html" aria-label="JuegosOnline, inicio"><img
+          src="../assets/logo-juegos-online.png" alt=""><span>Juegos<em>Online</em></span></a>
+      <div class="site-footer__navigation">
+        <div class="site-footer__columns">
+          <section class="site-footer__column">
+            <h2>Empresa:</h2><a href="../index.html#">Quiénes somos</a><a href="../index.html#">Accesibilidad</a><a
+              href="../index.html#">Sponsors</a><a href="../index.html#">Términos</a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Comunidad:</h2><a href="../index.html#">Foros</a><a href="../index.html#">Eventos</a><a
+              href="../index.html#">Desarrolladores</a><a href="../index.html#">Open Source</a>
+          </section>
+          <section class="site-footer__column site-footer__social">
+            <h2>Nuestras redes</h2><a href="../index.html#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"
+                aria-hidden="true"></i></a><a href="../index.html#" aria-label="TikTok"><i class="fa-brands fa-tiktok"
+                aria-hidden="true"></i></a><a href="../index.html#" aria-label="Instagram"><i
+                class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="../index.html#"
+              aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Legal y privacidad:</h2><a href="../index.html#">Política de privacidad</a><a
+              href="../index.html#">Términos y condiciones</a><a href="../index.html#">Cookies</a><a
+              href="../index.html#">Seguridad</a>
+          </section>
+          <section class="site-footer__column">
+            <h2>Recursos:</h2><a href="../index.html#">Centro de ayuda</a><a href="../index.html#">Tutoriales</a><a
+              href="../index.html#">Blog</a><a href="../index.html#">Guias</a><a href="../index.html#">Documentacion</a>
+          </section>
+        </div>
+        <div class="site-footer__legal">Legal © 2026 Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/profile-menu.js?v=20260930-2"></script>
+  <script src="../js/game.js?v=20261007-1"></script>
+  <script src="../js/bloka.js"></script>
+</body>
+
+</html>

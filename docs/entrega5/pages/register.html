@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro | JuegosOnline</title>
+  <link rel="icon" type="image/png" href="../assets/logo-juegos-online.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=20260927">
+  <link rel="stylesheet" href="../css/footer.css?v=20260927">
+  <link rel="stylesheet" href="../css/header.css?v=20260928-2">
+  <link rel="stylesheet" href="../css/auth.css?v=20260927">
+</head>
+
+<body class="auth-page">
+
+  <main class="auth-main">
+    <section class="auth-card auth-card--register" aria-labelledby="auth-title">
+      <div class="auth-card__brand"><img src="../assets/logo-juegos-online.png" alt=""></div>
+      <p class="auth-card__eyebrow">JuegosOnline · registro</p>
+      <h1 id="auth-title">Bienvenido</h1>
+     
+      <form id="register-form" class="auth-form" novalidate>
+        <div class="auth-field">
+          <label for="full-name">Nombre y apellido <small>(nombre completo)</small></label>
+          <input id="full-name" name="full-name" type="text" autocomplete="name" placeholder="Ej.: José García"
+            aria-describedby="full-name-error" required>
+          <small class="auth-error" id="full-name-error" aria-live="polite"></small>
+        </div>
+        <div class="auth-field">
+          <label for="nickname">NickName <small>(opcional)</small></label>
+          <input id="nickname" name="nickname" type="text" autocomplete="nickname"
+            placeholder="¿Cómo querés que te llamen?">
+        </div>
+        <div class="auth-field">
+          <label for="birth-date">Fecha de nacimiento <small>(debés ser mayor de 12)</small></label>
+          <input id="birth-date" name="birth-date" type="date" autocomplete="bday" aria-describedby="birth-date-error"
+            required>
+          <small class="auth-error" id="birth-date-error" aria-live="polite"></small>
+        </div>
+        <div class="auth-field">
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="Ej.: jose@correo.com"
+            aria-describedby="email-error" required>
+          <small class="auth-error" id="email-error" aria-live="polite"></small>
+        </div>
+        <div class="auth-field">
+          <label for="new-password">Contraseña <small>(mínimo 8 caracteres)</small></label>
+          <input id="new-password" name="new-password" type="password" autocomplete="new-password"
+            placeholder="Creá una contraseña" aria-describedby="new-password-error" required>
+          <small class="auth-error" id="new-password-error" aria-live="polite"></small>
+        </div>
+        <div class="auth-field">
+          <label for="confirm-password">Repetí la contraseña</label>
+          <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password"
+            placeholder="Repetí tu contraseña" aria-describedby="confirm-password-error" required>
+          <small class="auth-error" id="confirm-password-error" aria-live="polite"></small>
+        </div>
+
+               <div class="reCaptcha-enviar">
+            <label class="reCaptcha">
+                <div class="reCaptcha-contenido">
+                    <input type="checkbox" id="mi-checkbox">
+                    <div class="reCaptcha-boton"></div>
+                    <span class="reCaptcha-texto">No soy un robot</span>
+                </div>
+
+
+                <div class="recaptcha-logo-container">
+                    <img src="../svg/recaptcha.svg" alt="reCaptcha-logo" class="recaptcha-logo">
+                </div>
+            </label>
+       
+            
+        </div>
+        <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
+        <button class="auth-submit" type="submit">Crear cuenta de prueba</button>
+            <div class="inicio-redes">
+            <p class="p-o">o</p>
+
+            
+         <a href="../index.html" class="iniciar-session-app ">
+    <div class="app-logo-container">
+        <img src="../svg/facebook.svg" alt="Facebook" class="facebook-logo">
+    </div>
+    <p>Continuar con Facebook</p>
+</a>
+
+
+
+            <a href="../index.html" class="iniciar-session-app ">
+    <div class="app-logo-container">
+        <img src="../svg/google.svg" alt="google" class="google-logo">
+    </div>
+    <p>Continuar con Google</p>
+</a>
+
+        </div>
+      </form>
+      <div class="auth-success" id="register-success" role="status" aria-live="polite" hidden>
+        <span class="auth-success__icon" aria-hidden="true">✓</span>
+        <h2>¡Registro completado!</h2>
+        <p>Esta fue una demostración: no se creó ninguna cuenta.</p>
+        <a href="login.html">Ir al login de prueba</a>
+      </div>
+      <p class="auth-card__switch">¿Ya tenés cuenta? <a href="login.html">Iniciá sesión</a></p>
+    </section>
+  </main>
+
+
+  <script src="../js/auth.js?v=20260930-1"></script>
+</body>
+
+</html>
