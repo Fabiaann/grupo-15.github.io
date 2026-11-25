@@ -23,7 +23,7 @@
   const TOP_W = 84;               // ancho del andamio colgante
   const PX_PER_METER = 6;
   const GAP_START = 235;          // hueco vertical inicial entre piso y andamio
-  const GAP_MIN = 165;            // hueco vertical mínimo
+  const GAP_MIN = 230;            // hueco vertical mínimodr-cross__top
   const GAP_SHRINK_METERS = 7000; // metros hasta llegar al hueco mínimo
 
   // Obstáculos del piso: cada uno define la altura del hueco
@@ -111,10 +111,10 @@
     try {
       sounds[name].currentTime = 0;
       const p = sounds[name].play();
-      if (p) p.catch(() => {});
+      if (p) p.catch(() => { });
     } catch (e) { /* sin audio */ }
   };
-  const playMusic = () => { if (soundOn) { const p = sounds.music.play(); if (p) p.catch(() => {}); } };
+  const playMusic = () => { if (soundOn) { const p = sounds.music.play(); if (p) p.catch(() => { }); } };
 
   // ---------- Estado ----------
   let state = 'menu'; // menu | playing | paused | over
@@ -122,7 +122,10 @@
   let g;
   let lastTime = 0;
   let best = 0;
-  try { best = Number(localStorage.getItem('deliveryRushBest')) || 0; } catch (e) { best = 0; }
+  try {
+     best = Number(localStorage.getItem('deliveryRushBest')) || 0; } catch (e) { best = 0;
+      
+      }
 
   const rand = (a, b) => a + Math.random() * (b - a);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -135,7 +138,7 @@
       y: groundTop(),
       vy: 0,
       onGround: true,
-      jumpsLeft: 2,
+      jumpsLeft: 50,
       sliding: 0,          // tiempo restante mínimo de deslizamiento
       slideHeld: false,
       distance: 0,
@@ -253,6 +256,7 @@
   // ---------- Acciones y animaciones del repartidor ----------
   function setPlayerClass(cls) {
     player.className = 'dr-player' + (cls ? ` ${cls}` : '');
+
   }
 
   function oneShot(cls, ms) {
@@ -347,13 +351,13 @@
     if (g.onGround && feet < support - 1) {
       // Se terminó la plataforma: empieza a caer (le queda un salto)
       g.onGround = false;
-      g.jumpsLeft = 1;
+      g.jumpsLeft = 50;
       player.classList.add('is-air');
     } else if (!g.onGround && g.vy >= 0 && feet >= support) {
       g.y = support - FEET;
       g.vy = 0;
       g.onGround = true;
-      g.jumpsLeft = 2;
+      g.jumpsLeft = 50;
       player.classList.remove('is-air');
       oneShot('is-land', 220);
     }
@@ -574,7 +578,9 @@
     setPlayerClass('is-delivered');
     if (g.money > best) {
       best = g.money;
-      try { localStorage.setItem('deliveryRushBest', String(best)); } catch (e) { /* sin storage */ }
+      try { localStorage.setItem('deliveryRushBest', String(best)); } catch (e) { /* sin storage */ 
+
+      }
     }
     const avg = Math.round(g.integritySum / ORDERS.length);
     ui.endTitle.textContent = '¡Jornada completa!';
@@ -759,8 +765,10 @@
           update(1 / 60);
         }
         if (state === 'playing') render();
-        return { state, y: Math.round(g.y), money: g.money, integrity: g.integrity, order: g.orderIndex,
-          delivered: g.delivered, meters: Math.floor(g.distance / PX_PER_METER), gap: Math.round(currentGap()) };
+        return {
+          state, y: Math.round(g.y), money: g.money, integrity: g.integrity, order: g.orderIndex,
+          delivered: g.delivered, meters: Math.floor(g.distance / PX_PER_METER), gap: Math.round(currentGap())
+        };
       },
       get state() { return state; },
       set god(v) { godMode = v; },
